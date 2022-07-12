@@ -1,0 +1,65 @@
+Type
+---------------
+
+font-face CSS at-rule allows you to use a custom font
+from a remote server (CDN) or one that is locally-installed on the hosted server.
+
+
+
+
+
+shorthand syntax
+api syntax
+
+change via dropdown component
+
+which font and why
+
+formats 
+    .ttf
+    .woff
+    .woff2
+
+types
+    serif
+    sans-serif
+    monospace
+    cursive
+    fantasy
+    system-ui
+    ui-serif
+    ui-sans-serif
+    ui-monospace
+    ui-rounded
+    math
+    emoji
+    fangsong
+
+emojis 
+
+glyphs
+
+languages
+
+scales
+
+    DEFAULT
+
+        Major Third  1.25
+        Perfect Fourth 1.333
+
+    Large 
+        Golden Ratio 1.68
+        Augmented Fourth 1.414
+    
+    Medium
+        Minor Third 1.2
+    
+    Smaller 
+        Minor Second 1.067
+        Major Second 1.125
+
+
+    Traditional
+        
+        12 | 14 | 36 | 72

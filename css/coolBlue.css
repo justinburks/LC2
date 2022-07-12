@@ -1,0 +1,278 @@
+html, body, .main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #285cc4;
+}
+
+.fieldset {
+  display: flex;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.fieldset .label {
+  position: absolute;
+  z-index: 2;
+  left: .5em;
+}
+
+input {
+  position: relative;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+fieldset {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: .5em;
+  border-radius: 8px;
+  border: 1px solid rgba(128, 128, 128, 0.678);
+  margin: 16px 0 8px 0;
+}
+
+fieldset:focus-within label, label.inp-active {
+  transform: scale(1) translateY(-18px);
+  color: #285cc4;
+}
+
+fieldset:focus-within {
+  transition: 200ms ease;
+  border-color: #285cc4;
+}
+
+fieldset.inp-active {
+  border-color: #285cc4;
+}
+
+fieldset:focus-within::after {
+  transition: 200ms ease;
+  transform: scaleX(1);
+}
+
+fieldset.inp-active::after {
+  transform: scaleX(1);
+}
+
+.icon svg {
+  position: absolute;
+  right: .8em;
+  top: .5em;
+  color: #285cc4;
+  fill: gray;
+  transition: 200ms ease;
+}
+
+fieldset:focus-within .icon svg, .icon.inp-active svg {
+  color: #285cc4;
+  fill: #285cc4;
+}
+
+fieldset::after {
+  position: absolute;
+  box-sizing: border-box;
+  top: -.5em;
+  left: .5em;
+  height: 18px;
+  width: 7ch;
+  border-radius: 18px;
+  background: white;
+  transform: scaleX(0);
+  z-index: 1;
+  content: "";
+}
+
+fieldset.password::after {
+  width: 10ch;
+}
+
+label {
+  position: absolute;
+  left: .8em;
+  top: .4em;
+  font-size: 18px;
+  transform: scale(0.8);
+  transition: 200ms ease;
+  background: white;
+  color: gray;
+  box-sizing: border-box;
+  z-index: 2;
+  user-select: none;
+  pointer-events: none;
+}
+
+input {
+  border: 0;
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  z-index: 3;
+  background: transparent;
+}
+
+.main, .form {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero, .form {
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+
+.hero {
+  width: 420px;
+  background: #285cc4;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.form {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.form > div {
+  width: 350px;
+}
+
+.form .form-header {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form .form-header .logo {
+  transform: translateY(-20px);
+  height: 72px;
+  width: 72px;
+  background-color: whitesmoke;
+  border-radius: 72px;
+}
+
+.form .form-header h2, .form .form-header h3 {
+  margin-top: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.form .form-header h2 {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.form .form-header h3 {
+  font-size: 14px;
+  font-weight: 400;
+  color: gray;
+}
+
+.form .form-auth {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form .form-auth .pre-auth {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.form .form-auth .remember {
+  display: flex;
+  align-items: center;
+}
+
+.form .form-auth .remember span {
+  margin-left: 8px;
+  white-space: nowrap;
+  color: gray;
+}
+
+.form .form-auth button {
+  border: 0;
+  outline: 0;
+  border-radius: 8px;
+  margin: 16px 0 8px 0;
+  background: #285cc4;
+  padding: .5em 1.5em;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.form .form-auth .google {
+  background: white;
+  color: black;
+  border: 1px solid rgba(128, 128, 128, 0.678);
+}
+
+.form .form-auth .google .g-text {
+  margin-left: 8px;
+  letter-spacing: 0;
+  color: gray;
+}
+
+.form .form-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+  margin-bottom: 8px;
+  color: gray;
+  font-size: 14px;
+}
+
+.form .form-footer a {
+  margin-left: 24px;
+}
+
+@media (max-width: 875px) {
+  .form > div {
+    width: 350px;
+  }
+}
+
+@media (max-width: 850px) {
+  .hero {
+    display: none;
+  }
+}
+/*# sourceMappingURL=coolBlue.css.map */

@@ -1,0 +1,233 @@
+// DISPLAY
+
+@font-face {
+    font-family: 'Azonix-display';
+    src: url('../font/display/Azonix.otf');
+}
+@font-face {
+    font-family: 'DM-display';
+    src: url('../font/display/DMSerifDisplay-Regular');
+}
+@font-face {
+    font-family: 'Glynn-display';
+    src: url('../font/display/galderglynn\ titling\ bl.ttf');
+}
+@font-face {
+    font-family: 'Gilroy-display';
+    src: url('../font/display/gilroy-extrabold.otf');
+}
+@font-face {
+    font-family: 'Riffic-display';
+    src: url('../font/display/riffic-bold.ttf');
+}
+
+// MODERN
+
+@font-face {
+    font-family: 'Azonix';
+    src: url('../font/modern/Azonix.otf');
+}
+@font-face {
+    font-family: 'Dolce Vita-bold';
+    src: url('../font/modern/Dolce\ Vita\ Heavy\ Bold.ttf');
+}
+@font-face {
+    font-family: 'Dolce Vita-light';
+    src: url('../font/modern/Dolce\ Vita\ Light.ttf');
+}
+@font-face {
+    font-family: 'Dolce Vita';
+    src: url('../font/modern/Dolce\ Vita.ttf');
+}
+@font-face {
+    font-family: 'Kiona-italic';
+    src: url('../font/modern/Kiona-Itallic.ttf');
+}
+@font-face {
+    font-family: 'Kiona';
+    src: url('../font/modern/Kiona-Regular.ttf');
+}
+
+// SANS
+@font-face {
+    font-family: 'Creato-blk';
+    src: url('../font/sans/CreatoDisplay-Black.otf');
+}
+@font-face {
+    font-family: 'Creato-bold';
+    src: url('../font/sans/CreatoDisplay-Bold.otf');
+}
+@font-face {
+    font-family: 'Creato-bold-italic';
+    src: url('../font/sans/CreatoDisplay-BoldItalic.otf');
+}
+@font-face {
+    font-family: 'Glynn-bold';
+    src: url('../font/sans/galderglynn\ titling\ bd.ttf');
+}
+@font-face {
+    font-family: 'Glynn-lite';
+    src: url('../font/sans/galderglynn\ titling\ lt.ttf');
+}
+@font-face {
+    font-family: 'Glynn-italic';
+    src: url('../font/sans/galderglynn\ titling\ rg\ it.ttf');
+}
+@font-face {
+    font-family: 'Glynn';
+    src: url('../font/sans/galderglynn\ titling\ rg.ttf');
+}
+@font-face {
+    font-family: 'Gilroy-xBold';
+    src: url('../font/sans/gilroy-extrabold.otf');
+}
+@font-face {
+    font-family: 'Raleway-bold';
+    src: url('../font/sans/Raleway-Bold.ttf');
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('../font/sans/Raleway-Regular.ttf');
+}
+@font-face {
+    font-family: 'Sofia-lite';
+    src: url('../font/sans/sofiapro-light.otf');
+}
+
+@font-face {
+    font-family: 'Aguila-thin' ;
+    src: url('../font/sans/aguila-thin.ttf');
+}
+
+@font-face {
+    font-family: 'Martel';
+    src: url('../font/sans/MartelSans-Regular.ttf');
+}
+@font-face {
+    font-family: 'Martel-light';
+    src: url('../font/sans/MartelSans-Light.ttf');
+}
+@font-face {
+    font-family: 'Martel-semiBold';
+    src: url('../font/sans/MartelSans-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Martel-bold';
+    src: url('../font/sans/MartelSans-Bold.ttf');
+}
+@font-face {
+    font-family: 'Martel-xBold';
+    src: url('../font/sans/MartelSans-ExtraBold.ttf');
+}
+@font-face {
+    font-family: 'Martel-black';
+    src: url('../font/sans/MartelSans-Black');
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('../font/sans/Inter-Regular.ttf');
+}
+@font-face {
+    font-family: 'Inter-light';
+    src: url('../font/sans/Inter-Light.ttf');
+}
+@font-face {
+    font-family: 'Inter-semiBold';
+    src: url('../font/sans/Inter-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Inter-bold';
+    src: url('../font/sans/Inter-Bold.ttf');
+}
+@font-face {
+    font-family: 'Inter-black';
+    src: url('../font/sans/Inter-Black.ttf');
+}
+@font-face {
+    font-family: 'Agenor-neue';
+    src: url('../font/sans/agennor-neue-regular.ttf');
+}
+@font-face {
+    font-family: 'Jura';
+    src: url('../font/sans/Jura-Regular.ttf');
+}
+@font-face {
+    font-family: 'Jura-medium';
+    src: url('../font/sans/Jura-Medium.ttf');
+}
+@font-face {
+    font-family: 'Jura-light';
+    src: url('../font/sans/Jura-Light.ttf');
+}
+@font-face {
+    font-family: 'Jura-bold';
+    src: url('../font/sans/Jura-Bold.ttf');
+}
+
+// SERIF
+@font-face {
+    font-family: 'Bodoni';
+    src: url('../font/serif/BodoniModa_9pt-Regular.ttf');
+}
+@font-face {
+    font-family: 'Bodoni-medium';
+    src: url('../font/serif/BodoniModa_9pt-Medium.ttf');
+}
+@font-face {
+    font-family: 'Bodoni-bold';
+    src: url('../font/serif/BodoniModa_9pt-Bold.ttf');
+}
+@font-face {
+    font-family: 'Bodoni-italic';
+    src: url('../font/serif/BodoniModa_9pt-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Garamond';
+    src: url('../font/serif/EBGaramond-Regular.ttf');
+}
+@font-face {
+    font-family: 'Garamond-medium';
+    src: url('../font/serif/EBGaramond-Medium.ttf');
+}
+@font-face {
+    font-family: 'Garamond-italic';
+    src: url('../font/serif/EBGaramond-Italic.ttf');
+}
+@font-face {
+    font-family: 'Garamond-bold';
+    src: url('../font/serif/EBGaramond-Bold.ttf');
+}
+// PRESETS
+
+// IMPORTED
+
+// @font-face {
+// 	font-family: 'Distopia-Light';
+// 	src: url('../font/modern/distopia-light.eot');
+// 	src: url('../font/modern/distopia-light.eot?#iefix') format('embedded-opentype'),
+//              url('../font/modern/distopia-light.woff2') format('woff2'),
+// 	     url('../font/modern/distopia-light.woff') format('woff'),
+// 	     url('../font/modern/distopia-light.ttf') format('truetype'),
+// 	     url('../font/modern/distopia-light.svg#youworkforthem') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+
+// LICENSES
+
+/*
+Font: 		Distopia
+Style: 		Light
+URL: 		https://www.youworkforthem.com/font/T13659/distopia-sans
+Foundry: 	Unio Creative Solutions
+Foundry: 	https://www.youworkforthem.com/designer/1498/unio-creative-solutions
+Copyright:	Copyright (c) 2019 by Unio Creative Solutions (unio.ask@gmail.com), with Reserved Font Names (Distopia)
+Version: 	17
+Created:	February 13, 2021
+License: 	https://www.youworkforthem.com/font-license 
+License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
+			WebFont license rules. All other parties are strictly restricted 
+			from using the WebFonts(s) listed without a purchased license. 
+			All details above must always remain unaltered and visible in your CSS.
+*/

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal-m</title>
+    <link rel="stylesheet" href="calendarMaterial.css">
+</head>
+<body>
+
+    <!-- Straight from the book, here is a material calendar design/theme that is very loosely put together with minimal javascript-->
+    <div class="container">
+        <div class="header">
+            <div class="title">Select Date</div>
+            <div class="selected-date">Mon, 17</div>
+            <div class="edit-date">&#9998;</div>
+        </div>
+        <div class="calendar">
+            <div class="select">
+                <div class="date month-display">November, 2022</div><div class="year-select">&#8595;</div>
+                <div class="navigation">
+                    <!-- <div class="month-display"></div> -->
+                    
+                    <span class="left">&laquo;</span>
+                    <span class="right">&raquo;</span>
+                </div>
+            </div>
+            <div class="weekDays">
+                <div>S</div>
+                <div>M</div>
+                <div>T</div>
+                <div>W</div>
+                <div>T</div>
+                <div>F</div>
+                <div>S</div>
+            </div>
+            <div class="days"></div>
+        </div>
+        <div class="footer">
+            <div class="buttons">
+                <span>Cancel</span>
+                <span>OK</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+let nav = 0;
+let clicked = null;
+let events;
+
+const days = document.querySelector('.days');
+const monthDisplay = document.querySelector('.month-display');
+const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+
+function load() {
+
+const dt = new Date();
+dt.setDate(1);
+if (nav !== 0) {
+
+    dt.setMonth(dt.getMonth() + nav);
+    // dt.setMonth(new Date().getMonth() + nav);
+}
+
+
+const date = dt.getDate();
+const month = dt.getMonth();
+const year = dt.getFullYear();
+
+// const dateString = `${month + 1}/${date}/${year}`;
+
+monthDisplay.innerText = `${dt.toLocaleString('en-us', {
+    month: 'long',
+})} ${year}`;
+
+// document.querySelector('.year').innerText = `${year}`
+
+days.innerHTML = '';
+
+const firstDayOfMonth = new Date(year, month, 1);
+const daysInMonth = new Date(year, month + 1, 0).getDate();
+const dateString = firstDayOfMonth.toLocaleString('en-us', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+})
+
+const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
+console.log(paddingDays);
+console.log(daysInMonth);
+console.log(dateString);
+
+for (let i = 1; i <= paddingDays + daysInMonth; i++) {
+    let day = document.createElement('div');
+
+    if (i > paddingDays) {
+        day.classList.add('day');
+        day.innerText = i - paddingDays;
+    } else {
+        day.classList.add('padding');
+    }
+    days.appendChild(day);
+}
+
+}
+
+load();
+</script>
+</html>

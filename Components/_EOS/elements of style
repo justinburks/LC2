@@ -1,0 +1,56 @@
+Type Face
+
+    Style
+    Size
+    Weight
+    Color
+    Line Height
+    Line Width
+    Responsivity
+
+Layout
+
+    Margin & Spacing
+    Order of Relevance
+    Responsivity
+    Paging
+
+Color
+
+    Psycology
+    Patterns
+    Utility
+    Contrast
+    Branding
+    Accessability
+
+Shadows
+
+    Purpose 
+    Placement
+
+Indexing
+
+    Purpose
+    Placement
+
+Images
+
+    Size & Speed
+    Responsivity
+    Lazy
+
+Animations
+
+    Loaders
+    Buffers
+    Transitions
+    Personality
+    Utility
+
+Icons
+
+    Filled
+    Outlined
+    Interactive
+    Brand Specific

@@ -1,0 +1,12 @@
+overlay
+  left
+  background: linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+  top 
+  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,
+
+.left.top.background-image
+width: 60vw;
+position: absolute;
+height: 100%;
+right: 0;
+top: 0;

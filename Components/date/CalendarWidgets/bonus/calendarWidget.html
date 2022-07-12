@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calendarWidget.css">
+</head>
+<body>
+    <!-- <button>open</button> -->
+    <div class="container">
+        <div class="month-display"></div>
+        <div class="year"></div>
+        <div class="calendar__widget-2--sm days">
+
+        </div>
+        <div class="time__widget-2--sm">
+            <div class="time"> 
+                9:00
+            </div>
+            <div class="time"> 
+                10:00
+            </div>
+            <div class="time"> 
+                11:00
+            </div>
+            <div class="time"> 
+                12:00
+            </div>
+            <div class="time"> 
+                1:00
+            </div>
+            <div class="time"> 
+                2:00
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // document.querySelector('button').addEventListener('click', () => {
+    //     document.querySelector('.calendar__widget-2--sm').classList.toggle('open');
+    // })
+
+    let nav = 0;
+let clicked = null;
+let events;
+
+const resetButton = document.querySelector('.reset');
+const backButton = document.querySelector('.btn__calendar-back');
+const nextButton = document.querySelector('.btn__calendar-next');
+const days = document.querySelector('.days');
+const monthDisplay = document.querySelector('.month-display');
+const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+function load() {
+
+    const dt = new Date();
+    dt.setDate(1);
+    if (nav !== 0) {
+
+        dt.setMonth(dt.getMonth() + nav);
+        // dt.setMonth(new Date().getMonth() + nav);
+    }
+
+
+    const date = dt.getDate();
+    const month = dt.getMonth();
+    const year = dt.getFullYear();
+
+    // const dateString = `${month + 1}/${date}/${year}`;
+
+    monthDisplay.innerText = `${dt.toLocaleString('en-us', {
+        month: 'long',
+    })}`;
+
+    document.querySelector('.year').innerText = `${year}`
+
+    days.innerHTML = '';
+
+    const firstDayOfMonth = new Date(year, month, 1);
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const dateString = firstDayOfMonth.toLocaleString('en-us', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+    })
+
+    const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
+    console.log(paddingDays);
+    console.log(daysInMonth);
+    console.log(dateString);
+
+    for (let i = 1; i <= paddingDays + daysInMonth; i++) {
+        let day = document.createElement('div');
+
+        if (i > paddingDays) {
+            day.classList.add('day');
+            day.innerText = i - paddingDays;
+        } else {
+            day.classList.add('padding');
+        }
+        days.appendChild(day);
+    }
+    
+}
+
+// function initButtons() {
+//     resetButton.addEventListener('click', () => {
+//         nav = 0;
+//         load();
+//     })
+//     nextButton.addEventListener('click', () => {
+//         nav++;
+//         load();
+//     })
+//     backButton.addEventListener('click', () => {
+//         nav--;
+//         load();
+//     })
+// }
+
+// initButtons();
+load();
+</script>
+</html>

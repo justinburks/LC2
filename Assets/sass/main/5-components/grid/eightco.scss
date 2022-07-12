@@ -1,0 +1,75 @@
+@font-face {
+    font-family: DM;
+    src: url(/Assets/font/display/DMSerifDisplay-Regular.ttf)
+}
+html,body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+*,*:before,*::after {
+    box-sizing: border-box;
+}
+.wrapper {
+    box-sizing: border-box;
+    display: grid;
+    height: 100vh;
+    width: 100vw; 
+    padding: 0 16px;
+    gap: calc((100% / 12) / 6);
+    // opacity:  .25;
+    &.mobile {
+        width: 343px;
+    }
+}
+
+.ep {
+    // fluid gap (15% of 12column layout -- 30% total + equal padding
+    // fluid columns (divisible by)
+    grid-template-columns: repeat(8, 1fr);
+    // gap: calc((100% / 12) / 6);
+    .box {
+        background: rgba(204, 204, 204, 0.18);
+    }
+}
+
+.tp {
+    gap: calc((100% / 12) / 6);
+    .box {
+        background: rgba(51, 51, 51, 0.18);
+    }
+
+    &.fluid {
+        grid-template-columns: repeat(12, 1fr);
+        // gap: calc((100% / 12) / 6); 
+    }
+}
+
+.mobile {
+    grid-template-columns: repeat(6, 37px);
+    gap: 24px;
+    .box {
+    background: rgba(28, 28, 161, 0.182);
+    }
+}
+
+.tuple {
+    grid-template-columns: repeat(2, 150px);
+    gap: 42px;
+
+    .box {
+        background: rgba(255, 192, 203, 0.183);
+    }
+}
+
+.box {
+    display: grid;
+    gap: 2px;
+    & .box {
+        position: relative;
+        background: rgba(156, 69, 69, 0.923);
+    }
+}

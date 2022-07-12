@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="section">
+        <div class="wrapper">
+            <div class="example">
+                <div class=" component component--context-1 open next next-shift" data-position="0">
+                    <div class="component--context-item"><span>Edit</span></div>
+                    <div class="component--context-item"><span>Share</span></div>
+                    <div class="component--context-item"><span>Delete</span></div>
+                </div>
+                <div class="component component--context-2 next" data-position="1">
+                    <div class="component--context-item examp2">Preview</div>
+                    <div class="component--context-item examp2">Share</div>
+                    <div class="component--context-item examp2">Get Link</div>
+                    <div class="component--context-item examp2">Rename</div>
+                    <div class="component--context-item examp2">Delete</div>
+                </div>
+                <div class="component component--context-3 next" data-position="2">
+                    <div class="component--context-item examp3">Edit Task</div>
+                    <div class="component--context-item examp3">Add Note</div>
+                    <div class="component--context-item examp3">Share Progress</div>
+                    <div class="component--context-item examp3">Save Task</div>
+                    <div class="component--context-item examp3">Reset</div>
+                </div>
+                <!-- <p>Context ToolBar</p> -->
+                <div class="component component--context-4" data-position="3">
+                    <div class="component--context-item examp4">Add</div>
+                    <div class="component--context-item examp4">Delete</div>
+                    <div class="component--context-item examp4">Edit</div>
+                    <div class="component--context-item examp4">Reset</div>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2 class="section-title">Modern Context Component</h2>
+                <div class="text--wrapper">
+                    <p class="text">This is a padding based component inspired by Apple. <br>
+                        It scales by the content within it, making giving it re-usablity. <br>
+                        
+                        Bonus: Revolving Slider :) 
+                        <!-- This was somewhat difficult and I'm not sure if its even readable but it works and its re-usable......... I need to refactor it preferable from a function style to a OO style and if I had to guess the design pattern is a observer pattern so that I may import the class and pass that class any set of components/styles and or buttons associated with them.-->
+                    </p>
+                </div>
+                <div class="btn-next">Next Component</div>
+                <div class="btn-prev">Previous Component</div>
+            </div>
+        </div>
+    </section>
+</body>
+<script type="module" src="app.js">
+</script>
+</html>

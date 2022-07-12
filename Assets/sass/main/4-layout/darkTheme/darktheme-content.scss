@@ -1,0 +1,208 @@
+@import './darkTheme-navbar.scss';
+@import '../..//1-helpers/_mixins.sass';
+@import '../../1-helpers/variables.sass';
+
+
+$background-primary: #303030;
+$background-secondary: #171717;
+$background-card: #282828;
+
+html, body {
+    overflow: hidden;
+}
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        @include defaultScrollbar1;
+        // display: none
+    }
+    &::-webkit-scrollbar-thumb {
+        height: 2px;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.733);
+        border-radius: 8px;
+        background-clip: padding-box;
+    }
+}
+
+.btn-float-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    width: 24px;
+    transform: rotate(180deg) translateX(-4px) scale(.9);
+    color: inherit;
+}
+.dark-dropdown {
+    position: absolute;
+    white-space: nowrap;
+    box-sizing: border-box;
+    top: 115%;
+    left: -2em;
+    margin: 0 16px;
+    min-width: 200px;
+    border-radius: 8px;
+    background: $background-card;
+    opacity: 0;
+    transition: 50ms ease-out;
+    transform-origin: 0 0;
+    transform: translateY(-10px) scale(0);
+    box-shadow: rgba(0, 0, 0, .34) 0px 3px 8px;
+    padding: .5em 0 1em 0;
+    user-select: none;
+
+    .list-link-li {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        white-space: nowrap;
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+        padding: 1em 8em 1em 1em; 
+        flex-shrink: 1;
+        margin: 0 .5em;
+        border-radius: 8px;
+        
+        &:hover {
+            background: $background-primary;
+        }
+
+        .li-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            align-self: center;
+            height: 24px;
+            width: 24px;
+            border-radius: 4px;
+            background: $coal;
+            margin-right: 8px;
+            background: $pink;
+        }
+    
+    }
+
+    .divider {
+        box-sizing: border-box;
+        padding: .25em 1em;
+    }
+    hr {
+        height: 1px;
+        background: $coal;
+        opacity: .2;
+        border: 0;
+        outline: 0;
+    }
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background: #4834f7e1;
+        color: white;
+        display: block;
+        padding: 1em 1.5em;
+        margin: .5em 1em;
+        border-radius: 8px;
+        text-align: center;
+        vertical-align: baseline;
+    }
+
+}
+.wrapper.main {
+    position: relative;
+    margin: 16px calc(5% - 50px);
+    margin-top: 72px;
+    border-radius: 16px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    min-height: 100%;
+    min-width: 90%;
+    background: $background-secondary;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0px 0px 50px -10px rgba(245, 245, 245, 0.025);
+
+        .main-heading {
+            position: relative;
+            width: 100%;
+            font-size: 24px;
+            font-weight: 600px;
+            color: rgba(255, 255, 255, 0.952);
+            margin-left: 6%;
+            margin-top: 2%;
+            letter-spacing: .15ch;
+        }
+        .divider {
+            position: relative;
+            margin: 8px 0;
+
+            hr {
+                height: 1px;
+                background: $background-card;
+                width: 100%;
+                border: 0;
+                outline: 0;
+            }
+        }
+
+        .metrics-heading {
+            position: relative;
+            margin: 4% 0 0 6%;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.893);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+    .bg-card {
+        position: relative;
+        margin: 1% 5% 0 5%;
+        border-radius: 8px;
+        padding: 2%;
+        max-width: 90%;
+        background: $background-primary;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .heading-card-metrics {
+            margin: 0 64px;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 2;
+            display: flex;
+            flex-direction: column;
+        
+            .title {
+                display: flex;
+                color: $coal;
+
+                .info-icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 12px;
+                    margin: 0 8px;
+                    align-self: center;
+                    height: 18px;
+                    width: 18px;
+                    border-radius: 18px;
+                    background: $coal;
+                    color: $background-primary;
+                }
+            }
+        }
+    }
+}

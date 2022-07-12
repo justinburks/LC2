@@ -1,0 +1,37 @@
+.btn1 {
+    margin: .5em;
+    display: flex;
+    box-sizing: border-box;
+    padding: .5em;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: 300ms ease;
+    background: rgba(128, 128, 128, 0.05);
+    box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+}
+
+.btn1 svg, .btn1--reverse svg {
+    width: 25px;
+    height: 25px;
+    fill: rgba(128, 128, 128, 0.89);
+}
+
+.btn1--reverse {
+    margin: .5em;
+    display: flex;
+    box-sizing: border-box;
+    padding: .5em;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: 300ms ease;
+    background: inherit;
+}
+
+.btn1--reverse:hover {
+    width: 25px;
+    height: 25px;
+    fill: rgba(128, 128, 128, 0.89);
+}

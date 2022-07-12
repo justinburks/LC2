@@ -1,0 +1,146 @@
+// Sets the default text formatting & responsive sizes //----------------
+
+$font-size-base: 1rem;
+$font-size-sm: .875rem;
+
+$font-size-h1: 2.25rem;
+$font-size-h2: 2rem;
+$font-size-h3: $font-size-base;
+$font-size-ingress: 1.5rem;
+
+$line-height-base: 1.5;
+$baseline: $line-height-base * 1rem;
+
+html {
+    -webkit-font-smoothing: antialiased;
+    font-smooth: always;
+    moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-feature-settings: “liga” on;
+    font-size: $font-size-base;
+    letter-spacing: -.01rem;
+
+    @media #{$breakp-small} {
+        letter-spacing: 0;
+    }
+
+    @media #{$breakp-medium} {
+        font-size: 1.125rem;
+        letter-spacing: .005em;
+    }
+
+    @media #{$breakp-large} {
+        font-size: 1.25rem;
+        letter-spacing: .01em;
+    }
+
+    @media #{$breakp-xlarge} {
+        font-size: 1.375rem;
+        font-size: 1.03vw;
+        letter-spacing: .02em;
+    }
+}
+
+body {
+    line-height: $line-height-base;
+}
+
+h1 {
+    font-size: $font-size-h1/1.25;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin: 0;
+    padding-bottom: 2rem;
+
+    @media #{$breakp-xsmall}{
+        font-size: $font-size-h2;
+    }
+
+    @media #{$breakp-small}{
+        font-size: $font-size-h1;
+    }
+
+    @media #{$breakp-normal}{
+        font-size: $font-size-h1*1.125;
+    }
+
+    @media #{$breakp-medium}{
+        font-size: $font-size-h1*1.25;
+    }
+
+    @media #{$breakp-large}{
+        font-size: $font-size-h1*1.75;
+        line-height: 1.2;
+    }
+}
+
+h2 {
+    font-size: $font-size-h2;
+    line-height: 1.375;
+    margin: $baseline 0 .65rem 0;
+    @media #{$breakp-xsmall}{
+        font-size: $font-size-h3;
+    }
+}
+
+h3 {
+    font-size: $font-size-h2;
+    line-height: 1.25;
+    margin: $baseline 0 $baseline 0;
+}
+
+h4 {
+    font-size: $font-size-base;
+    margin: $baseline 0 0;
+    font-weight: normal;
+}
+
+p {
+    margin: 0 0 $baseline;
+    max-width: 30em;
+    word-wrap: break-word; //legacy
+
+    /* Non standard for webkit */
+    word-break: break-word;
+    overflow-wrap: break-word;
+    -ms-hyphenate-limit-lines: 1;
+    -webkit-hyphenate-limit-lines: 1;
+    hyphenate-limit-lines: 1;
+
+    -ms-hyphenate-limit-chars: 6 3 2;
+    hyphenate-limit-chars: 6 3 2;
+
+    hyphens: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+//medium style links
+p a {
+    background-image: linear-gradient(to bottom, transparent 50%, currentcolor 50%);
+    background-repeat: repeat-x;
+    background-size: 1px 1px;
+    background-position: 0 0.95em;
+}
+
+aside,
+figcaption,
+footer {
+    font-size: $font-size-sm;
+}
+
+figcaption p{
+    max-width: 30em;
+}
+
+h1,
+h2 {
+    max-width: 9em;
+}
+
+.u-emphasis {
+    font-weight: bold;
+}

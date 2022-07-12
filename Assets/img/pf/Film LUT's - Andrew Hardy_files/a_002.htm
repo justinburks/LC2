@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<style type="text/css" media="screen">
+html,body{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: "Proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+.sellfy-buy-button{
+  background-color: #00b140;
+  background-color: #00B140;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, .15) inset;
+  color: #fff;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-table;
+  font-size: 0;
+  font-weight: bold;
+  height: 38px;
+  padding: 1px;
+  table-layout: auto;
+  text-align: left;
+  opacity: 1;
+  text-decoration: none;
+  -moz-transition: 0.1s filter, 0.1s background-color, 0.1s opacity linear 0.4s;
+  -o-transition: 0.1s filter, 0.1s background-color, 0.1s opacity linear 0.4s;
+  -webkit-transition: 0.1s filter, 0.1s background-color, 0.1s opacity linear 0.4s;
+  transition: 0.1s filter, 0.1s background-color, 0.1s opacity linear 0.4s;
+  vertical-align: middle;
+}
+.sellfy-buy-button.loaded{
+  opacity: 1;
+}
+.sellfy-buy-button.hover,
+.sellfy-buy-button:hover{
+  outline: none;
+}
+.sellfy-buy-button .sellfy-logo{
+  display: table-cell;
+  height: 18px;
+  line-height: 1;
+  padding: 10px;
+  vertical-align: middle;
+  width: 18px;
+}
+.sellfy-buy-button .sellfy-logo img{
+  border: none;
+}
+.sellfy-buy-button .buy-now{
+  display: table-cell;
+  font-size: 13px;
+  line-height: 1;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.sellfy-buy-button .free-download{
+  width: auto;
+}
+.sellfy-buy-button .price{
+  background-color: #FFF;
+  border-radius: 0 2px 2px 0;
+  box-shadow: -1px 0 0 0 rgba(0, 0, 0, .15);
+  color: #111;
+  display: table-cell;
+  line-height: 1;
+  min-width: 40px;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+.sellfy-buy-button.hover,
+.sellfy-buy-button:hover {
+    filter: brightness(96%);
+}
+.sellfy-buy-button .price .container{
+  display: block;
+}
+.sellfy-buy-button .price .price-current{
+  display: block;
+  font-size: 14px;
+}
+.sellfy-buy-button .price .price-old{
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+  margin-top: 1px;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+.sellfy-buy-button .price{
+  border-radius: 0 3px 3px 0;
+}
+</style>
+<script>
+window.GLOBALS = {};
+</script></head>
+<body>
+  <div id="sellfy_buy_button" class="sellfy-buy-button fr_primary_button loaded">
+    <div id="title" class="buy-now">Buy now</div>
+    
+    <div class="price">
+      <span class="container">
+        <span class="price-current">
+          A$80
+        </span>
+        
+      </span>
+    </div>
+    
+  </div>
+  <script type="text/javascript">
+    function addClass(el, className){
+      if (el.classList) {
+        el.classList.add(className);
+      } else {
+        el.className += ' ' + className;
+      }
+    }
+
+    function removeClass(el, className){
+      if (el.classList) {
+        el.classList.remove(className);
+      }
+      else {
+        el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+      }
+    }
+
+    function updateText(el, text){
+      if(text !== ''){
+        el.querySelector('#title').innerText = text;
+      }
+
+      window.parent.postMessage({
+        name: name,
+        event: 'sellfy.customButtonWidth',
+        width: Math.ceil(document.getElementById('sellfy_buy_button').getBoundingClientRect().width)
+      }, '*');
+
+      el.className += ' loaded';
+    }
+
+    function processEvent(event) {
+      var btn = document.getElementById('sellfy_buy_button');
+
+      if (event.data === 'sellfy.mouseover') {
+        addClass(btn, 'hover');
+      } else if (event.data === 'sellfy.mouseout') {
+        removeClass(btn, 'hover');
+      } else if (event.data && event.data.event === 'sellfy.custom-button-text') {
+        updateText(btn, event.data.text);
+      }
+    }
+
+    window.addEventListener('message', processEvent);
+  </script>
+
+</body></html>

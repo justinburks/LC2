@@ -1,0 +1,82 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: whitesmoke;
+}
+
+.container {
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    border-radius: 32px;
+    background: white;
+    box-shadow: rgb(255 255 255 / 10%) 0px 1px 1px 0px inset, 
+                    rgb(50 50 93 / 25%) 0px 50px 100px -20px, 
+                    rgb(0 0 0 / 30%) 0px 30px 60px -30px;
+    overflow: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.card {
+    margin-top: 2%;
+    box-sizing: border-box;
+    padding: .85em;
+    position: relative;
+    width: 30%;
+    height: 90%;
+        box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px, 
+                    rgb(0 0 0 / 30%) 0px 30px 60px -30px, 
+                    rgb(10 37 64 / 35%) 0px -2px 6px 0px inset;
+    border-radius: 24px;
+}
+
+.tabs {
+    display: flex;
+    width: 75%;
+    margin-left: 15%;
+}
+.tabs span {
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+    height: 40px;
+    width: 50%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: 1px solid grey;
+    border-bottom: none;
+    box-sizing: border-box;
+    padding: 4px;
+}
+button {
+    margin: .5em;
+    position: relative;
+    height: 40px;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 8px;
+    background: black;
+    color: white;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+}
+
+ul {
+    list-style: none;
+}

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul class="container">
+        <li class="card b6">
+            <!-- <span class="backface-description">
+                this is from a <a href="#">codepen</a> that I found where this checklist items are placed inside of a list item, note that the actual input is placed outside of the label in the html and is positioned far away from the vport with css the actual label is the container for the pseudo checkbox aswell as the text and is styled accordingly 
+                <a href="#">see code</a>
+                <div>
+                    <span>html</span>
+                    <span>css</span>
+                </div>
+            </span> -->
+            <div class="content">
+                <div class="checklist-header">
+                    <span class="checklist-heading">Pricing</span>
+                </div>
+                <ul class="checklist-container">
+                   <li class="checklist-item">
+                    <input type="checkbox" name="check1" id="i1">
+                    <label for="i1">
+                        <span class="checkbox check1-box"></span>
+                        <span class="checklist-text check1-text">Standard</span>
+                    </label>
+                </li>
+                <li class="checklist-item">
+                    <input type="checkbox" name="check1" id="i2">
+                    <label for="i2">
+                        <span class="checkbox check1-box"></span>
+                        <span class="checklist-text check1-text">Advanced</span>
+                    </label>
+                </li>
+                <li class="checklist-item">
+                    <input type="checkbox" name="check1" id="i3">
+                    <label for="i3">
+                        <span class="checkbox check1-box"></span>
+                        <span class="checklist-text check1-text">V.I.P.</span>
+                    </label>
+                </li>
+            </ul>
+            </div>
+        </li>
+
+        <li class="card b6">
+            <!-- <span class="backface-description">
+                <p>In this example I borrowed most of the concepts from <a href="#">this blog post</a> which created a similar effect, however the label is the container for the actual input and the input box is styled with css (I didn't know you could do that...), also the label utilizes grid to align items rather than flexbox, another thing I learned is using grid and place-content... center to align the :before element (mind blown) and also appearance none removes the default styles including the default check that appears on :checked now we create our own border and check on :checked.... for the :checked state I learned to use box-shadow instead of background color because "ice that with the default printing settings, backgrounds are removed. If a user prints a page with these radio buttons, they won't be able to know which one was checked. (Inset) Box-shadows are not removed at printing, and they will a similar effect to the radial background." I also learned about "Windows High Contrast Mode" (WHCM)." that removes box-shadows if the user has enabled this setting also known as <a>"forced-colors"</a> state in the css spec.... to overcome this we use one of the use one of the defined forced colors for the background color & since the box-shadow is placed over the background color with inset... the only way you will see the forced color is if it is toggled off. </p>
+                    also important to note 
+                    We have a few options here, such as bringing in an SVG as a background image. However, that solution means losing access to CSS custom properties which we are relying on to "theme" our inputs.
+
+Instead, we'll re-shape the default box by using the clip-path property. This property allows us to treat the pseudo element's box similar to a vector element being reshaped with the pen tool. We define coordinates to redraw the shape between. You can use this handy clip-path generator to draw your own shapes or instantly pick up common ones. We also use clip-path to create a custom select dropdown arrow.
+
+As a matter of preference, I also alter the transform-origin to use a value of bottom left instead of the default of center to mimic a sort of "checking in" animation.
+
+            </span> -->
+            <h2>Checkbox</h2>
+            <p>A checkbox allows a user to select a value from a small set of options, often binary</p>
+            <label for="b1-b" class="label-v2">
+            <input type="checkbox" name="check2" id="b1-b" class="checkbox-v2">
+            Checkbox</label>
+        </li>
+        <li class="card b6">
+            <!-- <span>
+                <h2>Now its my turn</h2>
+                <p> In looking for checkbox example I came across <a>uidesigndaily</a> and I quickly realized that they are widely utilized in forms... filters.. and settings so for this exercise I decided to create a mini form component with a button from the previous section to update... why not
+                <h3> Time Elapsed 28mins </h3>
+                </span> -->
+            <div class="heading-2">
+                <h2>Try it Now!</h2>
+                <p>Free Trial. No Obligation</p>
+            </div>
+            <div class="email-cont">
+            <input type="text" name="email" id="email" placeholder="Enter your email" class="email-1">
+            </div>
+            <div class="content-2">
+                <label for="b1-c">
+                    <input type="checkbox" name="check3" id="b1-c" class="checkbox-v3">
+                    I agree to the terms of service
+                </label>
+                <label for="b2-c">
+                    <input type="checkbox" name="check3" id="b2-c" class="checkbox-v3">
+                    Subscribe to free newsletters & promotions
+                </label>
+                <label for="b3-c">
+                    <input type="checkbox" name="check3" id="b3-c" class="checkbox-v3">
+                    I am not a robot
+                </label>
+                <button type="button" role="submit" class="download">Download Now!</button>
+            </div>
+        </li>
+        <li class="card b6">
+            <!-- <span>This one is a bit tougher because now I have the task of creating individual sections withing the card with a visually appealing layout. Not sure if I should style the label.. create another container or wuuuuut lol.  I guess grid gets the job done quick and easy but what about having multiple grids? I'm sure your not supposed to do grids inside of grids etc... but maybe we'll find out why.... turns out I was wrong and though I was able to get the job done with absolute positioning it feels a bit hackky...... and not very responsive which may be solved with media queries</span> -->
+           <div class="checklist-header c4-h">
+                Choose Your Upgrade!
+           </div>
+           <div class="checklist-container c4">
+                <label for="c4-1" class="c4-label">
+                        <input type="checkbox" name="c4" id="c4-1" class="circ">
+                        <span class="c4-name">Storage</span>
+                        <p class="c4-description"> 24/7 locker (12' x 12') access for your equipment</p>
+                </label>
+                
+                <label for="c4-2" class="c4-label">
+                        <input type="checkbox" name="c4" id="c4-2" class="circ">
+                        <span class="c4-name">Sound Proof</span>
+                        <p class="c4-description">Sound Proof Headphones, or Ear Plugs</p>
+                </label>
+                
+                <label for="c4-3" class="c4-label">
+                        <input type="checkbox" name="c4" id="c4-3" class="circ">
+                        <span class="c4-name">Amenities ++ </span>
+                        <p class="c4-description"> We have cerial, beverages, snacks and treats... Help youself! </p>
+                </label>
+            </div>
+        </li>
+
+        <li class="card b6">
+            <div class="checklist-header" id="c5-h">
+                A checkbox can be formatted to emphasize the current selection state
+            </div>
+            <div class="checklist-container">
+                <div class="semantic-checkbox">
+                    <input type="checkbox" name="semantic-1" id="s1-a" class="semantic-1">
+                    <label for="s1-a" class="s1">    
+                        Off/On
+                    </label>
+                </div>
+                <div class="semantic-checkbox">
+                    <input type="checkbox" name="semantic-1" id="s1-b" class="semantic-1">
+                    <label for="s1-b" class="s1">    
+                        Dark/Light
+                    </label>
+                </div>
+                <div class="semantic-checkbox">
+                    <input type="checkbox" name="semantic-1" id="s1-c" class="semantic-1">
+                    <label for="s1-c" class="s1">    
+                        Unsubscribe/Subscribe
+                    </label>
+                </div>
+            </div>
+        </li>
+        <li class="card b6">
+            <div class="checklist-header" id="c6-h">
+                A checkbox can be formatted to show an on or off choice
+            </div>
+            <div class="checklist-container">
+                <div class="semantic-checkbox">
+                    <input type="checkbox" name="semantic-1" id="s2-a" class="semantic-2">
+                    <label for="s2-a" class="s2">    
+                        Automatic Updates
+                    </label>
+                </div>
+            </div>
+        </li>
+        <li class="card b6">
+            <div class="checklist-header" id="c7-h">
+                A fitted checkbox does not leave padding for a label
+            </div>
+            <div class="checklist-container c7">
+                <div class="semantic-checkbox">
+                    <input type="checkbox" name="semantic-1" id="s3-a" class="semantic-3">
+                    <label for="s3-a" class="s4 s3-a">
+                    </label>
+                </div>
+                <div class="semantic-checkbox">
+                    <input type="checkbox" name="semantic-1" id="s3-b" class="semantic-3">
+                    <label for="s3-b" class="s4 s3-b">
+                    </label>
+                </div>
+                <div class="semantic-checkbox">
+                    <input type="checkbox" name="semantic-1" id="s3-c" class="semantic-3">
+                        <label for="s3-c" class="s4 s3-c">    
+                        </label>
+                    </label>
+                </div>
+            </div>
+        </li>
+        <!-- <li class="card b6">
+            <div class="checklist-header" id="c8-h">
+               Nested Checkboxes
+
+               --I'll be back for the next few as they will probably need javascript to be effective            </div>
+             <span>
+                I think it'd be cool to hook this up to javascript for a fun project that sorts/filters results from a dataset both in real-time and after submiting a search query... 
+                 for this application I'll create a pop-up modal and a side panel that slides in and out getting ahead of myself maybe... but I think its better preparation so that when I do reach these components I have some foundational knowledge to build upon   
+            </span> -->
+            <!-- Filter Menu (open right)
+
+            fullscreen section with 3 different applications
+                side panel filters
+                pop-up modal
+                pop-out text area (alignment radio -- Bold/Italic/Underline -- double/single-space toggle incrementer with css (counter) -- list style toggler (a,b,c/dots/numbered)) -->
+        <!-- </li>
+        <li class="card b6">
+            Filter Menu (dropdown--context)
+        </li>
+        <li class="card b6">
+
+            pop-up lazy loading elements animation
+            
+        </li>  -->
+        <li class="card b6">
+            <!-- <span> here I used checkboxes to that update the state of a text area, sadly css comes up short in this area so I tried sass.. better go with javascript bubba</span> --> 
+            <textarea rows="10" maxlength="250" class="textarea-1">Hello,
+Just wanted to say hi nothing more or less....
+
+
+-Me, Mario
+</textarea>
+            <ul class="textbox-state">
+                <li class="bold textbox-state-elm">B</li>
+                <li class="italic textbox-state-elm">I</li>
+                <li class="underline textbox-state-elm">U</li>
+                <li class="line-height textbox-state-elm">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve" class="lh">
+                    <g>
+                        <path stroke-width="1px" d="M9,29h5.833L9,23h5V9H9l5.833-6H9V0h14v3h-5.833L23,9h-5v14h5l-5.833,6H23v3H9V29z"/>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <script xmlns=""/></svg></li>
+            </ul>
+        </li>
+        <li class="card b6">
+
+           <div class="todo-component-wrapper">
+
+               <div class="icon-navigation"><span>settings</span> <span>search/notification</span></div>
+               
+               <div class="todo-component-date">
+                   <span class="today">Today,</span>
+                   <span class="dayToday">CurDate</span>
+               </div>
+
+               <div class="dayToday-tasklist">
+                    <div class="dayToday-navigation">
+                            <span class="dayToday-reference">Today<span class="dayToday-reference-count">1</span></span>
+                            <span class="showMore-Less">v</span>
+                    </div>
+                    <div class="dayToday-taskset">
+                        <ul>
+                            <li><input type="checkbox" name="dayToday" id="dayToday-1"><label for="dayToday-1">Title</label><p>Date - Time - TimeLeft</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="weekly-tasklist">
+                   <ul>
+                       <li><input type="checkbox" name="weekly" id="weekly-1"><label for="dayToday-1">Title</label><p>Date - Time - TimeLeft</p></li>
+                       <li><input type="checkbox" name="weekly" id="weekly-1"><label for="dayToday-1">Title</label><p>Date - Time - TimeLeft</p></li>
+                       <li><input type="checkbox" name="weekly" id="weekly-1"><label for="dayToday-1">Title</label><p>Date - Time - TimeLeft</p></li>
+                   </ul>
+
+                </div>
+
+            </div>
+        </li>
+        <li class="card b6">
+            <div class="tasklist-sidePanel-wrapper">
+                <div class="sidePanel-heading">Date/Week Formatted</div>
+                <div class="sidePanel-view">
+                    <ul>
+                        <li><span>Task <span>Date -- Time -- TimeLeft</span><span>Controls</span></span><span>remove task</span></li>
+                        <li><span>Task <span>Date -- Time -- TimeLeft</span><span>Controls</span></span><span>remove task</span></li>
+                        <li><span>Task <span>Date -- Time -- TimeLeft</span><span>Controls</span></span><span>remove task</span></li>
+                    </ul>
+                </div>
+                <div class="sidePanel-toolbar">
+                    <ul>
+                        <li>Show Calendar</li>
+                        <li>Show Weekly</li>
+                        <li>Show Monthly</li>
+                    </ul>
+                    <button>Add Task</button>
+                    <button>Add Note</button>
+                </div>
+            </div>
+        </li>
+        <li class="card b6">
+            <div class="calendar-wrapper">
+                <div class="month-header">
+                    <div>...</div>
+                    <div>Month</div>
+                    <div>...</div>
+                </div>
+                <div class="month-days">
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                    <div>...</div>
+                </div>
+                <div class="month-todo">
+                    Todo...
+                </div>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>

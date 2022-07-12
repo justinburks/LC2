@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../main/4-layout/darkTheme/darktheme.landing.scss"
+    ],
+    "names": [],
+    "file": "darktheme.landing.css"
+}

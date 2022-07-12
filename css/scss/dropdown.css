@@ -1,0 +1,95 @@
+/* 
+ GLOBAL
+.dropdown {
+
+}
+
+.dropdown.semantic {
+jhifdsof
+}
+
+.dropdown.material {
+
+}
+
+.dropdown.default {
+
+}
+
+.dropdown-sm {
+
+}
+
+.dropdown-md {
+
+}
+
+.dropdown-lg {
+
+
+}
+
+ 100% COMPONENT WIDTH 
+.dropdown-fs {
+
+} */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+body {
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  background: #fff;
+  color: #0d0c22;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 9996;
+  top: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  -webkit-box-shadow: inset 0px -1px 0px #f3f3f4;
+  /* box-shadow: inset 0px -1px 0px #f3f3f4; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  will-change: transform;
+}
+
+.navbar * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.navbar__container {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  margin-right: 24px;
+  margin-left: 24px;
+}
+/*# sourceMappingURL=dropdown.css.map */

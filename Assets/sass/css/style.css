@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;700&family=Roboto:ital,wght@1,100;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Mukta:700");
+:root {
+  --box-shadow--basic: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2%;
+  border-radius: 32px;
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  z-index: 2;
+  background: whitesmoke;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.btn-cont {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 3.5rem;
+  width: auto;
+}
+
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  background: transparent;
+  height: 3.5rem;
+  width: 12em;
+  -webkit-transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.btn .icon {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1.75rem;
+  background: black;
+  z-index: 1;
+  -webkit-transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.btn .icon .arrow {
+  color: yellow;
+  position: absolute;
+  left: 20%;
+  top: 35%;
+}
+
+.btn .txt {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  z-index: 3;
+  -webkit-transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.btn:hover .icon {
+  width: 100%;
+}
+
+.btn:hover .txt {
+  color: #f0f1f5;
+}
+/*# sourceMappingURL=style.css.map */

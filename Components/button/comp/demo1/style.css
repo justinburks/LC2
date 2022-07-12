@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;700&family=Roboto:ital,wght@1,100;1,300&display=swap');
+
+:root {
+    --box-shadow--basic: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159);
+}
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    color: white;
+}
+body {
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 2%;
+    border-radius: 32px;
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    z-index: 2;
+    background: whitesmoke;
+    backface-visibility: hidden;
+}
+
+.btn {
+    margin: 2%;
+    border: none;
+    border-radius: 3em;
+    box-shadow: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159);
+    width: 75px;
+    height: 30px;
+    color: white;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+    background: blue;
+}
+.btn-2 {
+    margin: 2%;
+    border: none;
+    border-radius: 3em;
+    box-shadow: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159);
+    height: 3em;
+    width: 8em;
+    background: blue;
+}
+
+.btn-3 {
+    margin: 2%;
+    border: none;
+    border-radius: 3em;
+    box-shadow: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159);
+    height: 3em;
+    width: 10em;
+    background: blue;
+}
+.btn-3--b {
+    margin: 2%;
+    border: none;
+    border-radius: 3em;
+    box-shadow: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159);
+    height: 3em;
+    width: 12em;
+    background: blue;
+}
+
+.btn-4 {
+    margin: 2%;
+    border: none;
+    border-radius: 3em;
+    box-shadow: var(--box-shadow--basic);
+    height: 3em;
+    width: 20em;
+    background: blue;
+}
+
+.btn-5 {
+    margin: 5%;
+    border: none;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow--basic);
+    height: 3em;
+    width: 3em;
+    background: blue;
+}
+
+.btn-6 {
+    margin: 5%;
+    border: none;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow--basic);
+    height: 5em;
+    width: 5em;
+    background: blue;
+}
+
+.btn-7 {
+    margin: 5%;
+    border: none;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow--basic);
+    height: 10em;
+    width: 10em;
+    background: blue;
+}
+
+.btn-8 {
+    margin: 2%;
+    border: none;
+    border-radius: .2em;
+    box-shadow: var(--box-shadow--basic);
+    width: 75px;
+    height: 30px;
+    background: blue;
+}
+
+.btn-9 {
+    margin: 2%;
+    border: none;
+    border-radius: .2em;
+    box-shadow: var(--box-shadow--basic);
+    width: 8em;
+    height: 3em;
+    background: blue;
+}
+
+.btn-10 {
+    margin: 2%;
+    border: none;
+    border-radius: .2em;
+    box-shadow: var(--box-shadow--basic);
+    width: 10em;
+    height: 3em;
+    background: blue;
+}
+
+.btn-11 {
+    margin: 2%;
+    border: none;
+    border-radius: .2em;
+    box-shadow: var(--box-shadow--basic);
+    width: 12em;
+    height: 3em;
+    background: blue;
+}
+
+.btn-12 {
+    margin: 2%;
+    border: none;
+    border-radius: .2em;
+    box-shadow: var(--box-shadow--basic);
+    width: 20em;
+    height: 3em;
+    background: blue;
+}

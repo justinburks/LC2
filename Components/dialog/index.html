@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- This one seems a bit straight forward in that html5 comes with an easy to use date-picker.
+        I think the only challenge here would be in styling the default input
+        and maybe for bonus points create 2 from scratch in the javascript portion of my journey.
+        Here we have 5 different styles for a native date picker.
+
+        Aside: I really lucked out because in researching this mini-project I saw that the native date picker was not supported in safari until 2021 :)
+        Bonus: custom date picking modal :>
+    -->
+    <section class="section">
+        <div class="wrapper">
+            <div class="example">
+                <div class="component open next next-shift" data-position="0">
+                    <div class="dialog">
+                        <h2>Select Backup Account</h2>
+                        <ul class="cont">
+                            <div class="acct">
+                                <div class="avatar">
+                                    <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PersonIcon"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                </div>
+                                <div class="acct-txt">jjjfdis@gmail.com</div>
+                            </div>
+                            <div class="acct">
+                                <div class="avatar">
+                                    <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PersonIcon"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                                </div>
+                                <div class="acct-txt">asdfghjkl@gmail.com</div>
+                            </div>
+                            <div class="acct">
+                                <div class="avatar add">
+                                    <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="AddIcon"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg>
+                                </div>
+                                <div class="acct-txt">Add Account</div>
+                            </div>
+                        </ul>
+                    </div>
+                    <!-- <button>open</button> -->
+                </div>
+
+                <div class="component dialog__binary dialog__binary--delete delete" data-position="1">
+                    <!-- Short -->
+                    <h2>Delete Account</h2>
+                    <p>Are you sure you want to delete asdfghjkl@gmail.com?</p>
+                    <div class="button--container">
+                        <button class="btn-rounded"><span>Delete</span></button>
+                        <button class="btn-rounded"><span>Cancel</span></button>
+                    </div>
+                </div>
+
+                <div class="component" data-position="2">
+                    <div class="dialog">
+                        <h2>Use Google's location service?</h2>
+                        <p>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</p>
+                        <div class="button__container">
+                            <button>DISAGREE</button>
+                            <button>AGREE</button>
+                            <!-- add button that rotates it -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="component" data-position="3">
+                    <div class="dialog tos">
+                        <div class="h2">
+                            <h2>Terms of Service</h2>
+                        </div>
+                        <div class="txt">
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit harum porro voluptas iure aperiam tempora similique pariatur nihil corrupti accusamus, reprehenderit blanditiis ullam. Atque architecto cumque porro id quos blanditiis!
+                                Rerum voluptas porro nulla! Molestias tempore quia debitis ex ad ea, consequatur ab cum tenetur id exercitationem, accusantium libero facilis perferendis ducimus. Sapiente, quasi ab deserunt hic expedita vero consequatur.
+                                Nisi, magnam dolorum voluptates ab unde esse quae blanditiis adipisci quos iusto dolor saepe eligendi odit illo incidunt quod cum consectetur, corporis officiis omnis. Rerum assumenda mollitia similique ullam laudantium.
+                                Quibusdam libero labore sapiente atque, ut harum voluptas inventore neque ex minima beatae aliquam deserunt vel esse ea in reprehenderit officia quos quidem suscipit modi. Rerum omnis rem perspiciatis magni.
+                                Id sunt minus sed labore aperiam dolorum, ea quasi vel ipsam consectetur deleniti reiciendis mollitia! Eum autem tempore non dolore debitis dignissimos, maiores accusamus! Consequuntur numquam labore dolorem officia debitis!
+                                Suscipit quidem rerum impedit optio necessitatibus commodi sit culpa ducimus consequuntur libero. Nam dolores accusantium laborum, inventore veritatis rem quos molestiae corporis reprehenderit, dignissimos non sed nulla omnis assumenda facere?
+                                Harum eos animi at dolores veritatis magnam corporis dignissimos quibusdam incidunt aliquam? Animi recusandae quod ducimus necessitatibus consequuntur magni officia voluptas adipisci, vitae aspernatur similique modi ratione? Corrupti, necessitatibus harum!
+                                Atque in rerum optio commodi laborum obcaecati, placeat perferendis magnam dolore fugit alias cupiditate reprehenderit, repellat adipisci et. Consequuntur, suscipit quae obcaecati soluta iure provident veritatis? Eveniet sed corporis ab.
+                                Fuga, architecto. Tenetur nihil rem neque, numquam facere veritatis fugit expedita molestias iste adipisci beatae eos, non, asperiores aliquid optio maiores suscipit alias ab nostrum sint explicabo similique? Minus, nobis.
+                                Odit eligendi eaque corrupti dolore minus officiis, voluptates accusantium excepturi dicta accusamus earum libero molestias tenetur ex amet rerum sunt! Error similique id, culpa debitis molestiae mollitia magnam illum architecto.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorum amet aut adipisci quam inventore, eos nisi enim illum eligendi possimus similique, explicabo, suscipit dolore aspernatur distinctio qui. Non, a.</p>
+                        </div>
+                        <div class="foot">
+                            <button>Disagree</button>
+                            <button>Agree</button>
+                        </div>
+
+                    </div>
+                    </div>
+                    <div class="component" data-position="4">
+                        <div class="dialog inp">
+                            <div class="h2">
+                                Sign up for our newsletter!
+                            </div>
+                            <div class="input">
+                                <input class="email" type="text" placeholder="example@gmail.com">
+                            </div>
+                            <div class="go">
+                                &#x27A0
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="content">
+                <h2 class="section-title">Dialog Box</h2>
+                <div class="text--wrapper">
+                    <p class="text">
+                        <!-- 
+                            Demo Txt
+
+                            One thing to note about the behavior of a dialog box is the stack index. 
+                            It should appear in a way to have the highest stack index of 
+                            everything else on the page.
+                            
+                            While the dialog is open it should disable any other action and focus on completing the dialog 
+
+                            There should be a way to cancel the dialog via click-outside functionality or a close button
+
+                            Completing the dialog sequence should also close the dialog and resume in terms of pagination and make any
+                            necessary server/ui updates
+                            (with throttling in the event the user tries to interact before the next page is ready)
+                        
+                        -->
+                        <!-- By now I have found that material ui/mui is the best resource for learning about various User Interaction/Interface Elements.
+                        In referencing mui I discovered that it is simply documentation for react components. 
+                        I've come to realization that I may be reinvinting the wheel in some respect but I also think this is a good exercise because I am
+                        inherently becoming more familiar with react without realizing it at first. I am getting a better understanding about re-usable code and 
+                        that much closer to composing a personal library, I may, after this learning module scrap all of my work and move to a more react based approach
+                        or continue with finetuning the designs/components that I have created from scratch. Ofcourse I may be wasting time, but I like to think that this will
+                        make me a better developer by understanding the css behind alot of UI's and the javascript behind react. 
+                    
+                        In digging deeper I am learning that these react components out of the box are very useful/functional however generic in style, and will more than
+                        likely need custom styling to intergrate with my specific use cases.
+                        This leads me to beleive that I am infact on the right track and I should fine tune the styles of my components with sass so that If I do use the features
+                        offered by react I can add my own pre-built styles to them.
+                        
+                        Aferwards I think it is best if I build out the functionality to them as well because I may come up with some custom features/functionalities that react does not offer out of 
+                        the box and may require some custom 3rd party library (something I am trying to avoid if at all possible)
+
+                        Then once all of this has been accomplished I think becoming proficient with the MERN stack should be a peace of cake so I will move on to PHP
+                        to get things up and running quickly. Once I have something solid under my belt I will jump into accepting jobs and opportunities in my free-time while
+                        learning MERN stack to get things done in a more effecient manner, by then it shouldn't take too long before I see highly productive results.
+                        -->
+                        VIA Material UI : "Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks." <br>
+                        <br> 
+                        "A Dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
+
+                        Dialogs are purposefully interruptive, so they should be used sparingly."
+                        
+                        <!-- 
+                            
+                            USE CASES : 
+
+                            DELETE (ARE YOU SURE?) 
+                            LOG IN (FORM and/or CLICKABLE USERS)
+                            TERMS OF SERVICE (AGREE/DISAGREE)
+                            TOGGLE FEATURES (ENABLE/DISABLE)
+                            UPDATE SUBMISSION (SAVE/CANCEL)
+                            FS MENU INTERACTION (UPDATE/APPLY/CANCEL)
+                            POP UP MENU RADIO (CHOOSE/OK/CANCEL) "CONFIRMATION DIALOG"  Confirmation dialogs require users to explicitly confirm their choice before an option is committed. For example, users can listen to multiple ringtones but only make a final selection upon touching "OK" Touching "Cancel" in a confirmation dialog, or pressing Back, cancels the action, discards any changes, and closes the dialog.
+                            
+                            EXTRA CREDIT :
+
+                            DRAGGABLE 
+                            INTERSECTION OBSERVER (READ ALL BEFORE COMPLETING)
+                            RESPONSIVE/REUSABLE (SCALES ACCORDING TO TEXT/TYPE)
+
+                            APPLICATION : 
+
+                            BINARY__[AGREE/OK/YES/ENABLE/SAVE]--[DELETE/EDIT/FEATURE]-[DOUBLECHECK]
+                            MENU__[UPDATE/RADIO]
+                            FORM__[LOGIN/CACHEDUSERLOGIN/LOGOUT]
+
+                        -->
+                        
+                    </p>
+                    <!-- <div>Basic</div>
+                    <div>Alerts(with different transitions)</div>
+                    <div>Forms</div>
+                    <div>Customization</div>
+                    <div>Full Screen</div>
+                    <div>Option Sizes</div>
+                    <div>Responsive Full-Screen</div>
+                    <div>Confirmation</div>
+                    <div>Draggable</div>
+                    <div>Scrolling Long Conent(scrolling-paper || scrolling-body-fs</div> -->
+                </div>
+                <div class="btn-next">Next Component</div>
+                <div class="btn-prev">Previous Component</div>
+            </div>    
+        </div>
+
+    </section>
+    
+</body>
+<script src="/slider.js"></script>
+</html>

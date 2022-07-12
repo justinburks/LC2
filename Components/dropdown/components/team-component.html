@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Assets/sass/css/team-component.css">
+</head>
+<body>
+    <div class="hover-card team-hover-card">
+        <!-- simple list -->
+            <div class="card-list-item-team">
+                <div class="card-list-item-team-avatar">
+                    <img src="/Assets/img/png/7e91babcc16ca83f9c888b610d1e9524.png" alt="">
+                </div>
+                <div class="card-list-item-team-text">
+                    <div class="card-list-item-team-text-title">Mercedes</div>
+
+                    <div class="card-list-item-team-text-desc 3pc">
+                        <span class="primary-label">Team Plan</span>
+                        <div class="divider-round"></div>
+                        <span class="supporting-label">4.5k members</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list-item-team">
+                <div class="card-list-item-team-avatar">
+                    <img src="/Assets/img/png/2805bf2b92b9926737e7d8a4052e0333.png" alt="">
+                </div>
+                <div class="card-list-item-team-text">
+                    <div class="card-list-item-team-text-title">Sandra</div>
+
+                    <div class="card-list-item-team-text-desc 3pc">
+                        <span class="primary-label">Personal Plan</span>
+                        <div class="divider-round"></div>
+                        <span class="supporting-label">4.5k members</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list-item-team">
+                <div class="card-list-item-team-avatar">
+                    <img src="/Assets/img/png/widelab.png" alt="">
+                </div>
+                <div class="card-list-item-team-text">
+                    <div class="card-list-item-team-text-title">widelab</div>
+
+                    <div class="card-list-item-team-text-desc 3pc">
+                        <span class="primary-label">Team Plan</span>
+                        <div class="divider-round"></div>
+                        <span class="supporting-label">4.5k members</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list-item-team">
+                <div class="card-list-item-team-avatar">
+                    <img src="/Assets/img/jpg/574b8e15ecaf1bc4c9cb93b3ae6ffb31.jpg" alt="">
+                </div>
+                <div class="card-list-item-team-text">
+                    <div class="card-list-item-team-text-title">Figma</div>
+
+                    <div class="card-list-item-team-text-desc 3pc">
+                        <span class="primary-label">Team Plan</span>
+                        <div class="divider-round"></div>
+                        <span class="supporting-label">4.5k members</span>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</body>
+            <!-- 
+                BONUS: draging javascript functionality     
+
+                       Check database for recent documents, messages, updates, and other shared content.
+                            If new content available create & append componenets with data (behind the scenes) with animations to show when requested
+                                Then check to see if the user has noticed the content... if not
+                                    update UI to alert user that new content is available
+                                If & when... remove alerts
+
+                    
+                                Shitty Psuedo Code Below
+
+                    on select -- updateUI {
+                        close dropdown
+                        close menu
+                        navigate to team dashboard
+                            if(verifiedUser) fetch data {
+                                if (inbox,activity,documents,schedule,boost) {
+                                    args.forEach(arg => arg.checkMostRecent {
+                                        let mostRecent = arg.lastDataSubmision
+
+
+                                        submissions.forEach(submission => submission.datePosted > lastSubmission.datePosted) {
+                                            allSubs.pushSubmission
+                                        }
+
+                                        if (newSubs.seen = false) {
+                                            notifications.updateUI()
+                                        } 
+                                    }) 
+                                }
+                            }
+                    }
+            
+            -->
+</html>

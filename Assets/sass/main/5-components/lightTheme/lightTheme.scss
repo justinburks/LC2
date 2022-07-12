@@ -1,0 +1,255 @@
+@import '../../1-helpers/variables.sass';
+@import '../../1-helpers/_mixins.sass';
+
+$banner-height: -3.2em; // padding + font-size
+$linkMargin: -200px;
+
+html, body {
+    @include defaultBoiler;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+body {
+    height: 10000px;
+}
+
+.wrapper {
+    transition: 300ms ease-in-out;
+}
+.wrapper.seen {
+    transform: translateY($banner-height);
+}
+
+.banner-blue {
+    position: relative;
+    box-sizing: border-box;
+    @include flexBetween;
+    padding: 1em 1.5em;
+    background: $scienceBlue;
+    line-height: 1em;
+}
+
+.features::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    width: 200vw;
+    height: 100%;
+    background: white;
+    z-index: -1;
+    transition: all 200ms ease-in-out;
+}
+.features:hover::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+
+}
+
+.features:hover::before {
+    transform: translateY(100%);
+}
+
+.navbar-light {
+    position: fixed;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, .09) 0px 3px 8px;
+    nav {
+        margin: 0 1.5em;
+        padding: 1em 0;
+        @include flexBetween;
+        
+        .nav-links-light {
+            @include flexCenter;
+            li {
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin: 0 1.5em;
+                padding: 1.5em 2em .5em 2em;
+
+                .btn-float-right {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    float: right;
+                    width: 24px;
+                    transform: rotate(180deg) translate(0, 0) scale(.8);
+                    transition: 150ms ease;
+                    color: $scienceBlue;
+                }
+                .border {   
+                    position: absolute;
+                    align-self: center;
+                    bottom: 0;
+                    left: 10%;
+                    width: 80%;
+                    height: 2px;
+                    background: $scienceBlue;
+                    border-radius: 1px;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: 250ms ease-in-out;
+                }
+
+                .hover-light {
+                    opacity: 0;
+                    visibility: hidden;
+                    pointer-events: none;
+                    position: absolute;
+                    top: 140%;
+                    left: $linkMargin;
+                    min-width: 600px;
+                    min-height: 400px;
+                    border-radius: 6px;
+                    // min-width: 400px;
+                    // max-height: 500px;
+                    box-shadow:  rgba(0, 0, 0, .34) 0px 3px 8px, inset rgba(10, 37, 64, .05) 0px 0px 10px 0px;
+                    background: white;
+                    transform: translateY(10%);
+                    transition: all 250ms ease-in-out;
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 1.5em;
+
+                        .hover-light-header {
+                            display: flex;
+                            padding: .5em .5em 1em 2.5em;
+                            font-size: 18px;
+                            font-size: 300;
+                        }
+                        .hover-light-links {
+
+                        display: flex;
+
+                            .col-1 {
+                                padding: 1em;
+                                padding-left: 1.5em;
+                            }
+                            .col-2 {
+                                padding: 1em;
+                                padding-right: 1.5em;
+                            }
+                            .col {
+                                display: flex;
+                                flex-direction: column;
+                                min-width: 400px;
+                                height: 100%;
+                                flex-grow: 1;
+                                padding-top: 0;
+
+                                
+                                .row:hover {
+                                    background: rgba(0, 0, 0, 0.0644);
+                                }
+                                .row {
+                                    display: flex;
+                                    padding: 1em;
+                                    border-radius: 8px;
+
+                                    
+                                    .row-icon {
+                                        position: relative;
+                                        min-height: 45px;
+                                        max-height: 45px;
+                                        min-width: 45px;
+                                        max-width: 45px;
+                                        border-radius: 6px;
+                                        background: whitesmoke;
+                                        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.19),
+                                            0px 0px 35px 0px rgba(0, 0, 0, 0.096);
+                                        margin-right: 1em;
+                                    }
+                                    .row-text {
+                                        display: flex;
+                                        flex-direction: column;
+                                        height: 100%;
+
+                                        .row-title {
+                                            font-size: 18px;
+                                            margin: 0 1em 1em 0;
+                                        }
+
+                                        .row-desc {
+                                            font-size: 14px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .hover-light-footer {
+                            position: relative;
+                            display: flex;
+                            justify-content: space-between;
+                            white-space: nowrap;
+                            align-items: center;
+                            padding: 1.5em;
+                            background: whitesmoke;
+                            .footer-text {
+                                display: flex;
+                                flex-direction: column;
+
+                                &-title {
+                                    font-size: 18px;
+                                }
+
+                                &-desc {
+                                    font-size: 14px;
+                                }
+
+                                div {
+                                    padding: .5em;
+                                }
+                            }
+                            .footer-button {
+                                padding: .75em;
+                                margin: 1em;
+             
+                                box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.19),
+                                            0px 0px 35px 0px rgba(0, 0, 0, 0.096);
+                                border-radius: 4px;
+                                background: white;
+                            }
+
+                        }
+                //     &::before {
+                //         content: "";
+                //         position: absolute;
+                //         height: 16px;
+                //         width: 16px;
+                //         background: white;
+                //         top: -8px;
+                //         left: 50%;
+                //         transform-origin: center;
+                //         transform: rotate(45deg);
+                //         border-top: 1px solid rgba(0, 0, 0, 0.064);
+                //         border-left: 1px solid rgba(0, 0, 0, 0.0644); 
+                //     }
+                }
+
+                &:hover .border {
+                    transform: scaleX(1);
+                }
+
+                &.features:hover .btn-float-right {
+                    transform: rotate(180deg) translate(0, -3px) scale(.8);
+                }
+
+
+                &.features:hover .hover-light {
+                    opacity: 1;
+                    visibility: visible;
+                    pointer-events: all;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}

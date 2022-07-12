@@ -1,0 +1,455 @@
+//????
+// $fa-filter: filter: invert(25%) sepia(53%) saturate(269%) hue-rotate(
+//     163deg
+//     ) brightness(90%) contrast(89%);
+//     }
+
+// Brand -- 1 or 2 colors that people associate with your product or site
+
+// Functional -- Make up the architecture of your Ui components 
+    /*
+        Navbar 
+        Modal
+        Text 
+        Links
+        Buttons
+    /*
+
+// Feedback -- Indicate the state of an action 
+    // Success, Failure, Update (banners, notifications, pop-ups)
+
+// Accent -- Used to highlight copy, metrics, or important information
+
+// THE GOAL 
+
+/* 
+    Use this as a module of a collection of colors and export them along with 
+    a function that allows you to input 5-7 colors and to be used throught the document stylesheet.
+            This function should be able to be passed as a mixin parameter and assign them as a corresponding variable ? 
+                This should result in several thems 
+                        mixin-default(palleteFunc($white, $blue, $yellow, $red, $orange))
+                            outputs: 
+                                default-brand-1: white,
+                                default-brand-2: blue,
+                                default-functional-1: yellow,
+                                default-feedback: red,
+                                default-accent: orange,
+
+                        this-pallet @uses mixin-default
+
+    As a result the javascript associated with this document may be able to apply, modify, or reset themes for the entire document by applying different mixins to a sass, variable or function that corresponds to other variables placed throughout the stylesheet.
+
+        Such javascript should be modular
+        Such script should be written in a way that applies this functionality to a theme-settings component(s). 
+    
+    Aside: As a bonus this module should also define gradients by functionality such as (background, button, texture, overlay, etc)
+            This would allow theme mixins to accept gradients as a parameter and apply them to their corresponding variables as well
+        
+          This functionality would also be useful for box-shadows
+            As well as icons (defauicon-button
+*/
+
+
+// BASICS
+
+// WHITE
+$offWhite: #f8f9fa;
+$appleOffWhite: rgb(239, 239, 239);
+$white: #f0f1f5;
+$white: #fff;
+$white2: #f0f1f6;
+$alabaster: #f9f9f9;
+
+// GREY
+$coal: #727272;
+$greyStone: #6e6d7a;
+$greyChateau: #9099A7; 
+$grey: #ccc;
+$gray: #e5e5e5;
+
+
+
+// BLACK
+$onyx: #353839;
+$charcoal: #333;
+$notBlackButClose: #36395A;
+$appleBlk: #3D3D3D;
+$blk: #282936;
+$googleBlk: #3c4043;
+$mineShaft: #303030;
+$onyx: #353839;
+
+// BLUE
+$deepBlue: rgba(30, 32, 44, .95);
+$twitterBlue: #55acee;
+$stripePurple: #405cf5;
+$paleBlue: #e1ecf4;
+$stratos: #020555;
+$scienceBlue: #006e;
+
+// RED
+$pintrestRed: #e71920;
+
+// PINK
+$pink: #EA4C89;
+$hotPink: #cf245f;
+$flatPink: #fee6e3;
+
+// PURPLE 
+$purple: #9013fe;
+
+// ORANGE
+$orangeCrush:  #fa6400;
+$orangeRed: #FF4742;
+
+// YELLOW
+$yellowRanger: #fff000;
+$flatYellow: #ffe54c;
+
+// GREEN
+$shamrock: #2cd4ae;
+$turquioise: #4FE3C0;
+$celadon: #99e09c;
+$olive: #9bb2b0;
+$seafoam: #82c5b6;
+$gitGreen: #2ea44f;
+$greenLantern: #c2fbd7;
+
+// BROWN
+$darkRoast: #422800;
+$beige: #fbeee0;
+
+
+
+// -- BASIC GRADIENTS --
+
+// BASIC
+$subltleOverlay:linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+$neutralCandy: linear-gradient(to bottom, #fff, #f8eedb);
+$candyBlack:  linear-gradient(#464d55, #25292e);
+$subtleGrey:  linear-gradient(#f7f8fa ,#e7e9ec);
+
+// ORANGE
+$candyOrange:  linear-gradient(-180deg, #FF7E31, #E62C03);
+$candyOrange2: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+
+
+// BLUE
+$candyBlurple: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+$subtleBlue: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+$subtleBlue2: linear-gradient(#42A1EC, #0070C9);
+$subtleBlue2Border: #0077CC;
+    $subltleBlue2HOVERED: linear-gradient(#51A9EE, #147BCD);
+        $subtleBlueBorderHOVERED: #1482D0;
+    $subtleBlue2CLICKED:  linear-gradient(#3D94D9, #0067B9);
+        $subtleBlue2BorderCLICKED: #006DBC;
+$candyBlue: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+    $candyBlueHOVER: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+$candyBlue2: linear-gradient(#0dccea, #0d70ea);
+$oceanBlue:  linear-gradient(114.9deg, rgba(34,34,34,1) 8.3%, rgba(0,40,60,1) 41.6%, rgba(0,143,213,1) 93.4% );
+
+// GREEN
+$neonBlueToGreen: linear-gradient(180deg, rgba(42, 245, 152, .25) 0%, rgba(0, 158, 253, .25) 100%);
+$neonGreenToBlue: linear-gradient(135deg,rgba(42, 245, 152, 1) ,rgba(0, 158, 253, 1) 50%,rgba(42, 245, 152, 1));
+            $forText:   /* background-size: */ 250%;
+            $forBorder: /* background-clip :*/ padding-box /* border:*/ solid 3px transparent;
+            $forCardShadowLg:   /*  box-shadow: */ rgb(0 158 253 / 25%) 0 20px 80px, rgb(42 245 152 / 10%) 0 20px 40px;
+$subtleGreen: linear-gradient(-180deg, #00D775, #00BD68);
+
+// SUNSET
+$candyPurple: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+$candyPink: linear-gradient(135deg, #f34079 40%, #fc894d);
+$candyPink2:linear-gradient(to bottom right, #fcd34d, #ef4444, #ec4899);
+$sunsetBlvd: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);
+$hyperBlueToPurple: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);
+
+
+// GREY
+$subtleGradientBorder: linear-gradient(#adb1b8 #a2a6ac #8d9096);
+$subtleBorderHoverAction: linear-gradient(#a2a6ac #979aa1 #82858a);
+
+
+
+
+// -- ADVANCED GRADIENT ANIMATIONS --
+.stripe {
+    --gradientColorZero: #a960ee;
+    --gradientColorOne: #ff333d;
+    --gradientColorTwo: #90e0ff;
+    --gradientColorThree: #ffcb57;
+    --gradientColorZeroTransparent: rgba(169,96,238,0);
+    --gradientColorOneTransparent: rgba(255,51,61,0);
+    --gradientColorTwoTransparent: rgba(144,224,255,0);
+    --gradientColorThreeTransparent: rgba(255,203,87,0);
+    --gradientAngle: var(--angleStrong);
+    --gradientHeight: calc(100% + var(--sectionPaddingTop) + var(--transformOriginX)*var(--sectionAngleSin));
+    --offsetX: var(--gutterWidth);
+    --transformOriginX: -60px;
+    --sectionAngleSin: var(--angleStrongSin);
+
+    &.Gradient:after {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(var(--gradientColorZero) 40%,var(--gradientColorTwoTransparent) 60%) -620px -180px no-repeat,radial-gradient(var(--gradientColorThree) 33%,var(--gradientColorThreeTransparent) 67%) -120px -24px no-repeat,radial-gradient(var(--gradientColorTwo) 40%,var(--gradientColorTwoTransparent) 70%) -470px 150px no-repeat,var(--gradientColorZero);
+    }
+}
+
+.leafShapedBorder {
+    align-self: center;
+    background-color: #fff;
+    background-image: none;
+    background-position: 0 90%;
+    background-repeat: repeat no-repeat;
+    background-size: 4px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgb(0 0 0 / 20%) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Neucha, sans-serif;
+    font-size: 1rem;
+    line-height: 23px;
+    outline: none;
+    padding: 0.75rem;
+    text-decoration: none;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.gamifiedClickAction {
+    white-space: nowrap;
+    border-radius: 4px;
+    box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+    &:active {
+        box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+        transform: translate(2px, 2px);
+        outline: 0;
+    }
+}
+.updownHoverClickAction {
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    &:hover {
+    box-shadow: rgb(0 0 0 / 25%) 0 8px 15px;
+    transform: translateY(-2px);
+    }
+    &:active {
+        box-shadow: none;
+        transform: translateY(0);
+    }
+}
+
+.updownHoverClickAction2 {
+    background-color: #FCFCFD;
+    box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, 
+                rgb(45 35 66 / 30%) 0 7px 13px -3px, 
+                #d6d6e7 0 -3px 0 inset;
+    color:#36395A;
+    transition: box-shadow .15s,transform .15s;
+    &:hover {
+        box-shadow: rgb(45 35 66 / 40%) 0 4px 8px, 
+                    rgb(45 35 66 / 30%) 0 7px 13px -3px, 
+                    #d6d6e7 0 -3px 0 inset;
+        transform: translateY(-2px);
+    }
+    &:active {
+        box-shadow: #d6d6e7 0 3px 7px inset;
+        transform: translateY(2px);
+    }
+}
+
+.updownHoverClickAction2b {
+   background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);;
+   transition: box-shadow .15s,transform .15s;
+   box-shadow:  rgb(45 35 66 / 40%) 0 2px 4px, 
+                rgb(45 35 66 / 30%) 0 7px 13px -3px, 
+                rgb(58 65 111 / 50%) 0 -3px 0 inset;
+    &:hover {
+        box-shadow: rgb(45 35 66 / 40%) 0 4px 8px, 
+                    rgb(45 35 66 / 30%) 0 7px 13px -3px, 
+                    #3c4fe0 0 -3px 0 inset;
+        transform: translateY(-2px);
+    }
+    &:active {
+        box-shadow: #3c4fe0 0 3px 7px inset;
+        transform: translateY(2px);
+    }
+}
+.buttonShadowLip {
+    box-shadow: rgb(255 255 255 / 15%) 0 1px 0 inset, rgb(46 54 80 / 8%) 0 1px 1px;
+}
+.oceanBlueGradient {
+    background-color: #3EB2FD;
+    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    transition: background-color .2s,background-position .2s;
+    &:hover {
+        background-position: -20px -20px;
+    }
+    &:active, &:focus {
+        outline: none;
+        border-style: inset;
+    }
+}
+.subtlePurpleGradient {
+    background-color: #4D4AE8;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+    border: 1px solid #4D4AE8;
+    &:hover {
+        background-color: #3733E5;
+        border-color: #3733E5;
+    }
+    &:active {
+        background-color: #3E3BBA;
+        background-image: none;
+        border-color: #3A38AE;
+        box-shadow: rgb(46 54 80 / 13%) 0 3px 5px inset;
+    }
+    &:focus {
+        background-color: #413FC5;
+    border-color: #3E3BBA;
+    box-shadow: rgb(255 255 255 / 15%) 0 1px 0 inset, 
+                rgb(46 54 80 / 8%) 0 1px 1px, 
+                rgb(104 101 235 / 50%) 0 0 0 0.2rem;
+    }
+}
+
+.dude {
+    background-image: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);
+  }
+  
+  .crazy {
+    background-image: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);
+    background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+  }
+.subtleBoxShadow {
+    background: #c2fbd7;
+    box-shadow: rgb(44 187 99 / 20%) 0 -25px 18px -14px inset;
+}
+
+.glowingBoxShadow {
+    background: #c2fbd7;
+    box-shadow: rgb(44 187 99 / 20%) 0 -25px 18px -14px inset, 
+                rgb(44 187 99 / 15%) 0 1px 2px, 
+                rgb(44 187 99 / 15%) 0 2px 4px, 
+                rgb(44 187 99 / 15%) 0 4px 8px, 
+                rgb(44 187 99 / 15%) 0 8px 16px, 
+                rgb(44 187 99 / 15%) 0 16px 32px;
+    color: green;
+    &:hover {
+        box-shadow: rgb(44 187 99 / 35%) 0 -25px 18px -14px inset, 
+                    rgb(44 187 99 / 25%) 0 1px 2px, 
+                    rgb(44 187 99 / 25%) 0 2px 4px, 
+                    rgb(44 187 99 / 25%) 0 4px 8px, 
+                    rgb(44 187 99 / 25%) 0 8px 16px, 
+                    rgb(44 187 99 / 25%) 0 16px 32px;
+    }
+}
+.levitatingBoxShadow {
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5e5df0 0 10px 20px -10px;
+}
+.subtleLevitatingBoxShadow {
+    box-shadow: rgb(0 0 0 / 10%) 0 2px 4px 0;
+    transform: translateY(0);
+    transition: transform 150ms, box-shadow 150ms;
+    &:hover {
+        box-shadow: rgb(0 0 0 / 15%) 0 3px 9px 0;
+        transform: translateY(-2px);
+    }
+}
+.lowFlameBoxShadow {
+    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+    box-shadow: rgb(0 0 0 / 10%) 0 2px 4px;
+    transition: box-shadow .2s;
+    &:hover {
+        box-shadow: rgb(253 76 0 / 50%) 0 3px 8px;
+    }
+}
+.floatingBoxShadow {
+    box-shadow: rgb(0 0 0 / 20%) 15px 28px 25px -18px;
+    transition: all 235ms ease-in-out;
+    &:hover {
+        box-shadow: rgb(0 0 0 / 30%) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0);
+    }
+}
+.boxShadowBorder {
+   box-shadow: 0 0 0 2px rgb(0 0 0 / 20%), 0 3px 8px 0 rgb(0 0 0 / 15%);
+}
+.boxShadowBorder2 {
+   transition: box-shadow .2s,-webkit-box-shadow .2s;
+   box-shadow:#121212 0 0 0 3px, transparent 0 0 0 0;
+}
+.groovyBoxShadowBorder {
+    .container{
+       background: rgb(245, 245, 250);
+
+       margin: 2.7em;
+        flex: 0 0 calc(32vw - (2.7em * 2));
+        height: 110px;
+    }
+    padding: 24px;
+    color: #2a1f62;
+    background: #f5f5fa;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: -10px -10px 30px 0 #fff, 
+                10px 10px 30px 0 #1d0dca17;
+}
+.boxShadowBorderCombo { 
+    border-color: #dadce0;
+    box-shadow: rgb(0 0 0 / 10%) 0 1px 1px;
+    color: #202124;
+}
+
+.boxShadowBezier {
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),
+                opacity 15ms linear 30ms,
+                transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+}
+.backgroundBezier {
+    transition: color .15s ease-in-out,
+                background-color .15s ease-in-out,
+                border-color .15s ease-in-out,
+                box-shadow .15s ease-in-out;
+}
+.fillOutLinedElementBezier {
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+}
+
+.slideInOverlay {
+    &:hover:before {
+        animation: opacityFallbackIn 0s step-start forwards;
+        clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+    }
+    &:before {
+            animation: opacityFallbackOut .5s step-end forwards;
+            backface-visibility: hidden;
+            background-color: #EBEBEB;
+            clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+            content: "";
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            transform: translateZ(0);
+            transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+            width: 100%;
+        }
+    }

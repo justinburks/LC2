@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular</title>
+    <link rel="stylesheet" href="/css/gridspace.css">
+</head>
+<style>
+    .overlay {
+        position: absolute;
+        display: none;
+        pointer-events: none;
+        background-color: transparent;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 100;
+    }
+    .overlay.show {
+        display: block;
+    }
+    .btn {
+        position: absolute;
+        bottom: 5%;
+        left: 45%;
+        background: blue;
+        width: max-content;
+        line-height: 1.5;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 16px;
+        cursor: pointer;
+        z-index: 101;
+    }
+</style>
+<body>
+    <div class="overlay"></div>
+    <div class="btn">Apply Layout</div>
+<script src="/js/grid.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    fieldset {
+        position: relative;
+        margin: 0;
+        padding: .5em;
+        border-radius: 8px;
+    }
+    
+    fieldset:focus-within label, label.inp-active {
+        transform: scale(1) translateY(-18px);
+        color: blue;
+    }
+
+    fieldset:focus-within {
+        transition: 200ms ease;
+        border-color: blue;
+    }
+
+    fieldset.inp-active {
+        border-color: blue;
+    }
+    
+    fieldset:focus-within::after {
+        transition: 200ms ease;
+        transform: scaleX(1);
+    }
+
+    fieldset.inp-active::after {
+        transform: scaleX(1);
+    }
+
+
+    fieldset::after {
+        position: absolute;
+        box-sizing: border-box;
+        top: -.5em;
+        left: .5em;
+        height: 18px;
+        width: 7ch;
+        border-radius: 18px;
+        background: white;
+        transform: scaleX(0);
+
+        z-index: 1;
+        content: "";
+    }
+
+    label {
+        position: absolute;
+        left: .8em;
+        top: .4em;
+        font-size: 18px;
+        transform: scale(.8);
+        transition: 200ms ease;
+        background: white;
+        color: gray;
+        box-sizing: border-box;
+        z-index: 2;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    input {
+        border: none;
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        z-index: 3;
+        background: transparent;
+    }
+
+</style>
+<body>
+    <fieldset class="parent">
+        <input type="email" autocomplete="off" onblur="if (this.value !== '') { 
+                                                this.nextElementSibling.classList.add('inp-active');
+                                                this.parentElement.classList.add('inp-active');
+                                                console.log(this.parent, this.parentElement)
+                                            }
+                                            else if (this.value == '') {
+                                                 this.nextElementSibling.classList.remove('inp-active'); 
+                                                 this.parentElement.classList.remove('inp-active');}
+                                                 console.log('blah')
+                                                 ">
+        <label for="email">Email</label>
+    </fieldset>
+</body>
+</html>

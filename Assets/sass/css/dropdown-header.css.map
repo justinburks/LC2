@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../main/5-components/darkTheme/dropdowns/dropdown-header.scss"
+    ],
+    "names": [],
+    "file": "dropdown-header.css"
+}

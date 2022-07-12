@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        body {
+            background-color: #e9cdba;
+            background-image: url("/Assets/img/jpg/sofa/nathan-oakley-49asPOq8h-E-unsplash.jpg");
+            background-size: contain;
+            background-position-x: left 390px;
+            background-origin: border-box;
+            background-repeat: no-repeat;
+        }
+                .col1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-size: 400%;
+            background-image: linear-gradient(to right top, #e9cdba, #edd2bf, #f2d7c4, #f6dcca, #fbe1cf);
+            /* background-image: linear-gradient(to left bottom, #e9cdba, #dfb191, #d4956a, #c67844, #b75c1e); */
+             /* background-image: linear-gradient(to left bottom, #e9cdba, #e6b391, #e19969, #da7f43, #d16319); */
+            /* background-image: linear-gradient(to bottom left, #516b66, #496b64, #416a63, #386a61, #2e6960); */
+            /* background: linear-gradient(to right top, #516b66, #52716b, #547771, #557d76, #56837c); */
+            height: 100%;
+            width: 390px;
+            z-index: 2;
+            opacity: .9;
+            box-shadow: 1px 0 60px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .txt {
+            position: relative;
+            top: 35%;
+            left: 50px;
+            color: rgba(245, 245, 245, 0.904);
+            /* color: rgba(212, 44, 44, 0.692); */
+            /* color: rgb(10, 110, 10); */
+            font-size: 175px;
+            font-family: 'DM';
+            font-weight: 400;
+            z-index: 3;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            /* background: rgba(0, 0, 0, 0.0801); */
+            background: linear-gradient(to bottom left, #ffffff, #b9b9b9c9, #777777dc, #3b3b3b, #000000);
+            opacity: .08;
+            z-index: 1;
+        }
+        /* img {
+            transform()
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin-left: 40%;
+        } */
+    </style>
+</head>
+<body>
+    <div class="txt">Design</div>
+    <div class="col1"></div>
+    <div class="overlay"></div>
+</div>
+</body>
+</html>

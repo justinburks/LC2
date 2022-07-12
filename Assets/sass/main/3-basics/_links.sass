@@ -1,0 +1,16 @@
+a 
+    color: $text_link
+    text-decoration: none
+    outline: 0
+    +transition150
+    
+    &:hover,
+    &:focus
+        color: $text_link-active
+        
+// hotLinks
+a:link, a:visited 
+    -webkit-transition: color 200ms ease
+    transition: color 200ms ease
+    color: $accent1
+    text-decoration: none

@@ -1,0 +1,31 @@
+Anatomy of a form
+
+Label (describes how the data may be applicable)
+Title+Description/CompanyLogo/LetterHead/PhotoFigure
+
+Input (relays what information is valuable/neccesary for such application)
+Username/Password/Address/ResponseText
+
+Alt Routes (provides an alternative reference tags in the case that the application/form provided is not relavent to the user)
+Home/SignUp/Cancel/Reset
+
+Pre Requisites for Submission (Usually a binary option that confirms the users approval, request, or knowledge of a subsequent action)
+Terms of Service/Subscription/Add-on/Aproval || Denial of functionality
+
+-------------------------------
+Description
+
+In this micro-component module I've set out to lay the foundational understanding of a form really is with only html and css involved
+
+In doings so I may better javascript may influence and control the intergration of such components in various use cases.
+
+By reducing commonly used components down to its simplest use case I hope to abstract much of the comonalities into webcomponents that are easy to create and maintain.
+
+-------------------------------
+Field Cases
+
+    Login
+    Signup
+    Checkout
+    Survey
+

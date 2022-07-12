@@ -1,0 +1,107 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.header, .footer {
+  z-index: 2;
+}
+
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 10%;
+  width: 100%;
+  padding: 0 30px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.347);
+  background-color: white;
+}
+
+.gallery {
+  overflow: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  padding: 100px;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  box-sizing: border-box;
+  padding-left: 40%;
+  gap: 10px;
+}
+
+.gallery .img-set {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+  grid-template-areas: "a b b" "a b b" "a b b";
+}
+
+.gallery .img-set .col1 {
+  grid-area: a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 30px;
+  width: 200px;
+}
+
+.gallery .img-set .col1 .i1 img {
+  max-width: 200px;
+}
+
+.gallery .img-set .col2 {
+  width: 500px;
+  grid-area: b;
+}
+
+.gallery .img-set .col2 .i2 img {
+  max-width: 300px;
+}
+
+.gallery .img-set .col2 .i3 img {
+  max-width: 500px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  padding-left: 60px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.footer .title {
+  display: flex;
+  flex-direction: column;
+  font-size: 32pt;
+}
+
+.footer .description {
+  position: absolute;
+  right: -120px;
+  top: -30px;
+  transform: rotate(-90deg);
+}
+/*# sourceMappingURL=kombu.css.map */

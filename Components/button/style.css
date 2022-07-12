@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;700&family=Roboto:ital,wght@1,100;1,300&display=swap');
+
+:root {
+    --color-slate: #333333;
+    --color-offWhite: #f0f1f5;
+
+    --btn-primary-blue: #1462ff;
+    --btn-accent-coral: #ff696c;
+    --btn-accent-mud:  #ff8c69;
+
+}
+
+body,html, section, .container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    overflow: hidden;
+}
+.bg-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: lightgray;
+    z-index: -1;
+}
+.interface-navigation {
+    position: absolute;
+    bottom: 3.8%;
+    left: 39%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    font-family: 'Material Icons';
+    font-size: 32px;
+    color: rgba(85, 81, 81, 0.87);
+}
+
+.component-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    background: transparent;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.btn {
+    width: 4.2em;
+    height: 2em;
+}
+
+.panel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidePanel {
+    grid-row: 2/3;
+    grid-column: 1;
+}
+
+.displayPanel {
+    grid-row: 1/4;
+    grid-column: 2;
+}
+.display {
+    width: 75%;
+    height: 100%;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    margin-top: 5%;
+    width: 100%;
+    height: 60%;
+    /* background: rgba(255, 255, 255, 0.351); */
+    border-radius: 32px;
+}
+.content .row {
+    display: flex;
+}
+.content .btn {
+    margin: 2%;
+    border-radius: .8rem;
+    border: none;
+    box-shadow: 0 .5rem 2.5rem -.9rem #4a74c9;
+}
+.context {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 35%;
+}
+
+.controlPanel {
+    grid-column: 3;
+    grid-row: 2/3;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7%;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+}
+.canvas {
+    display: flex;
+    position: relative;
+    height: 80%;
+    width: 80%;
+    border-radius: 32px;
+    justify-content: center;
+    align-items: center;
+    background: whitesmoke;
+    /* box-shadow: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159); */
+    overflow: hidden;
+}
+.canvas-icon, .canvas-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.canvas-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70%;
+    height: 100%;
+}
+
+.canvas-control {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+.canvas-control--display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 40%;
+    border-bottom-left-radius: 16px;
+    background:rgba(10, 10, 10, 0.056);
+}
+
+.canvas-control--interface {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 61%;
+    background: #333;
+    border-top-left-radius: 16px;
+    color: chocolate;
+    font-family: 'Mulish', sans-serif;
+}
+
+.btn-canvas {
+    width: 10em;
+    height: 3.3em;
+    border-radius: 3em;
+    border: none;
+    background: #1462ff;
+    font-family: 'Mulish', sans-serif;
+    color: #f0f1f5;
+    box-shadow: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159);
+}
+
+.canvas-control--color {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.67);
+}
+
+.canvas-control--color span { 
+    width: 1.587em;
+    height: 1.587em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.red {
+    background: crimson;
+    box-shadow: inset 0 6px 12px -2px rgba(223, 21, 21, 0.57), inset 0 3px 7px -3px rgb(160, 159, 159);
+}
+
+.green {
+    background: #02cf5e;
+    box-shadow: inset 0 6px 12px -2px rgba(200, 245, 182, 0.568), inset 0 3px 7px -3px rgb(51, 51, 51);
+}
+
+.blue {
+    background: #1462ff;
+    box-shadow: inset 0 6px 12px -2px rgba(50,50,93,0.25), inset 0 3px 7px -3px rgb(160, 159, 159);
+}
+
+.white {
+    background: cornsilk;
+}
+
+.black {
+    background: #333;
+}
+.canvas-control--anime {
+    display: flex;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: #222;
+}
+.anime-speed {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: 50%;
+    font-size: 25.587px;
+    font-family: 'Material Icons';
+}
+.anime-style {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    padding-right: 3%;
+}
+.anime-style span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    font-size: .8em;
+    border: 2px solid chocolate;
+}
+
+.canvas-control--size {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    height: 20%;
+    width: 100%;
+    font-size: 26px;
+    font-family: 'Material Icons';   
+}
+
+.canvas-control--size span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas-control--gradient {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 65%;
+    left: 0;
+    height: 20%;
+    width: 100%;
+    font-size: 26px;
+    font-family: 'Material Icons';   
+}
+
+.gradient-sticker--1 {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background: linear-gradient(to top right, blue, white)
+}
+
+.gradient-sticker--2 {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+}
+.md {
+    font-size: 29px;
+}
+
+.lg {
+    font-size: 32px;
+}
+
+.r {
+    background: red;
+}
+
+.g {
+    background: green;
+}
+
+.b {
+    background: blue;
+}
+
+.blk {
+    background: #333;
+}
+
+.wt {
+    background: whitesmoke;
+}
+
+.r-gd {
+    background: var(--red-gradient)
+}
+.r-gd-1 {
+    background: var(--red-gradient-1)
+}
+.r-gd-2 {
+    background: var(--red-gradient-2)
+}
+
+.r-gd-3 {
+    background: var(--red-gradient-3)
+}

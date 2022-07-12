@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;700&family=Roboto:ital,wght@1,100;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Mukta:700');
+:root {
+    --box-shadow--basic: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgb(160, 159, 159);
+}
+
+$bg: #333;
+$blk: #282936;
+$white: #f0f1f5;
+$trans: all 0.45s cubic-bezier(0.65,0,.076,1);
+$dribblePink: #EA4C89;
+
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 2%;
+    border-radius: 32px;
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    z-index: 2;
+    background: whitesmoke;
+    backface-visibility: hidden;
+}
+
+.btn-cont {
+    position: relative;
+    display: flex;
+    height: 3.5rem;
+    width: auto;
+}
+
+.btn {
+    display: flex;
+    border: none;
+    background: transparent;
+    height: 3.5rem;
+    width: 12em;
+    transition: all 0.45s cubic-bezier(0.65, 0, .076, 1);
+    .icon {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 1.75rem;
+        background: black;
+        z-index: 1;
+        transition: $trans;
+        .arrow {
+            color: yellow;
+            position: absolute;
+            left: 20%;
+            top: 35%;
+        }
+    }
+    .txt {
+        position: absolute;
+        top: 35%;
+        left: 40%;
+        z-index: 3;
+        transition: $trans;
+    }
+   &:hover {
+        .icon {
+            width: 100%;
+        }
+        .txt {
+            color: $white;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+buttons 
+    colors
+        box shadows
+            borders
+                animations
+sass it up
+
+create a basic modal for context
+    vertical card
+    horizontal card
+    pop-up window
+    bonus: form

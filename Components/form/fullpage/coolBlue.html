@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Assets/sass/css/coolBlue.css">
+</head>
+<body>
+    <div class="main">
+        <div class="hero"></div>
+        <div class="form">
+            <div class="form-header">
+                <div class="logo"></div>
+                <div class="heading">
+                    <h2>Hello Again!</h2>
+                    <h3>aliquam consectetur et tincidunt praesent enim massa pellentesque velit odio neque</h3>
+                </div>
+            </div>
+            <div class="form-auth">
+                <fieldset>
+                <input type="email" name="email" id="email" autocomplete="off" onblur="if (this.value !== '') { 
+                    this.nextElementSibling.classList.add('inp-active');
+                    this.parentElement.classList.add('inp-active');
+                    this.nextElementSibling.nextElementSibling.classList.add('inp-active');
+                    console.log(this.parent, this.parentElement)
+                }
+                else if (this.value == '') {
+                     this.nextElementSibling.classList.remove('inp-active'); 
+                     this.parentElement.classList.remove('inp-active');
+                     this.nextElementSibling.nextElementSibling.classList.remove('inp-active');
+                     
+                     console.log('blah')}
+                     ">
+                <label for="email">Email</label>
+                <span class="icon">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1237.000000 1280.000000" preserveAspectRatio="xMidYMid meet" height="16px" width="16px">
+                        <metadata>
+                        Created by potrace 1.15, written by Peter Selinger 2001-2017
+                        </metadata>
+                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" stroke="none" fill="inherit">
+                        <path d="M6115 12793 c-114 -5 -431 -33 -555 -49 -942 -122 -1823 -446 -2608 -960 -662 -434 -1283 -1018 -1755 -1649 -825 -1103 -1225 -2397 -1193 -3860 28 -1348 378 -2497 1079 -3545 594 -887 1383 -1606 2261 -2061 713 -369 1449 -569 2391 -651 194 -17 1011 -16 1310 0 1225 70 2267 234 3090 487 61 18 149 46 198 60 51 15 87 32 87 39 0 11 -439 1715 -456 1767 -4 14 -29 9 -187 -42 -1023 -332 -1941 -483 -3137 -519 -1018 -30 -1708 94 -2395 430 -1107 542 -1924 1625 -2203 2925 -83 384 -118 688 -129 1125 -23 937 213 1776 713 2537 414 629 1003 1202 1600 1559 748 446 1575 645 2514 604 632 -27 1144 -129 1631 -325 931 -376 1627 -1046 1959 -1885 171 -434 255 -880 267 -1420 9 -415 -30 -704 -153 -1125 -207 -714 -505 -1252 -806 -1456 -119 -81 -270 -127 -380 -117 -122 12 -168 118 -168 388 0 153 15 269 71 535 35 169 616 3152 705 3625 19 102 37 193 40 203 5 16 -46 17 -980 17 l-986 0 -5 -22 c-8 -36 -75 -392 -75 -401 0 -4 -42 29 -92 73 -293 256 -683 436 -1103 511 -116 21 -160 23 -410 23 -233 0 -304 -4 -422 -22 -500 -75 -926 -243 -1308 -516 -312 -223 -632 -554 -871 -900 -380 -551 -620 -1168 -713 -1836 -36 -260 -45 -391 -45 -670 0 -295 12 -421 60 -652 113 -542 399 -1063 804 -1468 424 -424 906 -649 1500 -701 230 -21 570 -1 830 47 614 113 1175 391 1580 781 66 64 122 114 124 112 1 -2 31 -46 67 -98 219 -324 600 -579 987 -661 351 -75 891 0 1302 180 537 235 1036 689 1444 1312 375 574 611 1174 716 1822 83 509 77 1158 -16 1789 -153 1048 -542 1935 -1184 2707 -131 157 -488 515 -640 641 -903 749 -1954 1163 -3260 1283 -332 31 -778 43 -1095 29z m509 -5258 c186 -33 322 -100 447 -224 218 -216 311 -505 296 -921 -13 -340 -113 -651 -303 -935 -240 -360 -489 -545 -829 -617 -33 -7 -129 -12 -215 -12 -182 0 -285 20 -415 84 -234 114 -437 394 -506 699 -40 176 -35 430 12 650 85 390 362 844 649 1060 106 80 190 126 307 167 172 62 379 80 557 49z"/>
+                        </g>
+                        </svg>
+                </span>
+                </fieldset>
+                <fieldset class="password">
+                    <input type="password" name="password" id="password" autocomplete="new-password" onblur="if (this.value !== '') { 
+                        this.nextElementSibling.classList.add('inp-active');
+                        this.parentElement.classList.add('inp-active');
+                        this.nextElementSibling.nextElementSibling.classList.add('inp-active');
+                        console.log(this.parent, this.parentElement)
+                    }
+                    else if (this.value == '') {
+                         this.nextElementSibling.classList.remove('inp-active'); 
+                         this.parentElement.classList.remove('inp-active');
+                         this.nextElementSibling.nextElementSibling.classList.remove('inp-active');
+                         
+                         console.log('blah')}
+                         ">
+                    <label for="password">Password</label>
+                    <span class="icon">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 16 16" enable-background="new 0 0 16 16" height="16px" width="16px" xml:space="preserve" fill="inherit">
+<g id="Layer_1">
+</g>
+<g id="Layer_101">
+</g>
+<g id="Layer_100">
+</g>
+<g id="Layer_99">
+</g>
+<g id="Layer_98">
+</g>
+<g id="Layer_97">
+</g>
+<g id="Layer_96">
+</g>
+<g id="Layer_95">
+</g>
+<g id="Layer_94">
+</g>
+<g id="Layer_93">
+</g>
+<g id="Layer_92">
+</g>
+<g id="Layer_91">
+	<g id="XMLID_1617_">
+		<path fill="inherit" d="M8,1.323C4.766,1.323,2,4.234,2,8v6c0,1.105,0.895,2,2,2h8c1.105,0,2-0.895,2-2V8
+			C14,4.266,11.234,1.323,8,1.323z M10,11l-1.339,2H7.407L6,11l1-2h1h1L10,11z M4,8c0-3,1.869-4.677,4-4.677C10.131,3.323,12,5,12,8
+			H4z"/>
+	</g>
+</g>
+<g id="Layer_90">
+</g>
+<g id="Layer_89">
+</g>
+<g id="Layer_88">
+</g>
+<g id="Layer_87">
+</g>
+<g id="Layer_86">
+</g>
+<g id="Layer_85">
+</g>
+<g id="Layer_84">
+</g>
+<g id="Layer_83">
+</g>
+<g id="Layer_82">
+</g>
+<g id="Layer_81">
+</g>
+<g id="Layer_80">
+</g>
+<g id="Layer_79">
+</g>
+<g id="Layer_78">
+</g>
+<g id="Layer_77">
+</g>
+<g id="Layer_76">
+</g>
+<g id="Layer_75">
+</g>
+<g id="Layer_74">
+</g>
+<g id="Layer_73">
+</g>
+<g id="Layer_72">
+</g>
+<g id="Layer_71">
+</g>
+<g id="Layer_70">
+</g>
+<g id="Layer_69">
+</g>
+<g id="Layer_68">
+</g>
+<g id="Layer_67">
+</g>
+<g id="Layer_66">
+</g>
+<g id="Layer_65">
+</g>
+<g id="Layer_64">
+</g>
+<g id="Layer_63">
+</g>
+<g id="Layer_62">
+</g>
+<g id="Layer_61">
+</g>
+<g id="Layer_60">
+</g>
+<g id="Layer_59">
+</g>
+<g id="Layer_58">
+</g>
+<g id="Layer_57">
+</g>
+<g id="Layer_56">
+</g>
+<g id="Layer_55">
+</g>
+<g id="Layer_54">
+</g>
+<g id="Layer_53">
+</g>
+<g id="Layer_52">
+</g>
+<g id="Layer_51">
+</g>
+<g id="Layer_50">
+</g>
+<g id="Layer_49">
+</g>
+<g id="Layer_48">
+</g>
+<g id="Layer_47">
+</g>
+<g id="Layer_46">
+</g>
+<g id="Layer_45">
+</g>
+<g id="Layer_44">
+</g>
+<g id="Layer_43">
+</g>
+<g id="Layer_42">
+</g>
+<g id="Layer_41">
+</g>
+<g id="Layer_40">
+</g>
+<g id="Layer_39">
+</g>
+<g id="Layer_38">
+</g>
+<g id="Layer_37">
+</g>
+<g id="Layer_36">
+</g>
+<g id="Layer_35">
+</g>
+<g id="Layer_34">
+</g>
+<g id="Layer_33">
+</g>
+<g id="Layer_32">
+</g>
+<g id="Layer_31">
+</g>
+<g id="Layer_30">
+</g>
+<g id="Layer_29">
+</g>
+<g id="Layer_28">
+</g>
+<g id="Layer_27">
+</g>
+<g id="Layer_26">
+</g>
+<g id="Layer_25">
+</g>
+<g id="Layer_24">
+</g>
+<g id="Layer_23">
+</g>
+<g id="Layer_22">
+</g>
+<g id="Layer_21">
+</g>
+<g id="Layer_20">
+</g>
+<g id="Layer_19">
+</g>
+<g id="Layer_18">
+</g>
+<g id="Layer_17">
+</g>
+<g id="Layer_16">
+</g>
+<g id="Layer_15">
+</g>
+<g id="Layer_14">
+</g>
+<g id="Layer_13">
+</g>
+<g id="Layer_12">
+</g>
+<g id="Layer_11">
+</g>
+<g id="Layer_10">
+</g>
+<g id="Layer_9">
+</g>
+<g id="Layer_8">
+</g>
+<g id="Layer_7">
+</g>
+<g id="Layer_6">
+</g>
+<g id="Layer_5">
+</g>
+<g id="Layer_4">
+</g>
+<g id="Layer_3">
+</g>
+<g id="Layer_2">
+</g>
+                        </svg>
+                    </span>
+                </fieldset>
+                <div class="pre-auth">
+                    <div class="remember">
+                        <input type="checkbox" name="remember" id="remember">
+                        <span>Remember Me</span>
+                    </div>
+                    <span>
+                        <a href="#">Recovery Password</a>
+                    </span>
+                </div>
+                <button>Login</button>
+                <button class="google">
+                    <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
+                          <path fill="#4285F4" d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z"/>
+                          <path fill="#34A853" d="M -14.754 63.239 C -11.514 63.239 -8.804 62.159 -6.824 60.329 L -10.684 57.329 C -11.764 58.049 -13.134 58.489 -14.754 58.489 C -17.884 58.489 -20.534 56.379 -21.484 53.529 L -25.464 53.529 L -25.464 56.619 C -23.494 60.539 -19.444 63.239 -14.754 63.239 Z"/>
+                          <path fill="#FBBC05" d="M -21.484 53.529 C -21.734 52.809 -21.864 52.039 -21.864 51.239 C -21.864 50.439 -21.724 49.669 -21.484 48.949 L -21.484 45.859 L -25.464 45.859 C -26.284 47.479 -26.754 49.299 -26.754 51.239 C -26.754 53.179 -26.284 54.999 -25.464 56.619 L -21.484 53.529 Z"/>
+                          <path fill="#EA4335" d="M -14.754 43.989 C -12.984 43.989 -11.404 44.599 -10.154 45.789 L -6.734 42.369 C -8.804 40.429 -11.514 39.239 -14.754 39.239 C -19.444 39.239 -23.494 41.939 -25.464 45.859 L -21.484 48.949 C -20.534 46.099 -17.884 43.989 -14.754 43.989 Z"/>
+                        </g>
+                      </svg>
+                    <div class="g-text">Sign in with Google</div>
+                </button>
+            </div>
+            <div class="form-footer">
+                <span>Don't have an account yet?</span>
+                <a href="#">Sign up</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

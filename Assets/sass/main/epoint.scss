@@ -1,0 +1,55 @@
+            
+    //BREAKPOINTS        
+            
+            $mobileSmall: 320; // old phone
+            $mobile: 375; // newer phone
+            $mobileLarge: 768; // large phone / tablet
+
+            $tablet: 960;
+            
+            $laptopMedium: 1440; // 15"
+            $laptopLarge: 1728; // 18"
+            $laptop: 1248; //13" 
+
+            $desktopSmall: 1360;
+            $desktop: 1920; // average xl desktop
+            $desktopWide: 2560; // widescreen/4k
+            
+
+            $canvasWidth: $desktop; // [mobile[320, 375, 412], tablet[600, 768, 960], desktop[1248, 1360, 1440,1920]]
+            $canvasHeight: 720px; // [ mobile | s | md | lg ] = [632 | 720 | 840 | 1024]
+            
+            
+            $marginX: calc(($windowHeight - $canvasHeight / 2));
+            $marginY: calc(($windowWidth - $canvasWidth / 2));
+
+            $baseline: 8px; // 8/.5 10/.625
+            $step: .5rem;
+            $margin: 1rem;
+            $gap: $baseline;
+
+
+            //$scale: ; // [tinyType: 10/16, type[16/24], sub-heading[24/32], heading[40/48], sub-title[72/80], title-sm[96/96], title[176/176]
+
+
+            .sub-title {
+                box-sizing: padding-box;
+                font-size: 72px;
+                line-height: 1em;
+                vertical-align: baseline;
+                padding-top: 4px;
+                padding-bottom: 2px;
+            }
+            .title-sm {
+                box-sizing: padding-box;
+                font-size: 96px;
+                line-height: 1em;
+            }
+            .title {
+                box-sizing: padding-box;
+                font-size: 176px;
+                line-height: 1;
+            }
+
+
+

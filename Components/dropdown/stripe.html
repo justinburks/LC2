@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!-- hover only nav (stripe theme)-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#3</title>
+    <link rel="stylesheet" href="nav3.css">
+    <style> 
+        
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.541);
+}
+.mousetrap {
+    position: absolute;
+    display: none;
+    opacity: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+.mousetrap.set {
+    display: block;
+}
+
+.navbar-header {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    height: 13%;
+    left: 25%;
+    top: 0;
+}
+
+.navbar-header--title {
+    z-index: 1;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: .42ch;
+    cursor: default;
+}
+
+header {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+
+}
+
+.navbar-menu {
+    opacity: 0;
+    pointer-events: none;
+    position: relative;
+    margin-top: 5%;
+    width: 30%;
+    height: 40%;
+    border-radius: 8px;
+    background: white;
+    transition: all 250ms cubic-bezier(0.215,0.61,0.355,1);
+    transform:  perspective(2000px) rotateX(-15deg);
+    transform-origin: 238px -50px;
+    box-shadow:  0 50px 100px -20px rgba(50,50,93,0.25),0 30px 60px -30px rgba(0,0,0,0.3),
+                    inset 0 10px 20px -5px rgba(50,50,93,0.25),inset 0 9px 16px -8px rgba(0,0,0,0.3);
+}
+
+.navbar-menu.hoverActive {
+    opacity: 1;
+    pointer-events: all;
+    transform: perspective(2000px) rotateX(0);
+}
+
+.navigation-component {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    transition: all 250ms cubic-bezier(0.215,0.61,0.355,1);
+}
+.navigation-component.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.navigation-component section, .nav-menu {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+
+.navigation-component section .nav-menu ul {
+    list-style: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 25%;
+    opacity: 0;
+    transform: translateX(50%);
+    transition: all 250ms cubic-bezier(0.215,0.61,0.355,1);
+}
+.navigation-component.active section .nav-menu ul {
+    opacity: 1;
+    transform: translateX(0);
+}
+.navigation-component.right {
+    transform: translateX(50%);
+}
+
+.navigation-component.left {
+    transform: translateX(-50%);
+}
+
+/* 
+
+    --buttonColor: hsla(0,0%,100%,0.2);
+
+
+font-family sohne-var, "Helvetica Neue", Arial, sans-serif
+    -webkit-font-smoothing: antialiased;
+
+transform: skewY(var(--gradientAngle));
+
+--angleNormal: -6deg;
+    --angleStrong: -12deg;
+    --angleNormalSin: 0.106;
+                     --angleStrongSin: 0.212;
+
+
+background: radial-gradient(var(--gradientColorThree) 23%,var(--gradientColorThreeTransparent) 67% 100%) 385px -24px,radial-gradient(var(--gradientColorOne) 0,var(--gradientColorOneTransparent) 60% 100%) -940px 290px,radial-gradient(var(--gradientColorTwo) 10%,var(--gradientColorTwoTransparent) 60% 100%) -120px 250px,radial-gradient(var(--gradientColorOne) 40%,var(--gradientColorOneTransparent) 57% 100%) 495px -44px,radial-gradient(var(--gradientColorZero) 30%,var(--gradientColorZeroTransparent) 67% 100%) 122px -120px,radial-gradient(var(--gradientColorZero) 10%,var(--gradientColorZeroTransparent) 60% 100%) -420px 120px,radial-gradient(var(--gradientColorTwo) 15%,var(--gradientColorTwoTransparent) 50% 100%) -620px 0,radial-gradient(var(--gradientColorTwo) 25%,var(--gradientColorTwoTransparent) 50% 100%) 520px -250px,var(--gradientColorZero);
+background-repeat: repeat-y;
+
+
+background: radial-gradient(var(--gradientColorZero) 40%,var(--gradientColorTwoTransparent) 60%) -420px -180px no-repeat,radial-gradient(var(--gradientColorThree) 23%,var(--gradientColorThreeTransparent) 70%) 240px -24px no-repeat,radial-gradient(var(--gradientColorTwo) 30%,var(--gradientColorTwoTransparent) 70%) -270px 220px no-repeat,var(--gradientColorZero);
+}
+
+background: radial-gradient(var(--gradientColorZero) 40%,var(--gradientColorTwoTransparent) 60%) -620px -180px no-repeat,radial-gradient(var(--gradientColorThree) 33%,var(--gradientColorThreeTransparent) 67%) -120px -24px no-repeat,radial-gradient(var(--gradientColorTwo) 40%,var(--gradientColorTwoTransparent) 70%) -470px 150px no-repeat,var(--gradientColorZero);
+}
+
+--gradientColorZero: #a960ee;
+    --gradientColorOne: #ff333d;
+    --gradientColorTwo: #90e0ff;
+    --gradientColorThree: #ffcb57;
+    --gradientColorZeroTransparent: rgba(169,96,238,0);
+    --gradientColorOneTransparent: rgba(255,51,61,0);
+    --gradientColorTwoTransparent: rgba(144,224,255,0);
+    --gradientColorThreeTransparent: rgba(255,203,87,0);
+    --gradientAngle: var(--angleStrong);
+    --gradientHeight: calc(100% + var(--sectionPaddingTop) + var(--transformOriginX)*var(--sectionAngleSin));
+    --offsetX: var(--gutterWidth);
+    --transformOriginX: -60px;
+
+    --transformOriginX: calc(var(--gutterWidth)*0.8);
+    --gutterWidth: calc(var(--windowWidth)/2 - var(--layoutWidth)/2);
+        --layoutWidth: var(--layoutWidthMax);
+                --layoutWidthMax: 1080px;
+
+glass gradient
+
+    background: linear-gradient(hsla(0,0%,100%,.4),hsla(0,0%,100%,.3) 25%,rgba(246,249,252,.3) 50%,#f6f9fc 60%);
+
+
+top: calc(100% - 1px - var(--siteMenuArrowSpacing));
+
+
+
+
+
+tilt
+
+.SiteMenu[hidden] {
+    matrix3d(1, 0, 0, 0, 0, 0.965926, -0.258819, 0, 0, 0.258819, 0.965926, 0, -238, 0, 0, 1)
+
+    --siteMenuRotateX: -15deg;
+    
+    perspective: 2000px;
+
+    transform-origin238px -50px
+        50% -50px.SiteMenu
+}
+
+    perspective: 2000px;
+
+    transform-origin238px -50px
+        50% -50px.SiteMenu
+
+
+    --cardShadowXSmall: 0 2px 5px -1px rgba(50,50,93,0.25),0 1px 3px -1px rgba(0,0,0,0.3);
+    --cardShadowSmall: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgba(0,0,0,0.3);
+    --cardShadowMedium: 0 13px 27px -5px rgba(50,50,93,0.25),0 8px 16px -8px rgba(0,0,0,0.3);
+    --cardShadowLarge: 0 30px 60px -12px rgba(50,50,93,0.25),0 18px 36px -18px rgba(0,0,0,0.3);
+    --cardShadowLargeInset: inset 0 30px 60px -12px rgba(50,50,93,0.25),inset 0 18px 36px -18px rgba(0,0,0,0.3);
+    --cardShadowXLarge: 0 50px 100px -20px rgba(50,50,93,0.25),0 30px 60px -30px rgba(0,0,0,0.3);
+
+
+    --cardBorderRadius: 8px;
+
+matrix3d(1, 0, 0, 0, 0, 0.965926, -0.258819, 0, 0, 0.258819, 0.965926, 0, -238, 0, 0, 1)
+
+
+slide in + text? 
+
+translateX(-50%) rotateX(var(--siteMenuRotateX)).SiteMenu
+
+
+
+
+
+
+--angleNormal: -6deg;
+    --angleStrong: -12deg;
+    --angleNormalSin: 0.106;
+    --angleStrongSin: 0.212;
+
+
+link transition-timing-functioncubic-bezier(0.215, 0.61, 0.355, 1)
+250ms
+
+transformmatrix3d(1, 0, 0, 0, 0, 0.965926, -0.258819, 0, 0, 0.258819, 0.965926, 0, -461, 0, 0, 1)
+arrow transformmatrix(0.707107, 0.707107, -0.707107, 0.707107, -228.922, 12)
+translateX(-50%) rotateX(var(--siteMenuRotateX)).SiteMenu
+
+--siteMenuTransition: 250ms;
+--hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
+
+transform-origin461px -50px
+50% -50px.SiteMenu
+
+transformmatrix(1, 0, 0, 1, -88, 0)
+
+translateX(-50%) translateX(var(--siteMenuSectionOffset)).SiteMenu__section
+
+.MktRoot {
+    --fontFamily: "sohne-var","Helvetica Neue","Arial",sans-serif;
+    --fontWeightLight: 200;
+    --fontWeightNormal: 300;
+    --fontWeightSemibold: 425;
+    --fontWeightBold: 500;
+    --codeFontFamily: "SourceCodePro";
+    --sourceCodeFont: 500 14px/1.714285714 var(--codeFontFamily);
+    --ctaFont: var(--fontWeightSemibold) 15px/1.6 var(--fontFamily);
+    --inputFont: var(--fontWeightNormal) 15px/1.6 var(--fontFamily);
+    --cardShadowXSmall: 0 2px 5px -1px rgba(50,50,93,0.25),0 1px 3px -1px rgba(0,0,0,0.3);
+    --cardShadowSmall: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgba(0,0,0,0.3);
+    --cardShadowMedium: 0 13px 27px -5px rgba(50,50,93,0.25),0 8px 16px -8px rgba(0,0,0,0.3);
+    --cardShadowLarge: 0 30px 60px -12px rgba(50,50,93,0.25),0 18px 36px -18px rgba(0,0,0,0.3);
+    --cardShadowLargeInset: inset 0 30px 60px -12px rgba(50,50,93,0.25),inset 0 18px 36px -18px rgba(0,0,0,0.3);
+    --cardShadowXLarge: 0 50px 100px -20px rgba(50,50,93,0.25),0 30px 60px -30px rgba(0,0,0,0.3);
+    --cardShadowXSMallMargin: 2px;
+    --cardShadowSmallMargin: 8px;
+    --cardShadowMediumMargin: 16px;
+    --cardShadowLargeMargin: 32px;
+    --cardShadowXLargeMargin: 48px;
+    --cardBorderRadius: 8px;
+    --scrollbarOffset: 10px;
+    --angleNormal: -6deg;
+    --angleStrong: -12deg;
+    --angleNormalSin: 0.106;
+    --angleStrongSin: 0.212;
+    --fixedNavHeight: 60px;
+    --fixedNavSpacing: 48px;
+    --fixedNavScrollMargin: calc(var(--fixedNavHeight) + var(--fixedNavSpacing));
+    --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
+    --focusBoxShadow: 0 0 0 2px #4d90fe,inset 0 0 0 2px hsla(0,0%,100%,0.9);
+
+.theme--White {
+    --backgroundColor: #fff;
+    --linkColor: var(--accentColor);
+    --linkHoverColor: #0a2540;
+    --buttonColor: var(--accentColor);
+    --buttonHoverColor: #0a2540;
+    --buttonDisabledColor: #cfd7df;
+    --buttonDisabledOpacity: 0.7;
+    --knockoutColor: #fff;
+    --knockoutDisabledColor: #8898aa;
+    --guideSolidColor: rgba(66,71,112,0.06);
+    --guideDashedColor: rgba(66,71,112,0.09);
+    --titleColor: #0a2540;
+    --textColor: #425466;
+    --inputBackground: #f1f4f7;
+    --inputPlaceholderColor: #acb9c5;
+    --inputTextColor: #0a2540;
+    --inputErrorAccentColor: #ff5191;
+    --annotationColor: #8c9eb1;
+    --maskFadeColor: rgba(0,0,0,0.4);
+    --navColor: #0a2540;
+    --navHoverColor: #0a2540;
+    --navHoverOpacity: 0.6;
+    --footerColor: #0a2540;
+    --cardBorderColor: #cbd6e0;
+    --cardBackground: #fff;
+    --subcardBackground: #f6f9fc;
+    --gridSubcardBackground: #f6f9fc;
+    --tableIconColor: #8c9eb1;
+    --stripeAccentWhite: #fff;
+    --stripeAccentLight: #e3e7ec;
+    --stripeAccentDark: #0a2540;
+    --bulletColor: #cfd7df;
+    --footnoteTextColor: #4d5b78;
+    --disclaimerTextColor: #707f98;
+    --inlineCodeTextColor: #2c3a57;
+    --inlineCodeBackground: #e6ecf2;
+}
+
+transition-timing-functioncubic-bezier(0.215, 0.61, 0.355, 1)
+
+big one transformmatrix3d(1, 0, 0, 0, 0, 0.965926, -0.258819, 0, 0, 0.258819, 0.965926, 0, -461, 0, 0, 1)
+
+
+big one active 
+matrix(1, 0, 0, 1, -461, 0)
+
+menu2 active
+transformmatrix(1, 0, 0, 1, -229, 0)
+
+menu3 active 
+matrix(1, 0, 0, 1, -302, 0)
+
+none 
+ transformmatrix(1, 0, 0, 1, -238, 0)
+
+menu 1 transformmatrix(1, 0, 0, 1, -79, 0)
+menu 2 transformmatrix(1, 0, 0, 1, -152, 0)
+
+menu 3 transformmatrix(1, 0, 0, 1, -88, 0)
+menu 3 visible transformmatrix(1, 0, 0, 1, -238, 0)
+*/
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="mousetrap"></div>
+        <div class="navigation navbar-header">
+
+            <span class="navbar-header--title" data-title="profile">Profile</span>
+            <span class="navbar-header--title" data-title="menu">Menu</span>
+            <span class="navbar-header--title" data-title="settings">Settings</span>
+            
+        </div>
+
+        <div class="navbar-arrow"></div>
+
+        <div class="navbar-menu">
+            <div class="navigation-component profile-component">
+                <section data-menu="profile">
+                    <div class="profile--menu nav-menu" >
+                        <ul>
+                            <li>Account Overview</li>
+                            <li>Profile Preferences</li>
+                            <li>Sign Out</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="navigation-component menu-component">
+                <section data-menu="menu">
+                    <div class="navigation--menu nav-menu">
+                        <ul>
+                            <li>Message Center</li>
+                            <li>Planner</li>
+                            <li>TaskManager</li>
+                            <li>Dashboard</li> 
+                            <li>Blog</li>
+                            <li>Notes</li>
+                            <li>Calendar</li>
+                        </ul>
+                    </div>
+            </section>
+            </div>
+            <div class="navigation-component settings-component">
+                <section  data-menu="settings">
+                    <div class="settings--menu nav-menu">
+                        <ul>
+                            <li>Themes</li>
+                            <li>Styles</li> 
+                            <li>Sounds</li> 
+                            <li>Animations</li> 
+                            <li>Language</li>
+                            <li>Accessibility</li> 
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </header>
+
+
+
+</body>
+<script>
+    const navHeaders = document.querySelectorAll('.navbar-header--title');
+const navMenuContainer = document.querySelector('.navbar-menu');
+const navMenus = document.querySelectorAll('.navigation-component');
+const mousetrap = document.querySelector('.mousetrap');
+navHeaders.forEach(header => header.addEventListener('mouseenter', (e) => {
+    showMenu(e);
+}));
+
+
+function showMenu(el) {
+    removeAllClasses();
+    // make a div that sits under the navigation larger than the navigation.
+    mousetrap.classList.add('set');
+    mousetrap.addEventListener('mouseenter', removeAllClasses);
+    // if mouse enters/over that div remove all classes
+    // make navbarcontainer slide down
+    navMenuContainer.classList.add('hoverActive');
+    // find the matching data attribute for the menu 
+    navMenus.forEach(menu => menu.firstElementChild.dataset.menu == el.currentTarget.dataset.title ? addClass(menu) : console.log('wrong class mate'));
+}
+
+function addClass(el) {
+    console.log('class added');
+    el.classList.add('active');
+}
+
+function removeAllClasses() {
+    mousetrap.classList.remove('set');
+    navMenus.forEach(menu => menu.classList.remove('active'));
+    navMenuContainer.classList.remove('hoverActive');
+    mousetrap.removeEventListener("mouseenter", removeAllClasses);
+}</script>
+</html>
+<!-- 
+        <ul class="profile--menu nav-menu" data-menu="profile">
+            <li>Account Overview</li>
+            <li>Profile Preferences</li>
+            <li>Sign Out</li>
+        </ul>
+
+        <ul class="navigation--menu nav-menu" data-menu="menu">
+            <li>Message Center</li>
+            <li>Planner</li>
+            <li>TaskManager</li>
+            <li>Dashboard</li> 
+            <li>Blog</li>
+            <li>Notes</li>
+            <li>Calendar</li>
+        </ul>
+
+        <ul class="settings--menu nav-menu" data-menu="settings">
+            <li>Themes</li>
+            <li>Styles</li> 
+            <li>Sounds</li> 
+            <li>Animations</li> 
+            <li>Language</li>
+            <li>Accessibility</li> 
+        </ul> -->

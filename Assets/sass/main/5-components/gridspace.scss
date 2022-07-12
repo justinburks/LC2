@@ -1,0 +1,423 @@
+html,body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+*,*::before,*::after {
+    box-sizing: border-box;
+}
+
+// DEFAULT DIMENSIONS
+$step: 8px;
+$padding-left: $step*16;
+$padding-right: $step*16;
+$header: 15%;
+$footer: 5%;
+// ENTER PREFFERED DIMINSIONS HERE
+/*
+    $step;
+    $padding-left;
+    $padding-right;
+    $header;
+    $footer;
+*/
+// DEFAULT LAYOUTS
+$eShape:
+    "a b"
+    "a c";
+$tShape:
+    "a a"
+    "b c";
+$lShapeRight:
+    "a a b"
+    "a a b"
+    "c c c";
+$lShapeLeft:
+    "b b a"
+    "b b a"
+    "c c c";
+$fourSquare:
+    "a b"
+    "c d";
+$slider:
+    "header header header"
+    "slider slider slider"
+    "footer footer footer";
+$fivePan:
+    "col main main col"
+    "col main main col"
+    "col subA subB col"
+    "col subA subB col";
+$fivePanUI:
+    "pad-l header header header pad-r"
+    "pad-l boxA boxB boxC pad-r"
+    "pad-l main main main pad-r";
+$golden: 
+    "a a e e e e"
+    "a a e e e e"
+    "b c e e e e"
+    "b d e e e e";
+$ninePan:
+    "aa ab ac"
+    "ba bb bc"
+    "ca cb cc";
+$sixteenPan:
+    "aa ab ac ad"
+    "ba bb bc bd"
+    "ca cb cc cd"
+    "da db dc dd";
+
+.grid {
+    position: relative;
+    padding: $step;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    gap: $step;
+    opacity: .5;
+
+    .col,.row,.box,.cell,.content,.header,.footer {
+        background: rgba(82, 74, 74, 0.18);
+    }
+    .margin {
+        background: white;
+        z-index: 100;
+    }
+    .padding-left,.padding-right,.pad {
+        background: rgba(194, 83, 83, 0.09);
+    }
+}
+.grid.show {
+    display: grid;
+}
+
+.manuscript {
+    grid-template-columns: $padding-left auto $padding-right;
+    grid-template-rows: $header auto $footer;
+    gap: 0;
+    padding: 0;
+
+    .header {
+        grid-column: 1 / 4;
+        grid-row: 1;
+        border-bottom: 1px dotted red;
+    }
+    .footer {
+        grid-column: 1 / 4;
+        grid-row: 3;
+        border-top: 1px dotted red;
+    }
+    .padding-left {
+        grid-column: 1;
+        grid-row: 1/ 4;
+        border-right: 1px dotted red;
+    }
+    .padding-right {
+        grid-column: 3;
+        grid-row: 1 / 4;
+        border-left: 1px dotted red;
+    }
+    .margin-tl {
+        grid-column: 1;
+        grid-row: 1;
+        border-right: 1px dotted red;
+        border-bottom: 1px dotted red;
+    }
+    .margin-tr {
+        grid-column: 3;
+        grid-row: 1;
+        border-left: 1px dotted red;
+        border-bottom: 1px dotted red;
+    }
+    .margin-bl {
+        grid-column: 1;
+        grid-row: 3;
+        border-right: 1px dotted red;
+        border-top: 1px dotted red;
+    }
+    .margin-br {
+        grid-column: 3;
+        grid-row: 3;
+        border-left: 1px dotted red;
+        border-top: 1px dotted red;
+    }
+
+}
+
+
+.grid.two-col {
+    grid-template-columns: repeat(2, 1fr);
+    .col-1 {
+        grid-column: 1 / 2;
+    }
+    .col-2 {
+        grid-column: 2 / 3;
+    }
+}
+
+.grid.three-col {
+    grid-template-columns: repeat(3, 1fr);
+    .col-1 {
+        grid-column: 1 / 2;
+    }
+    .col-2 {
+        grid-column: 2 / 3;
+    }
+    .col-3 {
+        grid-column: 3 / 4;
+    }
+}
+.grid.fo-col {
+    grid-template-columns: repeat(4, 1fr);
+    .col-1 {
+        grid-column: 1 / 2;
+    }
+    .col-2 {
+        grid-column: 2 / 3;
+    }
+    .col-3 {
+        grid-column: 3 / 4;
+    }
+    .col-4 {
+        grid-column: 4 / 5;
+    }
+}
+.grid.six-col {
+    grid-template-columns: repeat(6, 1fr);
+    .col-1 {
+        grid-column: 1 / 2;
+    }
+    .col-2 {
+        grid-column: 2 / 3;
+    }
+    .col-3 {
+        grid-column: 3 / 4;
+    }
+    .col-4 {
+        grid-column: 4 / 5;
+    }
+    .col-5 {
+        grid-column: 5 / 6;
+    }
+    .col-6 {
+        grid-column: 6 / 7;
+    }
+}
+.grid.eight-col {
+    grid-template-columns: repeat(8, 1fr);
+    .col-1 {
+        grid-column: 1 / 2;
+    }
+    .col-2 {
+        grid-column: 2 / 3;
+    }
+    .col-3 {
+        grid-column: 3 / 4;
+    }
+    .col-4 {
+        grid-column: 4 / 5;
+    }
+    .col-5 {
+        grid-column: 5 / 6;
+    }
+    .col-6 {
+        grid-column: 6 / 7;
+    }
+    .col-7 {
+        grid-column: 7 / 8;
+    }
+    .col-8 {
+        grid-column: 8 / 9;
+    }
+}
+.grid.twelve-col {
+    grid-template-columns: repeat(12, 1fr);
+    .col-1 {
+        grid-column: 1 / 2;
+    }
+    .col-2 {
+        grid-column: 2 / 3;
+    }
+    .col-3 {
+        grid-column: 3 / 4;
+    }
+    .col-4 {
+        grid-column: 4 / 5;
+    }
+    .col-5 {
+        grid-column: 5 / 6;
+    }
+    .col-6 {
+        grid-column: 6 / 7;
+    }
+    .col-7 {
+        grid-column: 7 / 8;
+    }
+    .col-8 {
+        grid-column: 8 / 9;
+    }
+    .col-9 {
+        grid-column: 9 / 10;
+    }
+    .col-10 {
+        grid-column: 10 / 11;
+    }
+    .col-11 {
+        grid-column: 11 / 12;
+    }
+    .col-12 {
+        grid-column: 12 / 13;
+    }
+}
+.eShape {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: $eShape;
+
+    .a {
+        grid-area: a;
+    }
+    .b {
+        grid-area: b;
+    }
+    .c {
+        grid-area: c;
+    }
+}
+.tShape {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: $tShape;
+    .a {
+        grid-area: a;
+    }
+    .b {
+        grid-area: b;
+    }
+    .c {
+        grid-area: c;
+    }
+}
+.lShape-l {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: $lShapeLeft;
+    .a {
+        grid-area: a;
+    }
+    .b {
+        grid-area: b;
+    }
+    .c {
+        grid-area: c;
+    }
+}
+.lShape-r {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: $lShapeRight;
+    .a {
+        grid-area: a;
+    }
+    .b {
+        grid-area: b;
+    }
+    .c {
+        grid-area: c;
+    }
+}
+.slider {
+    grid-template-rows: 15% auto 15%;
+    grid-template-areas: $slider;
+    .a {
+        grid-area: header;
+    }
+    .b {
+        grid-area: slider;
+    }
+    .c {
+        grid-area: footer;
+    }
+}
+.fourSquare {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: $fourSquare;
+}
+.fivePan {
+    grid-template-areas: $fivePan;
+}
+.fivePanUI {
+    grid-template-columns: 40px 1fr 1fr 1fr 40px;
+    grid-template-rows: 15% 1fr 2fr;
+    grid-template-areas: $fivePanUI;
+    .header {
+        grid-area: header;
+    }
+    .a {
+        grid-area: boxA;
+    }
+    .b {
+        grid-area: boxB;
+    }
+    .c {
+        grid-area: boxC;
+    }
+    .col-l {
+        grid-area: pad-l;
+    }
+    .col-r {
+        grid-area: pad-r
+    }
+    .ui {
+        grid-area: main;
+    }
+}
+.golden {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: $golden;
+    .a {
+        grid-area: a;
+    }
+    .b {
+        grid-area: b;
+    }
+    .c {
+        grid-area: c;
+    }
+    .d {
+        grid-area: d;
+    }
+    .e {
+        grid-area: e;
+    }
+}
+.slider {
+    grid-template-areas: $slider;
+}
+.ninePan {
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 2fr 1fr 2fr;
+    grid-template-areas: $ninePan;
+}
+.sixteenPan {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: $sixteenPan;
+}
+
+
+// .manuscript .header {
+//     display: flex;
+//     justify-content: center;
+//     align-items: flex-end;
+//     color: rgba(0, 0, 0, 0.804);
+//     font-family: 'arial';
+//     font-weight: 400;
+//     font-style: italic;
+//     font-size: 64px;
+// }

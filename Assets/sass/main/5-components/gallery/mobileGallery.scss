@@ -1,0 +1,94 @@
+html, body {
+    width: 100%;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background: black;
+}
+
+header,footer {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+
+.shader {
+    position: absolute;
+    top: 0;
+    height: 20%;
+    width: 100%;
+}
+
+.first-shader {
+    background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.25), transparent);
+}
+
+.first-shader::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(black, rgba(0, 0, 0, 0.936), transparent);
+}
+
+header {
+    top: 0;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.75) 70%, rgba(0, 0, 0, 0.474), transparent);
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.75) 70%, rgba(0, 0, 0, 0.474), transparent);
+}
+
+
+
+footer {
+    top: 100;
+    bottom: 0;
+    background: linear-gradient(to top, black, rgba(0, 0, 0, 0.75) 70%, rgba(0, 0, 0, 0.474), transparent);
+
+}
+.image-grid {
+    height: 100%; 
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+
+    .col-1 {
+        margin-top: 35%;
+        margin-right: 10px;
+    }
+    .col-2 {
+        margin-top: 15%;
+    }
+    .col-1,.col-2 {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        box-shadow: inset 0px 5px 10px 4px;
+        .img {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

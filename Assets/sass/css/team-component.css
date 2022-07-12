@@ -1,0 +1,101 @@
+.team-hover-card {
+  position: absolute;
+  left: calc(100% + 3em);
+  top: -1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: .5em .25em;
+  min-width: 250px;
+  min-height: 200px;
+  background: #fff;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
+  border-radius: 16px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.team-hover-card .card-list-item-team {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 8px;
+  border-radius: 16px;
+  margin: 4px 4px;
+  white-space: nowrap;
+  -webkit-transition: all 150ms ease-in;
+  transition: all 150ms ease-in;
+}
+
+.team-hover-card .card-list-item-team:hover {
+  background: rgba(0, 0, 0, 0.0215);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.14) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.14) 0px 3px 8px;
+}
+
+.team-hover-card .card-list-item-team .card-list-item-team-avatar {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 8px 16px 8px 8px;
+}
+
+.team-hover-card .card-list-item-team .card-list-item-team-avatar img {
+  border-radius: 8px;
+}
+
+.team-hover-card .card-list-item-team .card-list-item-team-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 85%;
+  margin: 8px 8px 8px 0;
+}
+
+.team-hover-card .card-list-item-team .card-list-item-team-text-desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px;
+  color: #6e6d7a;
+}
+
+.team-hover-card .card-list-item-team .card-list-item-team-text-desc .divider-round {
+  height: 3px;
+  width: 3px;
+  margin: auto 8px;
+  background-color: #727272;
+  border-radius: 3px;
+}
+/*# sourceMappingURL=team-component.css.map */

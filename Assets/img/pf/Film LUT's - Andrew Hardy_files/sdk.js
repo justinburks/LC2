@@ -1,0 +1,41 @@
+'use strict';(function(_w,_d){function ready(fn){if(document.attachEvent?document.readyState==='complete':document.readyState!=='loading'){fn();}else{document.addEventListener('DOMContentLoaded',fn);}}
+var Class=function(){var instance,cart,cartType,cartDefault='floating',cartTemplate='cartOverlay',buttonSelector='.sellfy-buy-button',cartSelector='#sellfy-shopping-cart',activatedClass='sellfy-activated',customClass='sellfy-buy-button-custom',newWindowClass='in-new-page',bW=200,bH=40,wW=720,wH=580,version='4.0.1',baseDomain='https://sellfy.com/',overlay=_d.createElement('div'),newWindow,intervalID,templates={overlay:'z-index: 99999; display: none; width: 100%; height: 100%;position:fixed;left:0;top:0;right:0;bottom:0;opacity:1;background: radial-gradient(ellipse at center center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);',cartOverlay:'display: inline-block; z-index: 99998; position: fixed; top: 18px; right: 18px; width: 78px; height: 40px; overflow: hidden;',cartOverlayInline:'display: inline-block; z-index: 99998; position: relative;width: 78px; height: 40px; overflow: hidden;',clickOverlay:'width: 100%; height: 100%;position:absolute;left:0;top:0;opacity:0;',link:'display:inline-block;position:relative;height:{1}px;',iframe:'<iframe name="{1}" src="{0}" allowtransparency="true" scrolling="no" frameborder="0" style="min-width:130px;height:100%;overflow:hidden;margin:0;"></iframe>',cartIframe:'<iframe src="{0}" allowtransparency="true" scrolling="no" frameborder="0" style="position: absolute; right: 0; top: 0; height: 100vh; width: 100vw; max-width: 100vw; max-height: 100vh;"></iframe>'},visitor_id=getVisitorId();var helpers={addClass:function addClass(e,c){if(e.classList){e.classList.add(c);}else{e.className+=' '+c;}},hasClass:function hasClass(e,c){if(e.classList){return e.classList.contains(c);}else{return new RegExp('(^| )'+c+'( |$)','gi').test(e.className);}},isInIframe:function isInIframe(){try{return window.self!==window.top;}catch(e){return true;}},openNewWindow:function openNewWindow(url,title,w,h){var dualScreenLeft=_w.screenLeft!==undefined?_w.screenLeft:_w.screenX,dualScreenTop=_w.screenTop!==undefined?_w.screenTop:_w.screenY,width=_w.innerWidth?_w.innerWidth:_d.documentElement.clientWidth?_d.documentElement.clientWidth:screen.width,height=_w.innerHeight?_w.innerHeight:_d.documentElement.clientHeight?_d.documentElement.clientHeight:screen.height,systemZoom=width/_w.screen.availWidth,left=(width-w)/2/systemZoom+dualScreenLeft,top=(height-h)/2/systemZoom+dualScreenTop;if(helpers.isInIframe()){left=screen.width/2-w/2+_w.screen.availLeft;}
+var newWindow=_w.open(url,title,'toolbar=0,resizable=1,scrollbars=yes,width='+w+',height='+h+',top='+top+',left='+left);if(_w.focus){newWindow.focus();}
+return newWindow;},href:function href(type,id){var path='';if(type==='checkout'){path='p/'+id+'/iframe/';}
+if(type==='description'){path='p/'+id+'/iframe/description/';}
+if(type==='button'){path='buttons/'+id+'/';}
+if(type==='cart'){path='cart/button/'+id+'/';}
+if(window.ga_linker&&typeof window.ga_linker.decorate==='function'){return ga_linker.decorate(baseDomain+path);}else{return baseDomain+path;}},getId:function getId(link){var id=link.id;if(!id){var parts=link.href.split('/'),_id=parts.indexOf('p')+1;id=parts[_id];}
+return id;},getAll:function getAll(){return _d.querySelectorAll(buttonSelector);},randomName:function randomName(){return'sellfy.buy-button.'+(Math.random().toString(36)+'00000000000000000').slice(2,12);}};function getVisitorId(){var id=null;try{id=localStorage.getItem('sellfy_visitorId')||null;}catch(e){}
+return id;}
+function setVisitorId(id){try{id=localStorage.setItem('sellfy_visitorId',id);}catch(e){}}
+function template(){var args=Array.prototype.slice.call(arguments);var name=args.shift();return templates[name].replace(/{(\d+)}/g,function(match,number){return typeof args[number]!=='undefined'?args[number]:match;});}
+function setCustomText(link,text,type){var iframe=link.querySelector('iframe');iframe.addEventListener('load',function(){iframe.contentWindow.postMessage({event:'sellfy.custom-button-text',text:text,type:type,inIframe:helpers.isInIframe(),visitor_id:visitor_id},'*');});}
+function initShoppingCart(){cart=_d.querySelector(cartSelector);if(cart){cartType=cart.getAttribute('data-type')||cartDefault;if(cartType!==cartDefault){cartTemplate='cartOverlayInline';}
+cart.style.cssText=template(cartTemplate);cart.innerHTML=template('cartIframe',helpers.href('cart',cart.getAttribute('data-id')));setCustomText(cart,cart.getAttribute('data-text'),cartType);}}
+function reloadShoppingCartWidget(){if(cart){cart.querySelector('iframe').contentWindow.postMessage({event:'sellfy.reloadShoppingCart',visitor_id:visitor_id},'*');}}
+function showShoppingCartWidget(visible){if(cart&&cartType===cartDefault){if(visible){cart.style.overflow='visible';}else{cart.style.overflow='hidden';}}}
+function resizeShoppingCartWidth(width){if(cart){cart.style.width=width+'px';}}
+function hideOverlay(){if(newWindow){newWindow.close();}
+overlay.style.display='none';reloadShoppingCartWidget();}
+function showOverlay(){if(!helpers.isInIframe()){overlay.style.display='block';}}
+function checkWindow(){if(newWindow&&newWindow.closed){window.clearInterval(intervalID);hideOverlay();}}
+function onHover(e){e.currentTarget.querySelector('iframe').contentWindow.postMessage('sellfy.'+e.type,'*');}
+function resizeIframe(iframes,size){for(var i=0;i<iframes.length;i++){iframes[i].width=size;}}
+function onClick(e){e.preventDefault();e.stopPropagation();showOverlay();var action=e.currentTarget.getAttribute('data-action')||'checkout';newWindow=helpers.openNewWindow(helpers.href(action,helpers.getId(e.currentTarget)),'Checkout',wW,wH);intervalID=window.setInterval(checkWindow,100);}
+function processOne(link,forced){if(helpers.hasClass(link,activatedClass)&&!forced){return;}
+if(!helpers.hasClass(link,customClass)){var clickOverlay=_d.createElement('div'),buttonText=link.getAttribute('data-text')||'';clickOverlay.style.cssText=template('clickOverlay');link.style.cssText=template('link',bW,bH);link.innerHTML=template('iframe',helpers.href('button',helpers.getId(link)),helpers.randomName());link.appendChild(clickOverlay);link.addEventListener('mouseover',onHover);link.addEventListener('mouseout',onHover);setCustomText(link,buttonText);}
+if(helpers.hasClass(link,newWindowClass)){link.setAttribute('target','_blank');}else{link.addEventListener('click',onClick);}
+helpers.addClass(link,activatedClass);}
+function processAll(callback){var links=helpers.getAll();for(var i=0;i<links.length;i++){callback(links[i]);}}
+function processEvent(event){if(event&&event.data){var data=event.data;if(data.event==='sellfy.customButtonWidth'){resizeIframe(document.getElementsByName(data.name),data.width);}
+if(data.event==='sellfy.shoppingCartWidgetVisibility'){showShoppingCartWidget(data.status);}
+if(data.event==='sellfy.resizeShoppingCartWidth'){resizeShoppingCartWidth(data.width);}
+if(data.event==='sellfy.windowClosed'){if(data.status){showOverlay();}else{hideOverlay();}}
+if(data.event=='sellfy.shoppingCartOnAdd'){visitor_id=data.visitor_id;setVisitorId(visitor_id);reloadShoppingCartWidget();}}}
+function initialize(){window.addEventListener('message',processEvent);processAll(function(link){processOne(link,false);});overlay.style.cssText=template('overlay');document.body.appendChild(overlay);overlay.addEventListener('click',hideOverlay);initShoppingCart();}
+function reload(){processAll(function(link){link.removeEventListener('mouseover',onHover);link.removeEventListener('mouseout',onHover);link.removeEventListener('click',onClick);processOne(link,true);});}
+function init(){return{initialize:initialize,reload:reload,version:version};}
+return{getInstance:function getInstance(){if(!instance){instance=init();}
+return instance;}};}();if(typeof _w._sellfy==='undefined'){_w._sellfy=Class.getInstance();}
+_w.sellfy_init_buttons=_w._sellfy.reload;ready(_w._sellfy.initialize);})(window,document);

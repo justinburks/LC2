@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Picker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- This one seems a bit straight forward in that html5 comes with an easy to use date-picker.
+        I think the only challenge here would be in styling the default input
+        and maybe for bonus points create 2 from scratch in the javascript portion of my journey.
+        Here we have 5 different styles for a native date picker.
+
+        Aside: I really lucked out because in researching this mini-project I saw that the native date picker was not supported in safari until 2021 :)
+        Bonus: custom date picking modal :>
+    -->
+    <section class="section">
+        <div class="wrapper">
+            <div class="example">
+                <div class="component open">
+                    <input type="date" class="date">
+                    native
+                    <!-- 
+                        As you can see... uber straight forward.. out of the box you have an input and icon to visualy select the date... awesome sauce!
+                        problem is that it is uber declaritive and I can make out how to style the element individually.
+
+                        luckily I found this snippet 
+                        ::-webkit-datetime-edit { padding: 1em; }
+                            ::-webkit-datetime-edit-fields-wrapper { background: silver; }
+                            ::-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
+                            ::-webkit-datetime-edit-month-field { color: blue; }
+                            ::-webkit-datetime-edit-day-field { color: green; }
+                            ::-webkit-datetime-edit-year-field { color: purple; }
+                            ::-webkit-inner-spin-button { display: none; }
+                            ::-webkit-calendar-picker-indicator { background: orange; }
+
+                        I played up with it for a while and came up with this for my first design using what I learned from other css learning modules.. uber simple
+                        
+                        
+                        Another cool thing is I found that you can control or contrain the user inputs with value--min--max--step attributes
+                        You can also control the formating pattern with required pattern="\d{4}-\d{2}-\d{2}"
+
+                        I also found this older browser fallback that made me realize how powerful input elements really can be.
+
+                        <p class="fallbackLabel">Enter your birthday:</p>
+  <div class="fallbackDatePicker">
+    <span>
+      <label for="day">Day:</label>
+      <select id="day" name="day">
+      </select>
+    </span>
+    <span>
+      <label for="month">Month:</label>
+      <select id="month" name="month">
+        <option selected>January</option>
+        <option>February</option>
+        <option>March</option>
+        <option>April</option>
+        <option>May</option>
+        <option>June</option>
+        <option>July</option>
+        <option>August</option>
+        <option>September</option>
+        <option>October</option>
+        <option>November</option>
+        <option>December</option>
+      </select>
+    </span>
+    <span>
+      <label for="year">Year:</label>
+      <select id="year" name="year">
+      </select>
+    </span>
+  </div>
+                     -->
+                </div>
+                <div class="component">
+                    <!-- 
+                        As much as I've been trying to avoid javascript in these modules I think for some custom applications I think may be neccessary.
+                        So I've borrowed some logic from a tutorial to populate a calendar app and I've styled it like so.
+                     -->
+                     contextual pop up - slide up/mobile - drop down
+                </div>
+                <div class="component">sidebar</div>
+                <div class="component">inline widget</div>
+                <div class="component">modal (material)</div>
+                <div class="component">select</div>
+            </div>
+            <div class="content">
+                <h2 class="section-title">Date Picker</h2>
+                <div class="text--wrapper">
+                    <p class="text">
+                        This one seems a bit straight forward in that html5 comes with an easy to use date-picker.
+                        I think the only challenge here would be in styling the default input
+                        and maybe for bonus points create 2 from scratch in the javascript portion of my journey.
+                        Here we have 5 different styles for a native date picker. <br>
+
+                        Aside: I really lucked out because in researching this mini-project I saw that the native date picker was not supported in safari until 2021 :)<br>
+                        Bonus: custom date picking modal :>
+                        <!-- This was somewhat difficult and I'm not sure if its even readable but it works and its re-usable......... I need to refactor it preferable from a function style to a OO style and if I had to guess the design pattern is a observer pattern so that I may import the class and pass that class any set of components/styles and or buttons associated with them.-->
+                    </p>
+                </div>
+                <div class="btn-next">Next Component</div>
+                <div class="btn-prev">Previous Component</div>
+            </div>    
+        </div>
+
+    </section>
+    
+</body>
+</html>

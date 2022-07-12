@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACD,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "../Components/dropdown/team-component.scss"
+    ],
+    "names": [],
+    "file": "team-component.css"
+}

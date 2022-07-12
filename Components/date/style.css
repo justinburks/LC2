@@ -1,0 +1,195 @@
+:root {
+    --b5: rgb(0 0 0 / 16%) 0px 1px 4px;
+    --b6: rgb(0 0 0 / 24%) 0px 3px 8px;
+    --b7: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    --b19: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.date {
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.637);
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  90% 50% no-repeat ;
+}
+::-webkit-datetime-edit { 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    padding: .5em 1.5em; 
+    color: rgba(0, 0, 0, 0.753);
+}
+::-webkit-datetime-edit-fields-wrapper
+
+::-webkit-datetime-edit-text { 
+    padding: 0 .2em;
+    background: rgba(0, 0, 0, 0.918);
+}
+::-webkit-datetime-edit-month-field:focus {
+    background: rgba(0, 0, 0, 0.144);
+    color: rgba(0, 0, 0, 0.849);
+}
+::-webkit-datetime-edit-month-field { 
+    padding: .3em;
+    border-radius: 3px;
+ }
+
+ ::-webkit-datetime-edit-month-field:focus{
+    background: rgba(0, 0, 0, 0.144);
+    color: rgba(0, 0, 0, 0.849);
+ }
+
+::-webkit-datetime-edit-day-field {   
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+::-webkit-datetime-edit-day-field:focus {
+    background: rgba(0, 0, 0, 0.144);
+    color: rgba(0, 0, 0, 0.849);
+}
+
+
+::-webkit-datetime-edit-year-field {     
+    padding: .3em;
+    border-radius: 3px; 
+}
+
+::-webkit-datetime-edit-year-field:focus {
+    background: rgba(0, 0, 0, 0.144);
+    color: rgba(0, 0, 0, 0.849);
+}
+
+::-webkit-inner-spin-button { display: none; }
+
+::-webkit-calendar-picker-indicator { 
+    padding: 0 1em 0 0;
+    opacity: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+* {
+    user-select: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.15;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #54426B;
+}
+.wrapper {
+    box-sizing: border-box;
+    padding: 2em;
+    height: 100%; 
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.example {
+    display: grid;
+    place-content: center;
+}
+.content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+.content h2 {
+    justify-self: center;
+    align-self: center;
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.content .text--wrapper {
+    justify-self: center;
+    align-self: center;
+    grid-row: 2;
+    grid-column: 2;
+    height: 100%;
+    width: 100%;
+    border-radius: 24px;
+    padding:.5em;
+}
+
+.text {
+    line-height: 1.75;
+}
+
+.component {
+    padding: 1.5em;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.15;
+    opacity: 0;
+    z-index: -1;
+    transform: translateY(-15%);
+    font-family: Arial, Helvetica, sans-serif;
+    transform-origin: top center;
+}
+
+.component.open {
+    transition: 300ms ease;
+    opacity: 1;
+    z-index: 1;
+}
+
+
+.btn-next {
+    align-self: start;
+    justify-self: end;
+    grid-row: 3;
+    grid-column: 2;
+    background: coral;
+    border-radius: 14px;
+    padding: 1em 1.5em;
+    box-shadow: var(--b5);
+    transition: 200ms ease;
+    font-weight: 700;
+    letter-spacing: .05ch;
+}
+.btn-prev {
+    align-self: start;
+    justify-self: start;
+    grid-row: 3;
+    grid-column: 2;
+    background: coral;
+    border-radius: 14px;
+    padding: 1em 1.5em;
+    box-shadow: var(--b5);
+    transition: 200ms ease;
+    font-weight: 700;
+    letter-spacing: .05ch;
+}
+
+.btn-next:hover, .btn-prev:hover {
+    box-shadow: var(--b6);
+    transform: translateY(-.25em);
+}

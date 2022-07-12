@@ -1,0 +1,21 @@
+.sub-title {
+  box-sizing: padding-box;
+  font-size: 72px;
+  line-height: 1em;
+  vertical-align: baseline;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+.title-sm {
+  box-sizing: padding-box;
+  font-size: 96px;
+  line-height: 1em;
+}
+
+.title {
+  box-sizing: padding-box;
+  font-size: 176px;
+  line-height: 1;
+}
+/*# sourceMappingURL=epoint.css.map */

@@ -1,0 +1,418 @@
+html, body, .svg-dashboard, .svg-dashboard__search {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: rgba(151, 149, 149, 0.103);
+  overflow: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*.hide, *::before.hide, *::after.hide {
+  display: none;
+}
+
+body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.svg-navigation {
+  display: none;
+  position: relative;
+  width: 250px;
+  height: 80%;
+  align-self: center;
+}
+
+.svg-navigation .search-bar {
+  font-size: 76px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #444;
+  opacity: .5;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.svg-navigation .close {
+  opacity: 0;
+  position: absolute;
+  right: -16px;
+  top: -9px;
+  transform: scale(0.75);
+  cursor: pointer;
+  transition: 75ms ease;
+  pointer-events: none;
+}
+
+.svg-navigation .close.show {
+  pointer-events: all;
+  opacity: .8;
+  z-index: 100000;
+}
+
+.svg-navigation ul {
+  position: relative;
+  padding: 0 16px;
+}
+
+.svg-navigation ul li {
+  display: block;
+  list-style: none;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 24px 0;
+  color: #333;
+  opacity: .8;
+  transition: all 150ms ease;
+}
+
+.svg-navigation ul li:hover {
+  cursor: pointer;
+}
+
+.svg-navigation ul li.hidden {
+  display: none;
+}
+
+.svg-navigation ul li[data-state="active"] {
+  font-size: 36px;
+}
+
+.svg-navigation ul li ul {
+  padding: 0;
+  margin: 0;
+  transition: 200ms ease-in-out;
+}
+
+.svg-navigation ul li ul[data-state="hidden"] {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.svg-navigation ul li ul[data-state="hidden"].hidden {
+  display: none;
+}
+
+.svg-navigation ul li[data-state="show"] {
+  display: block;
+}
+
+.svg-navigation ul li[data-state="show"].visible {
+  transform: translateY(0);
+}
+
+.svg-navigation ul li li {
+  font-size: 18px;
+}
+
+.svg-navigation ul li li:hover {
+  color: rgba(0, 0, 0, 0.179);
+}
+
+ul span.srt {
+  cursor: default;
+  position: absolute;
+  transform: rotate(-90deg);
+  top: 100%;
+  color: rgba(85, 85, 85, 0.0875);
+  left: -30px;
+  font-size: 106px;
+}
+
+.svg-dashboard, .svg-dashboard__search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-self: center;
+  margin: 0 5%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 87%;
+  z-index: 10000;
+  /* overflow-x: hidden; */
+}
+
+.svg-dashboard::-webkit-scrollbar, .svg-dashboard__search::-webkit-scrollbar {
+  display: none;
+}
+
+.svg-dashboard.hide, .svg-dashboard__search.hide {
+  display: none;
+}
+
+.svg-wrapper {
+  cursor: pointer;
+  height: 64px;
+  width: 64px;
+  border: 1px solid rgba(0, 0, 0, 0.179);
+  box-shadow: 0px 0px 8px 1px rgba(128, 128, 128, 0.356);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  margin: 8px;
+  background: #fff;
+  z-index: 2000000;
+}
+
+.svg-wrapper, .svg-wrapper svg {
+  transition: 250ms ease-in-out;
+}
+
+.svg-wrapper[data-size="sm"] {
+  height: 64px;
+  width: 64px;
+}
+
+.svg-wrapper[data-size="sm"] svg {
+  height: 24px;
+  width: 24px;
+}
+
+.svg-wrapper[data-size="md"] {
+  height: 76px;
+  width: 76px;
+}
+
+.svg-wrapper[data-size="md"] svg {
+  height: 36px;
+  width: 36px;
+}
+
+.svg-wrapper[data-size="lg"] {
+  height: 104px;
+  width: 104px;
+}
+
+.svg-wrapper[data-size="lg"] svg {
+  height: 64px;
+  width: 64px;
+}
+
+.svg-interface {
+  display: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  right: 16px;
+  background: #aaa8a8;
+  height: 80%;
+  width: 385px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 0 12px 1px rgba(170, 168, 168, 0.678);
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  z-index: 30000000;
+  margin-bottom: 32px;
+}
+
+.svg-interface .svg-display .svg-wrapper {
+  cursor: default;
+  align-self: center;
+  transform: translate(-4px, 0);
+}
+
+.svg-interface .svg-display {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.svg-interface .tab-left, .svg-interface .tab-right {
+  position: absolute;
+  height: 100%;
+  width: 3em;
+  top: 2px;
+  background-color: rgba(51, 51, 51, 0.0851);
+  display: flex;
+  align-items: center;
+  opacity: .65;
+  border-radius: 14px;
+  padding: 8px;
+  cursor: pointer;
+  transition: 150ms ease-in;
+}
+
+.svg-interface .tab-left:hover, .svg-interface .tab-right:hover {
+  background: rgba(221, 219, 219, 0.68);
+}
+
+.svg-interface .tab-left svg, .svg-interface .tab-right svg {
+  opacity: .9;
+}
+
+.svg-interface .tab-left {
+  left: -18px;
+}
+
+.svg-interface .tab-right {
+  right: -18px;
+}
+
+.svg-interface .svg-description {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-self: center;
+  width: 50%;
+}
+
+.svg-interface .name {
+  display: block;
+  position: relative;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: .89;
+  align-self: flex-start;
+  width: 50%;
+}
+
+.svg-interface .category {
+  position: relative;
+  font-size: 16px;
+  margin-top: 2px;
+  font-family: Arial;
+  opacity: .89;
+  user-select: none;
+  width: 50%;
+  align-self: flex-start;
+}
+
+.svg-interface .sizes {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-interface .sizes button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  background-color: #333;
+  border: 0;
+  color: #fff;
+  margin-top: 18px;
+  margin-left: 8px;
+  margin-bottom: 16px;
+  transition: 150ms ease;
+}
+
+.svg-interface .sizes button:hover {
+  cursor: pointer;
+  background-color: rgba(51, 51, 51, 0.877);
+}
+
+.svg-interface .a2c {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  position: relative;
+  bottom: 0;
+  background: rgba(51, 51, 51, 0.877);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 150ms ease;
+}
+
+.svg-interface .a2c svg {
+  fill: #fff;
+  stroke: #fff;
+  margin-left: 8px;
+  height: 28px;
+  width: 28px;
+}
+
+.svg-interface .a2c:hover {
+  background: #333;
+  cursor: pointer;
+}
+
+.svg-interface .group {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.svg-interface .group .btn-clipboard, .svg-interface .group .btn-save {
+  height: 38px;
+  width: 38px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-radius: 4px 50% 8px 4px;
+  margin: 1px 8px;
+  transition: 150ms ease;
+}
+
+.svg-interface .group .btn-clipboard:hover, .svg-interface .group .btn-save:hover {
+  cursor: pointer;
+  background: rgba(128, 128, 128, 0.16);
+}
+
+.svg-interface .group .btn-clipboard svg, .svg-interface .group .btn-save svg {
+  height: 24px;
+  width: 24px;
+  transform: translate(-2px, 2px);
+}
+
+.svg-interface .btn-close__menu .svg-wrapper[data-name="CLOSE"] {
+  border-radius: 50%;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  height: 36px;
+  width: 36px;
+  background-color: #333;
+}
+
+.svg-interface .btn-close__menu .svg-wrapper[data-name="CLOSE"] svg {
+  height: 16px;
+  width: 16px;
+  fill: #FFF;
+  stroke: #fff;
+}
+
+.svg-interface .btn-close__menu .svg-wrapper[data-name="CLOSE"]:hover {
+  background-color: rgba(51, 51, 51, 0.877);
+}
+
+.svg-interface[data-state="inactive"] {
+  display: none;
+}
+
+@media screen and (min-width: 1300px) {
+  .svg-interface {
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .svg-navigation {
+    display: block;
+  }
+}
+/*# sourceMappingURL=icons.css.map */

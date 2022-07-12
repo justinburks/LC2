@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown</title>
+    <link rel="stylesheet" href="/Assets/sass/css/app.css">
+</head>
+<body>
+    <section class="tableOfContents">
+        <div class="contents__container">
+            <ul class="contents">
+                <li class="page__link" data-tab="Selections" data-page="1">Selections
+                    <button class="dropdown__pointer hidden__menu-pointer"><p>&#9660;</p></button>
+                    <ul class="hidden__menu sub__menu">
+                        <li class="sub-menu" data-tab="MultipleSelection">Multiple Selection</li>
+                        <li class="sub-menu" data-tab="MultipleSearchSelection">Multiple Search Selection</li>
+                        <li class="sub-menu" data-tab="SearchDropdown">Search Dropdown</li>
+                        <li class="sub-menu" data-tab="InMenu">In-Menu</li>
+                        <li class="sub-menu" data-tab="Inline">Inline</li>
+                        <li class="sub-menu" data-tab="Pointing">Pointing</li>
+                        <li class="sub-menu" data-tab="Floating">Floating</li>
+                        <li class="sub-menu" data-tab="Simple">Simple</li>
+                    </ul>
+                </li>
+                <li class="page__link" data-tab="Content" data-page="1">Content
+                    <button class="dropdown__pointer hidden__menu-pointer"><p>&#9660;</p></button>
+                    <ul class="hidden__menu sub__menu">
+                        <li class="sub-menu" data-tab="Header">Header</li>
+                        <li class="sub-menu" data-tab="Divider">Divider</li>
+                        <li class="sub-menu" data-tab="Icon">Icon</li>
+                        <li class="sub-menu" data-tab="Description">Description</li>
+                        <li class="sub-menu" data-tab="Label">Label</li>
+                        <li class="sub-menu" data-tab="Message">Message</li>
+                        <li class="sub-menu" data-tab="Floated Content">Floated Content</li>
+                        <li class="sub-menu" data-tab="Input">Input</li>
+                        <li class="sub-menu" data-tab="Image">Image</li>
+                    </ul>
+                </li>
+                <li class="page__link" data-tab="States" data-page="1">States</li>
+                <li class="page__link" data-tab="Variations" data-page="1">Variations</li>
+                <li class="page__link" data-tab="Bonus" data-page="1">Bonus</li>
+            </ul>
+        </div>
+    </section>
+    <section class="section">
+        <h1>Outline</h1>
+        This module aims to use techniques and ideas expressed in previous modules, by building on foundations with other things
+        I've picked up along the way, noteably from https://material.io/design/environment/elevation.html#elevation-in-material-design
+        <br>
+        <br>
+        I can restructure the way I've organized my box-shadows to establish page heirarchy and elevation while also while leaving room
+        to improve past present and future components with lighting & motion.
+        <br>
+        <br>                     
+        First things first, we need to define several components for various styles of lists that may contain dropdown list.
+        [aside] I thought dropdowns as nav menus however they can be much more dynamic because they can also be inputs to a larger form
+        <br>
+        <br>
+        We will also need to create atleast 3 different ways to animate/show the dropdown list in a re-usable way
+    </section>
+    <section class="section">
+        <h2>TaskList</h2>
+        <ol>
+        <li>Create Several Types of lists</li>
+        <li>Create way to show/hide the list</li>
+        <li>Create ways to indicate the functionality of the list (tickers, warnings, loaders/spinners)</li>
+        <li>Create show/hide animations (mini-library) for each style of list</li>
+        <li>Organize the components in a blog format/template</li>
+        <span><strong>Bonus</strong></span>
+        <li>Create Stripe style dynamic & pageable dropdown menu with multiple nested pages, compents & states</li>
+        </ol>
+        <h2>Pre-Reqs For Completion</h2>
+        <p>
+            <ol>
+                <li>All components are customizable and able to be recreated easily in any situation where font-size/container-size/color/stack-order may be subject to change</li>
+                <li>All components may be created easily with basic [html markup -- scss imported file -- javascript utils to dynamically generate content]</li>
+                <li>Entire page change themes with a simple settings widget/menu to control color from a scss imported file [main, secondary, accent[1,2,3], text-primary, text-secondary, text-accent, text-passive, box-shadow[1,2,3,4,5]</li>
+                <li>All images/icons/svg must come from a separate file that is retrieve by the server svgs must be nested within something that obscures the path or converted to png</li>
+            </ol>
+        </p>
+    </section>
+    <section class="section" data-section="Selections">
+            <section class="content__section">
+                <h2>Selection</h2>
+                <hr>
+                <p>A dropdown allows a user to select a value from a series of options</p>
+                <p>A dropdown can be used to select between choices in a form</p>
+                <p>A selection dropdown can allow a user to search through a large list of choices</p>
+            </section>
+            <section class="sub__section">
+               <span class="dropdown__container">
+                   <span class="dropdown dropdown__default">
+                        <p class="dropdown__name dropdown__name--default">Dropdown</p>
+                        <span class="dropdown__pointer dropdown__pointer--default"><p>&#9660;</p></span>
+                    </span>
+                    <span class="dropdown__list dropdown__list--default">
+                        <ul class="not">
+                            <li>etc</li>
+                            <li>etc</li>
+                            <li>etc</li>
+                            <li>etc</li>
+                        </ul>
+                    </span>
+                </span>
+                <span class="dropdown__container material__dropdown">
+                    <span class="dropdown dropdown__mui">
+                        <p class="dropdown__name dropdown__name--mui">Dropdown</p>
+                        <span class="dropdown__pointer dropdown__pointer--mui"><p>&#9660;</p></span>
+                    </span>
+                    <span class="dropdown__list dropdown__list--mui">
+                        <ul class="not">
+                            <li>etc</li>
+                            <li>etc</li>
+                            <li>etc</li>
+                            <li>etc</li>
+                        </ul>
+                    </span>
+                </span>
+                <span class="dropdown__container semantic__dropdown">
+                    <span class="dropdown dropdown__semantic">
+                        <p class="dropdown__name semantic__name">Dropdown</p>
+                        <span class="dropdown__pointer dropdown__pointer--semantic"><p>&#9660;</p></span>
+                        <span class="dropdown__list dropdown__list--semantic scaled">
+                            <ul class="not">
+                                <li>etc</li>
+                                <li>etc</li>
+                                <li>etc</li>
+                                <li>etc</li>
+                            </ul>
+                        </span>
+                    </span>
+                </span>
+            </section>
+    </section>
+        <section class="section">
+            <section class="content__section">
+            <h3>Multiple Selection</h3>
+            <!-- One large/fs populate input -->
+            <!-- One medium populate sidebar/list -->
+            <!-- One small populate In-Menu/no-container (prompt/button only)-->
+            <hr>
+            <p>A selection dropdown can allow multiple selections</p>
+        </section>
+        <section class="sub__section"  data-section="MultipleSelection">
+            <div class="dropdown__container-lg"> 
+                    <span class="dropdown-lg dropdown__default-lg">
+                        <span class="dropdown__name dropdown__name--default-lg"><span class="placeholder--default">Dropdown</span><span class="name__list--default"></span></span>
+                        <span class="dropdown__pointer dropdown__pointer--default-lg"><p>&#9660;</p></span>
+                        <span class="dropdown__list dropdown__list--default-lg">
+                            <ul>
+                                <li data-value="1">Georgia</li>
+                                <li data-value="2">New York</li>
+                                <li data-value="3">California</li>
+                                <li data-value="4">Hawaii</li>
+                                <li data-value="5">Colorado</li>
+                                <li data-value="6">Florida</li>
+                                <li data-value="7">Louisiana</li>
+                                <li data-value="8">Virginia</li>
+                                <li data-value="9">Maine</li>
+                                <li data-value="10">Maryland</li>
+                                <li data-value="11">North Carolina</li>
+                                <li data-value="12">Nevada</li>
+                                <li data-value="13">Washington</li>
+                                <li data-value="14">Oregon</li>
+                                <li data-value="15">Montana</li>
+                                <li data-value="16">Idaho</li>
+                            </ul>
+                        </span>
+                    </span>
+            </div>
+                <!--
+                    expand this dropdown container to apply a name__list for clicked elements
+                    (maybe a cart modal?)
+                    
+                    create a dropdown within side menu (table of contents)
+
+                    add search selection components [multipleSearchSelection[sm,md,lg], singleSelectionSearch[sm, searchInMenu[default, transparent]]]
+
+            <h3>Multiple Search Selection</h3>
+                <hr>
+                <p>A selection dropdown can allow multiple search selections</p>
+            <h3>Search Dropdown</h3>
+                <hr>
+                <p>A dropdown can be searchable</p>
+                <h3>Search In-Menu</h3>
+                <hr>
+                <p>A dropdown can include a search prompt inside its menu</p>
+                -->
+            </div>
+        </div>
+        </section>
+        <div class="contain dd__container" data-section="MultipleSearchSelection">
+            <div class="dropdown__container-md">
+            <div class="dropdown dropdown-md">
+                <div class="dropdown__name"></div>
+                <div class="dropdown__pointer search__pointer"><p>&#9660;</p></div>
+                <div class="dropdown__list scaled">
+                    <ul>
+                        <li data-value="1">Georgia</li>
+                        <li data-value="2">New York</li>
+                        <li data-value="3">California</li>
+                        <li data-value="4">Hawaii</li>
+                        <li data-value="5">Colorado</li>
+                        <li data-value="6">Florida</li>
+                        <li data-value="7">Louisiana</li>
+                        <li data-value="8">Virginia</li>
+                        <li data-value="9">Maine</li>
+                        <li data-value="10">Maryland</li>
+                        <li data-value="11">North Carolina</li>
+                        <li data-value="12">Nevada</li>
+                        <li data-value="13">Washington</li>
+                        <li data-value="14">Oregon</li>
+                        <li data-value="15">Montana</li>
+                        <li data-value="16">Idaho</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            </div>
+
+        <div class="contain dd__container" data-section="SearchDropdown">
+            <div class="dropdown__container-md">
+                <div class="dropdown dropdown-sm">
+                    <div class="dropdown__name"></div>
+                    <div class="dropdown__pointer search__pointer"><p>&#9660;</p></div>
+                    <div class="dropdown__list scaled">
+                        <ul>
+                            <li data-value="1">Georgia</li>
+                            <li data-value="2">New York</li>
+                            <li data-value="3">California</li>
+                            <li data-value="4">Hawaii</li>
+                            <li data-value="5">Colorado</li>
+                            <li data-value="6">Florida</li>
+                            <li data-value="7">Louisiana</li>
+                            <li data-value="8">Virginia</li>
+                            <li data-value="9">Maine</li>
+                            <li data-value="10">Maryland</li>
+                            <li data-value="11">North Carolina</li>
+                            <li data-value="12">Nevada</li>
+                            <li data-value="13">Washington</li>
+                            <li data-value="14">Oregon</li>
+                            <li data-value="15">Montana</li>
+                            <li data-value="16">Idaho</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contain dd__container" >
+            <div class="dropdown__container-md">
+                <div class="dropdown dropdown-sm">
+                    <div class="dropdown__name"></div>
+                    <div class="dropdown__pointer search__pointer"><p>&#9660;</p></div>
+                    <div class="dropdown__list test scaled In-Menu">
+                        <ul>
+                            <li data-value="1">Georgia</li>
+                            <li data-value="2">New York</li>
+                            <li data-value="3">California</li>
+                            <li data-value="4">Hawaii</li>
+                            <li data-value="5">Colorado</li>
+                            <li data-value="6">Florida</li>
+                            <li data-value="7">Louisiana</li>
+                            <li data-value="8">Virginia</li>
+                            <li data-value="9">Maine</li>
+                            <li data-value="10">Maryland</li>
+                            <li data-value="11">North Carolina</li>
+                            <li data-value="12">Nevada</li>
+                            <li data-value="13">Washington</li>
+                            <li data-value="14">Oregon</li>
+                            <li data-value="15">Montana</li>
+                            <li data-value="16">Idaho</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contain dd__container" data-section="InMenu">
+            <div class="dropdown__container-md">
+                <div class="dropdown dropdown-sm In-Menu">
+                        <div class="dropdown__pointer search__pointer"><p>&#9660;</p></div>
+                            <div class="dropdown__list In-Menu test ">
+                                <div class="dropdown__name"></div>
+                                <div class="divider">Choose a state</div>
+                                <ul>
+                                    <li data-value="1">Georgia</li>
+                                    <li data-value="2">New York</li>
+                                    <li data-value="3">California</li>
+                                    <li data-value="4">Hawaii</li>
+                                    <li data-value="5">Colorado</li>
+                                    <li data-value="6">Florida</li>
+                                    <li data-value="7">Louisiana</li>
+                                    <li data-value="8">Virginia</li>
+                                    <li data-value="9">Maine</li>
+                                    <li data-value="10">Maryland</li>
+                                    <li data-value="11">North Carolina</li>
+                                    <li data-value="12">Nevada</li>
+                                    <li data-value="13">Washington</li>
+                                    <li data-value="14">Oregon</li>
+                                    <li data-value="15">Montana</li>
+                                    <li data-value="16">Idaho</li>
+                                    <!-- <li>red</li>
+                                    <li>green</li>
+                                    <li>blue</li>
+                                    <li>yellow</li>
+                                    <li>purple</li> -->
+                                </ul>
+                            </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="contain dd__container" data-section="Inline">
+            <div class="dropdown__container-md inline">
+                <span class="dropdown__description">Show me post by</span>
+
+                <span class="dropdown__css">
+                    <span class="user__logo">img</span>
+                    <span class="dropdown__item current selected">Jeremy Who</span>
+                    <span class="dropdown__pointer inline"><p>&#9660;</p>
+                    <ul class="dropdown__list--inline">
+                        <li class="dropdown__item deselected">Justin Time</li>
+                        <li class="dropdown__item deselected">Jamie Jones</li>
+                        <li class="dropdown__item deselected">Elroy Davis</li>
+                        <li class="dropdown__item deselected">Madie May</li>
+                        <li class="dropdown__item deselected">Mia Mamma</li>
+                    </ul>
+                </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="contain dd__container" data-section="Pointing">
+                <div class="nav nav__horizontal">
+                    <ul class="nav__list">
+                        <li class="nav__item">Home</li>
+                        <li class="nav__item">Shopping  <p class="nav__pointer horizontal">&#9660;</p>
+                        <div class="nav__menu pointing tiltShift hidden">
+                            <div class="divider">Categories</div>
+                            <ul>
+                                <li>Clothing</li>
+                                <li>Home Goods</li>
+                                <li>Bed Room</li>
+                            </ul>
+                            <div class="divider">Order</div>
+                            <ul>
+                                <li>Status</li>
+                                <li>Cancellations</li>
+                            </ul>
+                        </div>
+                        </li>
+                        <li class="nav__item">Forums</li>
+                        <li class="nav__item">Contact Us</li>
+                    </ul>
+                </div>
+
+                <div class="nav nav__vertical">
+                    <ul class="nav__list">
+                        <li class="nav__item">Home</li>
+                        <li class="nav__item">Messages <p class="nav__pointer vertical">&#9660;</p>
+                        <div class="nav__menu pointing left tiltShiftY hidden">
+                            <ul>
+                                <li>Inbox</li>
+                                <li>Starred</li>
+                                <li>Sent Mail</li>
+                                <li>Drafts</li>
+
+                                <li>Spam</li>
+                                <li>Trash</li>
+                            </ul>
+                        </div>
+                        </li>
+                        <li class="nav__item">Browse</li>
+                        <li class="nav__item">Help</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contain dd__container" data-section="Floating">
+                <div class="dropdown__floating">
+                    <span class="dropdown__css floating">
+                        <span class="dropdown__item current selected">Save</span>
+                        <span class="dropdown__pointer inline floating__pointer"><p>&#9660;</p>
+                        <ul class="dropdown__list--inline dropdown__list--inline-floating">
+                            <li class="dropdown__item deselected">Edit Post</li>
+                            <li class="dropdown__item deselected">Remove Post</li>
+                            <li class="dropdown__item deselected">Hide Post</li>
+        
+                        </ul>
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="contain dd__container" data-section="Simple">
+                <!-- useful for accordians with less javascript? -->
+                <div class="dropdown__simple">
+                    <span class="dropdown__simple-content">Dropdown</span>
+                    <span class="dropdown__pointer dropdown__simple-content--pointer"><p>&#9660;</p></span>
+                    <div class="dropdown__simple-menu">
+                        <ul>
+                            <li>Choice 1</li>
+                            <li>Choice 2</li>
+                            <li>Choice 3</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Add ScrollTo Menu -->
+            <!-- Multiple Selection
+            Multiple Search Selection c
+            Search Dropdown c
+            Search In-Menu c
+            In-Menu
+            Pointing
+            Floating
+            Simple -->
+            <!-- <h2>Selections</h2>
+            <h3>Multiple Search Selection</h3>
+            <hr>
+            <p>A selection dropdown can allow multiple search selections</p>
+            <h3>Search Dropdown</h3>
+            <hr>
+            <p>A dropdown can be searchable</p>
+            <h3>Search In-Menu</h3>
+            <hr>
+            <p>A dropdown can include a search prompt inside its menu</p>
+            <h3>In-Menu</h3>
+            <hr>
+            <p>A dropdown can be formatted to appear In-Menu in other content</p>
+            <h3>Pointing</h3>
+            <hr>
+            <p>A dropdown can be formatted so that its menu is pointing</p>
+            <h3>Floating</h3>
+            <hr>
+            <p>A dropdown menu can appear to be floating below an element</p>
+            <h3>Simple</h3>
+            <hr>
+            <p>A dropdown can open without javascript</p> -->
+    <section class="section section__content" data-section="Content">
+        <h2>Content</h2>
+        <div class="content__container" data-section="Header">
+            <div class="content__header">
+                <!-- Heading Container -->
+                <h3>Header</h3>
+                <span class="section__description">A dropdown menu can contain a header</span>
+            </div>
+            <div class="content__dropdown-container">
+                <!-- Dropdown Element Container -->
+                <div class="content__dropdown basic-sm ddc">
+                    <!-- Actual Dropdown -->
+                    <span class="content__dropdown-pointer">&#9660;</span>
+                    <span class="content__dropdown-placeholder">Filter</span>
+                   
+                    <div class="content__dropdown-menu basic dd">
+                        <div class="menu-header">FILTER BY TAG</div>
+                        <div class="item">Important</div>
+                        <div class="item">Announcement</div>
+                        <div class="item">Discussion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content__container" data-section="Divider">
+            <div class="content__header">
+                <!-- Heading Container -->
+                <h3>Divider</h3>
+                <span class="section__description">A dropdown menu can contain dividers to separate related content</span>
+            </div>
+            <div class="content__dropdown-container">
+                <!-- Dropdown Element Container -->
+                <div class="content__dropdown basic-sm ddc">
+                    <!-- Actual Dropdown -->
+                    <span class="content__dropdown-pointer">&#9660;</span>
+                    <span class="content__dropdown-placeholder">Filter</span>
+                   
+                    <div class="content__dropdown-menu basic dd">
+                        <div class="menu-header">FILTER BY TAG</div>
+                        <div class="menu__divider"></div>
+                        <div class="item">Important</div>
+                        <div class="item">Announcement</div>
+                        <div class="item">Discussion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content__container" data-section="Icon">
+            <div class="content__header">
+                <!-- Heading Container -->
+                <h3>Icon</h3>
+                <span class="section__description">A dropdown menu can contain dividers to separate related content</span>
+            </div>
+            <div class="content__dropdown-container">
+                <!-- Dropdown Element Container -->
+                <div class="content__dropdown basic-sm ddc">
+                    <!-- Actual Dropdown -->
+                    <span class="content__dropdown-pointer">&#9660;</span>
+                    <span class="content__dropdown-placeholder">Filter</span>
+                   
+                    <div class="content__dropdown-menu basic dd">
+                        <div class="menu-header"><i class="icon">&#8492;</i> FILTER BY TAG</div>
+                        <div class="menu__divider"></div>
+                        <div class="item"><i class="icon">&#8492;</i> Important</div>
+                        <div class="item"><i class="icon">&#8492;</i> Announcement</div>
+                        <div class="item"><i class="icon">&#8492;</i> Discussion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content__container" data-section="Description">
+            <div class="content__header">
+                <!-- Heading Container -->
+                <h3>Description</h3>
+                <span class="section__description">A dropdown menu can contain a description.
+                    <br>
+                    Using a description may require setting a minimum width on menu to prevent content overlap
+                </span>
+            </div>
+            <div class="content__dropdown-container">
+                <!-- Dropdown Element Container -->
+                <div class="content__dropdown basic-sm ddc">
+                    <!-- Actual Dropdown -->
+                    <span class="content__dropdown-pointer">&#9660;</span>
+                    <span class="content__dropdown-placeholder">Filter</span>
+                    <div class="content__dropdown-menu basic dd">
+                        <div class="menu-header">FILTER BY TAG</div>
+                        <div class="menu__divider"></div>
+                        <div class="item"><span class="descriptive">Important </span><span class="description__text">2 new</span></div>
+                        <div class="item"><span class="description__text">10 new</span><span class="descriptive">Hopper</span></div>
+                        <div class="item"><span class="descriptive">Discussion </span><span class="description__text">5 new</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="content__container" data-section="Label">
+                <div class="content__header">
+                    <!-- Heading Container -->
+                    <h3>Label</h3>
+                    <span class="section__description">A dropdown menu can contain a label.
+                    </span>
+                </div>
+                <div class="content__dropdown-container">
+                <!-- Dropdown Element Container -->
+                <div class="content__dropdown basic-sm ddc">
+                    <!-- Actual Dropdown -->
+                    <span class="content__dropdown-pointer">&#9660;</span>
+                    <span class="content__dropdown-placeholder labler">Label</span>
+
+                    <div class="content__dropdown-menu basic dd">
+                        <div class="inline-search">
+                            <div class="search__header">Search Issues</div>
+                            <input type="text" placeholder="Search...">
+                        </div>
+                        <div class="menu-header">FILTER BY TAG</div>
+                        <div class="menu__divider"></div>
+                        <div class="item iLabel"><span class="label r"></span><span>Important </span></div>
+                        <div class="item iLabel"><span class="label g"></span><span>Announcement</span></div>
+                        <div class="item iLabel"><span class="label b"></span><span>Discussion </span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="content__container" data-section="Message">
+                <div class="content__header">
+                    <!-- Heading Container -->
+                    <h3>Message</h3>
+                    <span class="section__description">
+                        A dropdown menu can contain a Message.
+                    </span>
+                </div>
+                <div class="content__dropdown-container">
+                <!-- Dropdown Element Container -->
+                <div class="content__dropdown basic-sm ddc">
+                    <!-- Actual Dropdown -->
+                    <span class="content__dropdown-pointer">&#9660;</span>
+                    <span class="content__dropdown-placeholder labler">Message</span>
+
+                    <div class="content__dropdown-menu basic dd message">
+                        <span class="dd_header">Error</span>
+                        <span class="dd_message">You must log-in to see all categories</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content__container big_float" data-section="Floated Content">
+            <div class="content__header">
+                <!-- Heading Container -->
+                <h3>Floated Content</h3>
+                <span class="section__description">
+                    A dropdown menu can contain floated content.
+                    <br>
+                    Floated content may stack to two lines without manually setting a width when or using a fluid dropdown
+                </span>
+            </div>
+            <div class="content__dropdown-container">
+            <!-- Dropdown Element Container -->
+            <div class="content__dropdown basic-sm ddc">
+                <!-- Actual Dropdown -->
+                <span class="content__dropdown-pointer">&#9660;</span>
+                <span class="content__dropdown-placeholder labler">Floated Content</span>
+
+                <div class="content__dropdown-menu basic dd">
+                    <div class="menu-header">FILTER BY TAG</div>
+                    <div class="menu__divider"></div>
+                    <div class="item"><span class="label r"></span><span>Important </span></div>
+                    <div class="item"><span class="label g"></span><span>Announcement</span></div>
+                    <div class="item"><span class="label b"></span><span>Discussion </span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="content__container" data-section="Input">
+                <div class="content__header">
+                    <!-- Heading Container -->
+                    <h3>Input</h3>
+                    <span class="section__description">
+                        A dropdown menu can contain a Input.
+                    </span>
+                </div>
+                <div class="content__dropdown-container">
+                <!-- Dropdown Element Container -->
+                <div class="content__dropdown basic-sm ddc">
+                    <!-- Actual Dropdown -->
+                    <span class="content__dropdown-pointer">&#9660;</span>
+                    <span class="content__dropdown-placeholder labler">Input</span>
+
+                    <div class="content__dropdown-menu basic dd">
+                        <div class="inline-search">
+                            <div class="search__header">Search Issues</div>
+                            <input type="text" placeholder="Search...">
+                        </div>
+                        <div class="menu-header">FILTER BY TAG</div>
+                        <div class="menu__divider"></div>
+                        <div class="item"><span class="label r"></span><span>Important </span></div>
+                        <div class="item"><span class="label g"></span><span>Announcement</span></div>
+                        <div class="item"><span class="label b"></span><span>Discussion </span></div>
+                    </div>
+            </div>
+        </div>
+        <div class="content__container fluid" data-section="Image">
+            <div class="content__header">
+                <h3>Images</h3>
+                <span class="section__description">
+                    A dropdown menu can contain a Images
+                </span>
+            </div>  
+            <div class="content__dropdown-container img__dropdown-container">
+
+            <div class="content__dropdown basic-sm ddc  img__dropdown-container">
+
+                <span class="content__dropdown-pointer">&#9660;</span>
+                <span class="content__dropdown-placeholder labler">Images</span>
+
+                    <div class="content__dropdown-menu basic basic-img dd">
+                        <div class="menu__header">People you might know</div>
+        
+                            <div class="menu__divider"></div>
+
+                            <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/jenny.jpg" alt="" class="avatar image"><span>Jenny</span></div>
+                            <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/elliot.jpg" alt="" class="avatar image">Elliot</div>
+                            <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/stevie.jpg" alt="" class="avatar image">Stevie</div>
+                            <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/matt.jpg" alt="" class="avatar image">Matt</div>
+                            <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/christian.jpg" alt="" class="avatar image">Christian</div>
+                            <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/justen.jpg" alt="" class="avatar image">Justen</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- <hr>
+        <h3>Header</h3>
+        <hr>
+        <p>A dropdown menu can contain a header</p>
+        <h3>Divider</h3>
+        <hr>
+        <p>A dropdown menu can contain dividers to separate related content</p>
+        <h3>Icon</h3>
+        <hr>
+        <p>A dropdown menu can contain an icon</p>
+        <h3>Description </h3>
+        <hr>
+        <p>A dropdown menu can contain a description</p>
+        <h3>Label</h3>
+        <hr>
+        <p>A dropdown menu can contain a label</p>
+        <h3>Message</h3>
+        <hr>
+        <p>A dropdown menu can contain a message</p>
+        <h3>Floated Content</h3>
+        <hr>
+        <p>A dropdown menu can contain floated content</p>
+        <h3>Input</h3>
+        <hr>
+        <p>A dropdown menu can contain an icon</p>
+        <h3>Image</h3>
+        <hr>
+        <p>A dropdown menu can contain an image</p> -->
+
+        <!-- I think I am getting carried away with javascript as I contemplate creating a webcompenent for each element. The project was soley ment to get better with just html/css/scss and javascript is slowing down that learning curve so I will continue with the basic js utilities adding more as I go if and only if neccessary but continue focusing on css then later scss(imports/files/styles/themes) then later javascript(imports/exports/webcomponents/libraries/array methods etc) -->
+    </section>    
+    <section class="section" data-section="States">
+    <h2>States</h2>
+    
+    <div class="content__container">
+        <div class="content__header">
+            <h3>Loading</h3>
+            <span class="section__description">
+                A dropdown can show that it is currently loading data
+            </span>
+            <div class="content__dropdown-container img__dropdown-container">
+
+                <div class="content__dropdown basic-sm ddc disabled" style="pointer-events: none; cursor: pointer">
+    
+                    <span class="content__dropdown-pointer"><i class="loading spinner"></i></span>
+                    <span class="content__dropdown-placeholder labler" style="transform: translateX(32px)">Loading</span>
+    
+                        <div class="content__dropdown-menu basic basic-img dd">
+                            <div class="menu__header">People you might know</div>
+            
+                                <div class="menu__divider"></div>
+    
+                                <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/jenny.jpg" alt="" class="avatar image"><span>Jenny</span></div>
+                                <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/elliot.jpg" alt="" class="avatar image">Elliot</div>
+                                <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/stevie.jpg" alt="" class="avatar image">Stevie</div>
+                                <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/matt.jpg" alt="" class="avatar image">Matt</div>
+                                <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/christian.jpg" alt="" class="avatar image">Christian</div>
+                                <div class="item iLabel av"><img src="http://localhost/dev/lc/Assets/Dropdown_SemanticUI_files/justen.jpg" alt="" class="avatar image">Justen</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <hr>
+    <h3>Error</h3>
+    <hr>
+    <p>An errored dropdown can alert a user to a problem</p>
+    <h3>Active</h3>
+    <hr>
+    <p>An active dropdown has its menu open</p>
+    <h3>Disabled</h3>
+    <hr>
+    <p>A disabled dropdown menu or item does not allow user interaction</p>
+</section>
+<section class="section" data-section="Variations">
+        <h2>Variations</h2>
+        <hr>
+        <h3>Scrolling</h3>
+        <hr>
+        <p>A dropdown can have its menu scroll</p>
+        <h3>Compact</h3>
+        <hr>
+        <p>A compact dropdown has no minimum width</p>
+        <h3>Fluid</h3>
+        <hr>
+        <p>A dropdown can take the full width of its parent</p>
+        <h3>Menu direction</h3>
+        <hr>
+        <p>A dropdown menu or sub-menu can specify the direction it should open</p>
+</section>
+        <section class="section" data-section="Bonus">
+        <h2>Bonus</h2>
+        <h3>Accordian</h3>
+        <h3>Elements Deconstructed/Archetecture</h3>
+        <h3>PCA: Personal Compomponent Archive</h3> <!-- "Driving it home!" Re purposed and designed for personal and practical use-cases --> 
+            <!-- Dropdown Titles/PlaceHolders | Containters | Pointers | Select Menus | Selected Item List | Nested Elements | API intergration? [stateMan/notifications/2way-updates/]-->
+            <!-- So What is a dropdown really? Basically I've found that it is a container to display contextual information in a succinct way.
+                    At first I thought of it as an entire component with a title that hides a menu with a pointers/icons to guide the user through what the menu whats to express
+                    Then I thought of it as just the menu that rest's under said title container
+                    Then I thought of it as a modal that displays information related to the element, that is only displayed when the user deems the content is relevant
+                    Then, looking at all of the different ui elements that exist in the minds of developers & designers I thought what is the difference between a dropdown vs modal/context menu/dialog/tooltip/nav menu/  or anyother related element
+                    and it dawned on me that it may just be the functionality of the element and the information it contains.. so a dropdown is basically the action of obscuring an element and when it is relavent to the context showing said elemnt under the element that identifies it....
+
+                    that said, here is the fundamental archetecture for a dropdown and any functionality it may represent
+                -->
+    </section>
+
+    <!-- FOOTER.PHP? -->
+
+    <p> 
+        VERSION HISTORY / CHANGELOG
+        V1: SEMANTIC CLONE FIRST ITERATION
+            <!--     
+                 The goal is to make these elements as perfect as possible within a reasonable time frame.
+                 Then re-use them across the entire project
+
+                This logic works but its fragile... 
+                
+                problem is, I change the text values to something smaller or larger in size/length, add or remove an element, or re-organize the list order of an element the entire layout is ruined 
+                
+                in favor of re-usablity and a somewhat dry/agile/build once use everywhere point of view this logic is not suitible for a finished project
+
+                refactor the margin - padding - flex positioning - and relative units -- so that the text values may change but (as they will in the case of a web-component or lib component)
+                the positioning of the component layout relative to the entire layout remains intact/succinct
+                the positioning of the text/text elements remain aligned with the entire ui/design style guidelines
+                given a changing text value size and length
+                given the removal and addition of new elements/components of a list/collection of elements/components
+                given the order in which componenets/text elements are organized 
+            
+            -->
+        V2: SEMANTIC CLONE REFACTOR/DESIGN UPGRADE (FINISHED)
+            <!-- 
+                For future elements/pages tighten or refactor the naming conventions & style blocks so that 
+                    all elements created thus far can be expressed consistently and re-used
+                    any positions/colors/sizes/animations that should be tighted can found and fixed quickly
+
+                        ON POSITIONING: block elements (flex/grid/block(maybe inline block?)) always take up 100% of the parent element
+                 Finished Product Must
+                    Look & behave very similar to the semantic ui documentation page
+
+                        Layout/Colors/Shadows/Animation/Functionality/Content(ACAP)
+                        Succinct Pagination
+
+                    Documented as a template
+                    Use Exported Components & Stylesheets that work across several templates
+            -->
+
+        V3: ADDED ROUTES TO OTHER ELEMENT PAGES
+            <!-- 
+                Create a decoupled client-side framework that
+
+                    observes the state of components, pages, and relationships
+                    gets and sets values of various components based on user interaction
+                    notifies the backend of any changes submited by a verified user
+                    submits values to be cleaned and cached by the server 
+                    makes neccesary changes to state based on cached & uncached data
+                    is declaritive and optimaly decoupled
+
+                Create a backend that 
+
+                    is imperative and secure
+                    works locally with a suitable scripting language and/or run-time 
+                    identifies and authenticates various users
+                    communicates with administrators via email,text, and web application about relative activity based on client side factors
+                    communicates with administrators via email,text, and web application about relative activity based on server side factors
+                    manages the state of global site navigation
+                    manages state with components related to general user data
+                    manages state with sensitive user data
+                    manages a ws connection for notifications
+                    manages the relationship between components and how they share data
+                    manages data related to user anaylitics
+            -->
+        V4: REFACTORED FOR WEBCOMPONENTS
+            <!-- 
+                In my first attempt to adopt BEM naming conventions, the resulting class names and class styles became long winded and overly-verbose in my humble opinion
+                Also, the specifity of certain styles are far to high to be altered without a hassle because of this
+
+                To create readable and reausable web components, I believe that it is neccessary to create simpler class names but far more of them based on what I've seen 
+                in the semantic documentation.
+                This requires a deeper understanding of what class does what because of how less declaritive the names could be, however it will be easier to understand
+                by myself and others reading & re-reading the code/documentation because 
+                
+                the style blocks will be much more focused across the entire library of components/elements
+
+                    ex: buttons are positioned this way
+                        buttons with this class are this large 
+                        buttons with this class respond to javascript like so
+                        this element/container inside of a button is positioned this way
+                        by default the child/children of said element/container are styled this way
+
+                allowing any extra behavior/functionality to be targeted easily either globaly or specifically
+
+                    ex: 
+                        
+                        xl heading buttons are styled this way and targeted with js like so
+                        an element inside of an xl ui button is styled like so
+                        while an element inside of a xl article button is style like so
+                        BASE STYLESHEET an item has this much padding a ui item (userInteraction item) has this much padding ADVANCED/SECONDARY STYLESHEET fluid ui item may be responsive in this way and/or animate like so 
+                
+                giving room for 1 liners like font-size: 1rem or color: blue
+
+
+
+                The task is to define a simple/declaritive/intuitive class naming convention that feels much like the cascading nature of the browser/compiler
+                The resulting convention will allow for more dynamic theming and responsive layouts givin user preferences/requirements
+                    because classes and variables can be added, removed, or altered easily with simple, readable, and intuitive js functions that can and should be more verbose or declaritive by nature.?
+
+
+                A finished project personaly recreated for all intents and purposes should have
+                semantic html tags
+                imperative css classes
+                declaritive js functions
+                impertative js objects & classes
+
+             -->
+        V5: FULL PORTFOLIO VERSION
+             <!-- 
+                 
+                 Add Diagrams to visibly describe elements of design
+
+                 Deploy Via
+                    Cloud
+                    Shared Server
+                    Local Area Network
+                    Dedicated Server  
+            -->
+        V6.1: BLOG ADDED/UPDATED
+            <!-- 
+                Create a native blog for the portfolio
+                Create a personal blog for web development
+                Create a personal blog for life in general
+             -->
+        V6.5: ADDED ROUTES TO REALWORLD EXAMPLE ("CAN YOU FIND THE USECASE/ELEMENT")
+             <!-- BACKLINKS -->
+        V7: REACT/VUE/SVELTE REDESIGN
+        BONUS: 
+            REDESIGN WITH SEMANTIC/MATERIAL/CHAKRA
+            Study/Uncover Source code to alter and redesign elements and/or functionality within the library that aren't explicitly expressed
+    </p>
+</body>
+<script src="/Assets/js/dropdown/app.js"></script>
+</html>

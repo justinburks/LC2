@@ -1,0 +1,444 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*
+    $step;
+    $padding-left;
+    $padding-right;
+    $header;
+    $footer;
+*/
+.grid {
+  position: relative;
+  padding: 8px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  gap: 8px;
+  opacity: .5;
+}
+
+.grid .col, .grid .row, .grid .box, .grid .cell, .grid .content, .grid .header, .grid .footer {
+  background: rgba(82, 74, 74, 0.18);
+}
+
+.grid .margin {
+  background: white;
+  z-index: 100;
+}
+
+.grid .padding-left, .grid .padding-right, .grid .pad {
+  background: rgba(194, 83, 83, 0.09);
+}
+
+.grid.show {
+  display: grid;
+}
+
+.manuscript {
+  grid-template-columns: 128px auto 128px;
+  grid-template-rows: 15% auto 5%;
+  gap: 0;
+  padding: 0;
+}
+
+.manuscript .header {
+  grid-column: 1 / 4;
+  grid-row: 1;
+  border-bottom: 1px dotted red;
+}
+
+.manuscript .footer {
+  grid-column: 1 / 4;
+  grid-row: 3;
+  border-top: 1px dotted red;
+}
+
+.manuscript .padding-left {
+  grid-column: 1;
+  grid-row: 1/ 4;
+  border-right: 1px dotted red;
+}
+
+.manuscript .padding-right {
+  grid-column: 3;
+  grid-row: 1 / 4;
+  border-left: 1px dotted red;
+}
+
+.manuscript .margin-tl {
+  grid-column: 1;
+  grid-row: 1;
+  border-right: 1px dotted red;
+  border-bottom: 1px dotted red;
+}
+
+.manuscript .margin-tr {
+  grid-column: 3;
+  grid-row: 1;
+  border-left: 1px dotted red;
+  border-bottom: 1px dotted red;
+}
+
+.manuscript .margin-bl {
+  grid-column: 1;
+  grid-row: 3;
+  border-right: 1px dotted red;
+  border-top: 1px dotted red;
+}
+
+.manuscript .margin-br {
+  grid-column: 3;
+  grid-row: 3;
+  border-left: 1px dotted red;
+  border-top: 1px dotted red;
+}
+
+.grid.two-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid.two-col .col-1 {
+  grid-column: 1 / 2;
+}
+
+.grid.two-col .col-2 {
+  grid-column: 2 / 3;
+}
+
+.grid.three-col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid.three-col .col-1 {
+  grid-column: 1 / 2;
+}
+
+.grid.three-col .col-2 {
+  grid-column: 2 / 3;
+}
+
+.grid.three-col .col-3 {
+  grid-column: 3 / 4;
+}
+
+.grid.fo-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid.fo-col .col-1 {
+  grid-column: 1 / 2;
+}
+
+.grid.fo-col .col-2 {
+  grid-column: 2 / 3;
+}
+
+.grid.fo-col .col-3 {
+  grid-column: 3 / 4;
+}
+
+.grid.fo-col .col-4 {
+  grid-column: 4 / 5;
+}
+
+.grid.six-col {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.grid.six-col .col-1 {
+  grid-column: 1 / 2;
+}
+
+.grid.six-col .col-2 {
+  grid-column: 2 / 3;
+}
+
+.grid.six-col .col-3 {
+  grid-column: 3 / 4;
+}
+
+.grid.six-col .col-4 {
+  grid-column: 4 / 5;
+}
+
+.grid.six-col .col-5 {
+  grid-column: 5 / 6;
+}
+
+.grid.six-col .col-6 {
+  grid-column: 6 / 7;
+}
+
+.grid.eight-col {
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.grid.eight-col .col-1 {
+  grid-column: 1 / 2;
+}
+
+.grid.eight-col .col-2 {
+  grid-column: 2 / 3;
+}
+
+.grid.eight-col .col-3 {
+  grid-column: 3 / 4;
+}
+
+.grid.eight-col .col-4 {
+  grid-column: 4 / 5;
+}
+
+.grid.eight-col .col-5 {
+  grid-column: 5 / 6;
+}
+
+.grid.eight-col .col-6 {
+  grid-column: 6 / 7;
+}
+
+.grid.eight-col .col-7 {
+  grid-column: 7 / 8;
+}
+
+.grid.eight-col .col-8 {
+  grid-column: 8 / 9;
+}
+
+.grid.twelve-col {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.grid.twelve-col .col-1 {
+  grid-column: 1 / 2;
+}
+
+.grid.twelve-col .col-2 {
+  grid-column: 2 / 3;
+}
+
+.grid.twelve-col .col-3 {
+  grid-column: 3 / 4;
+}
+
+.grid.twelve-col .col-4 {
+  grid-column: 4 / 5;
+}
+
+.grid.twelve-col .col-5 {
+  grid-column: 5 / 6;
+}
+
+.grid.twelve-col .col-6 {
+  grid-column: 6 / 7;
+}
+
+.grid.twelve-col .col-7 {
+  grid-column: 7 / 8;
+}
+
+.grid.twelve-col .col-8 {
+  grid-column: 8 / 9;
+}
+
+.grid.twelve-col .col-9 {
+  grid-column: 9 / 10;
+}
+
+.grid.twelve-col .col-10 {
+  grid-column: 10 / 11;
+}
+
+.grid.twelve-col .col-11 {
+  grid-column: 11 / 12;
+}
+
+.grid.twelve-col .col-12 {
+  grid-column: 12 / 13;
+}
+
+.eShape {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a b" "a c";
+}
+
+.eShape .a {
+  grid-area: a;
+}
+
+.eShape .b {
+  grid-area: b;
+}
+
+.eShape .c {
+  grid-area: c;
+}
+
+.tShape {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a a" "b c";
+}
+
+.tShape .a {
+  grid-area: a;
+}
+
+.tShape .b {
+  grid-area: b;
+}
+
+.tShape .c {
+  grid-area: c;
+}
+
+.lShape-l {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "b b a" "b b a" "c c c";
+}
+
+.lShape-l .a {
+  grid-area: a;
+}
+
+.lShape-l .b {
+  grid-area: b;
+}
+
+.lShape-l .c {
+  grid-area: c;
+}
+
+.lShape-r {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "a a b" "a a b" "c c c";
+}
+
+.lShape-r .a {
+  grid-area: a;
+}
+
+.lShape-r .b {
+  grid-area: b;
+}
+
+.lShape-r .c {
+  grid-area: c;
+}
+
+.slider {
+  grid-template-rows: 15% auto 15%;
+  grid-template-areas: "header header header" "slider slider slider" "footer footer footer";
+}
+
+.slider .a {
+  grid-area: header;
+}
+
+.slider .b {
+  grid-area: slider;
+}
+
+.slider .c {
+  grid-area: footer;
+}
+
+.fourSquare {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a b" "c d";
+}
+
+.fivePan {
+  grid-template-areas: "col main main col" "col main main col" "col subA subB col" "col subA subB col";
+}
+
+.fivePanUI {
+  grid-template-columns: 40px 1fr 1fr 1fr 40px;
+  grid-template-rows: 15% 1fr 2fr;
+  grid-template-areas: "pad-l header header header pad-r" "pad-l boxA boxB boxC pad-r" "pad-l main main main pad-r";
+}
+
+.fivePanUI .header {
+  grid-area: header;
+}
+
+.fivePanUI .a {
+  grid-area: boxA;
+}
+
+.fivePanUI .b {
+  grid-area: boxB;
+}
+
+.fivePanUI .c {
+  grid-area: boxC;
+}
+
+.fivePanUI .col-l {
+  grid-area: pad-l;
+}
+
+.fivePanUI .col-r {
+  grid-area: pad-r;
+}
+
+.fivePanUI .ui {
+  grid-area: main;
+}
+
+.golden {
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas: "a a e e e e" "a a e e e e" "b c e e e e" "b d e e e e";
+}
+
+.golden .a {
+  grid-area: a;
+}
+
+.golden .b {
+  grid-area: b;
+}
+
+.golden .c {
+  grid-area: c;
+}
+
+.golden .d {
+  grid-area: d;
+}
+
+.golden .e {
+  grid-area: e;
+}
+
+.slider {
+  grid-template-areas: "header header header" "slider slider slider" "footer footer footer";
+}
+
+.ninePan {
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: 2fr 1fr 2fr;
+  grid-template-areas: "aa ab ac" "ba bb bc" "ca cb cc";
+}
+
+.sixteenPan {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas: "aa ab ac ad" "ba bb bc bd" "ca cb cc cd" "da db dc dd";
+}
+/*# sourceMappingURL=gridspace.css.map */

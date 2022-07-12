@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog ScratchPad</title>
+    <style>
+        :root {
+            --stackIndex0: 1px 1px 30px 10px rgba(0, 0, 0, 0.181);
+
+        }
+        html,body,h2 {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        .cont {
+            height: 100%;
+            width: 100%;
+            display: grid;
+            place-content: center center;
+        }
+        .delete {
+            box-sizing: border-box;
+            padding: 1em;
+            position: relative; 
+            height: 300px;
+            width: 250px;
+            background-color: rgb(18, 18, 18);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16));
+            box-shadow: rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px;
+            display: grid;
+            grid-template-rows: 1fr 2fr 1fr;
+            border-radius: 50px;
+            /* box-shadow: var(--stackIndex0); */
+        }
+
+        .component::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: 0%;
+            bottom: 0;
+            height: 90%;
+            width: 90%;
+            background: transparent;
+            border-radius: 50px;
+            box-shadow: var(--stackIndex0);
+        }
+
+
+
+        .button--container {
+            position: relative;
+            display: flex;
+            grid-row: 3;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .button--container button {
+            outline: none;
+            border: 0;
+            border-radius: 1em;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.045em;
+            font-weight: 200;
+            background: transparent;
+        }
+
+        .btn-rounded {
+            box-sizing: border-box;
+            padding: .5em 1.6em;
+        }
+
+        .btn-rounded:nth-of-type(1) {
+            background: coral;
+            color: black;
+        }
+
+        .btn-rounded:nth-of-type(1):hover {
+            background-image: linear-gradient(rgba(228, 112, 70, 0.74), rgba(231, 115, 73, 0.74));
+        }
+        .btn-rounded:nth-of-type(2) {
+            background: black;
+            color: white;
+        }
+
+        .btn-rounded:nth-of-type(2):hover {
+            background-image: linear-gradient(rgba(44, 44, 44, 0.808), rgba(44, 44, 44, 0.808));
+        }
+
+        .button--container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 2.5%;
+            width: 95%;
+            height: 1px;
+            top: 100;
+            background: rgba(245, 245, 245, 0.404);
+            border-radius: 50%;
+
+        }
+
+        .delete h2 {
+            padding: 1em 1em;
+            grid-row: 1;
+            color: rgb(255, 255, 255);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        
+        .delete p {
+            padding: .5em .75em;
+            grid-row: 2;
+            color: rgb(255, 255, 255);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: .9em;
+            font-weight: 500;
+            letter-spacing: .2ch;
+            line-height: 1.75em;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="component dialog__binary dialog__binary--delete delete">
+            <!-- Short -->
+            <h2>Delete Account</h2>
+            <p>Are you sure you want to delete asdfghjkl@gmail.com?</p>
+            <div class="button--container">
+                <button class="btn-rounded"><span>Delete</span></button>
+                <button class="btn-rounded"><span>Cancel</span></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- <div class="component dialog__binary dialog__binary--delete-verbose">
+    Verbose
+    <h2>This will completely wipe the info FOREVER</h2>
+    <div class="button--container">
+        <button>Delete Anyway</button>
+        <button>Wait NO GO BACK</button>
+    </div>
+</div>
+<div class="component dialog__binary dialog__binary--edit">
+    Long
+    <h2>Long Form Review</h2>
+    <p>Some info to review for update could be anything like a comment/post paragraph email or some other long form content to be scrolled</p>
+    <div class="button--container">
+        <button>Delete Anyway</button>
+        <button>Wait NO GO BACK</button>
+    </div>
+</div>
+<div class="component dialog__binary dialog__binary--delete dialog__binary--dbl">
+    Double Check
+    <h2>This will completely wipe the info FOREVER</h2>
+    <div class="button--container">
+        <button>Delete Anyway</button>
+        <button>Wait NO GO BACK</button>
+    </div>
+</div>
+<div class="component">
+    <h2>Enable Feature?</h2>
+    <p>This feature will do something so allow me to explain what it does so that you may accurately choose to enable or disable it....</p>
+    <div class="button--container">
+        <button>Enable</button>
+        <button>Disable</button>
+    </div>
+</div> -->

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Assets/sass/css/gridGallery.css">
+</head>
+<body>
+
+    <!-- domain.com/shop -->
+
+    <div class="main">
+        <!-- Main Wrapper -->
+        <div class="head">
+
+            <!-- 
+                *** on scroll condense menu to collapse negative whitespace
+             -->
+            <!-- 
+                Logo/Navigation
+                Tools/Links
+                Gallery Titles
+             -->
+             <div class="navigation">
+                 <div class="logo">
+                     <!-- icon -->
+                     <!--
+                         **** on click route -> domain.com/home
+                      -->
+                      <span>TBvillage</span>
+                 </div>
+                 <div class="menu sb">
+                     <!-- Text -->
+                     <!-- Icon -->
+                    <span class="txt">Menu</span>
+                    <div class="icon">^</div>
+                     <!-- 
+                        First
+                            *** on click expand head section to cover half the page
+                            *** fade out tools section
+                                *** fade in white overlay (head section)
+                                *** translate hidden menu to 50%  (fullpage menu translated up)
+                            *** translate title left to top corner
+                        Then 
+                            *** fadein search bar
+                            *** fadein category sections
+
+                        ifDeselected
+                            *** fade in white overlay (hidden menu)
+                            *** compress hidden menu
+                            *** fade out white overlay (head section)
+                      -->     
+                 </div>
+                 <div class="cart">
+                     <!-- Text -->
+                     <!-- Icon -->
+                     <!-- Hidden Menu -->
+
+                     <!-- 
+                         First 
+                            *** fade in white overlay (fullpage,dim) 
+                         Then
+                            *** if main menu is expanded -> collapse
+                         Then   
+                            *** translate left hidden menu
+                         Then
+                            *** renderCloseButton
+                            *** renderLoaders
+                         Then
+                            *** renderState
+                      -->
+                      <span>CART(0)</span>
+                 </div>
+             </div>
+
+             <div class="titles">
+                 <!-- matching title -->
+                 <span class="title" data-category="all" data-role="title" data-anime="softFade">All Pieces</span>
+             </div>
+             <div class="tools sb">
+                <!-- sorting tools -->
+                <div class="nav-filter">
+                    <!-- Text -->
+                    <!-- Icon -->
+                    <span>Filters</span>
+                    <span>*</span>
+                </div>
+                <div class="sorting-tools sb">
+                    <div class="search-filter">
+                        <!-- Text -->
+                        <!-- Icon -->
+                        <span>Search</span>
+                        <span>i</span>
+                    </div>
+                    <div class="sortby">
+                        <!-- Text -->
+                        <!-- Icon -->
+                        <!-- Dropdown -->
+                        <span>Sort By</span>
+                        <span>^</span>
+                    </div>
+                </div>
+             </div>
+        </div>
+        <div class="sidebar">
+            <!-- 
+                Categories w/icon
+             -->
+             <span class="title" data-category="all" data-layout="sidebar" data-role="title" data-anime="rollup">
+                 <!-- Text Hidden Close Button -->
+                All peices
+            </span>
+             <ul class="categories">
+                 <!-- 
+                    *if list element is selected
+                        first
+                            concurrent
+                                ***fadeout every text icon combo
+                                ***rotate down arrow on center axis to reveal x
+                                ***slide selected components x into place (ifSelectedFromClosedState) || fadeOutDeselected -> fadeInSelected
+                                        *** slide x up then popup x in title section
+                        then
+                            concurrent
+                            ***expandMenu
+                                ***ifMenuItem is selected -> filterfade/sort loaded compontents
+                            ***fadein sub list ifSelectedFromClosedState || sort sublist        
+                        then
+                            concurrent
+                            ***fadein/out titles
+                            ***fadein/out components || loaders || messages
+                 -->                     
+                 <li class="sb">
+                    <!-- tab/dropdown combo -->
+                    <!-- text/icon -->
+                    <!-- dropdown -->
+                    <span class="txt">Seating</span>
+                    <span class="icon dropdown" data-role="expandButton"></span>
+                    <div class="subMenu dropdown">
+                        <ul>
+                            <li>Arm Chair</li>
+                            <li>Benches</li>
+                            <li>Chairs</li>
+                            <li>Stools</li>
+                            <li>Sofas</li>
+                            <li>All Seating</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sb">
+                    <!-- tab/dropdown combo -->
+                    <!-- text/icon -->
+                    <!-- dropdown -->
+                    <span class="txt">Lighting</span>
+                    <span class="icon dropdown" data-role="expandButton"></span>
+                    <div class="subMenu dropdown">
+                        <ul>
+                            <li>Ceiling Lamps</li>
+                            <li>Chandeliers</li>
+                            <li>Floor Lamps</li>
+                            <li>Table Lamps</li>
+                            <li>Wall Lamps</li>
+                            <li>All Lighting</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sb">
+                    <!-- tab/dropdown combo -->
+                    <!-- text/icon -->
+                    <!-- dropdown -->
+                    <span class="txt">Decor</span>
+                    <span class="icon dropdown" data-role="expandButton"></span>
+                    <div class="subMenu dropdown">
+                        <ul>
+                            <li>Rugs and Carpets</li>
+                            <li>Wall Decorations</li>
+                            <li>Mirrors</li>
+                            <li>Objects</li>
+                            <li>Vases</li>
+                            <li>All Decor</li>
+                        </ul>
+                    </div>
+                </li>
+                 <li class="sb">
+                    <!-- tab/dropdown combo -->
+                    <!-- text/icon -->
+                    <!-- dropdown -->
+                    <span class="txt">Storage</span>
+                    <span class="icon dropdown" data-role="expandButton"></span>
+                    <div class="subMenu dropdown">
+                        <ul>
+                            <li>Cabinets</li>
+                            <li>Screens and Space Dividers</li>
+                            <li>Shelves</li>
+                            <li>All Storage</li>
+                        </ul>
+                    </div>
+                </li>
+                 <li class="sb">
+                    <!-- tab/dropdown combo -->
+                    <!-- text/icon -->
+                    <!-- dropdown -->
+                    <span class="txt">Tables</span>
+                    <span class="icon dropdown" data-role="expandButton"></span>
+                    <div class="subMenu dropdown">
+                        <ul>
+                            <li>Coffee Tables</li>
+                            <li>Desks</li>
+                            <li>Dining Tables</li>
+                            <li>Side Tables</li>
+                            <li>Consoles</li>
+                            <li>All Tables</li>
+                        </ul>
+                    </div>
+                </li>
+                 <li class="sb">
+                    <!-- tab/dropdown combo -->
+                    <!-- text/icon -->
+                    <!-- dropdown -->
+                    <span class="txt">Tableware</span>
+                    <span class="icon dropdown" data-role="expandButton"></span>
+                    <div class="subMenu dropdown">
+                        <ul>
+                            <li>Bowls</li>
+                            <li>All Tableware</li>
+                        </ul>
+                    </div>
+                </li>
+             </ul>
+        </div> 
+        <div class="gallery">
+            <!-- 18card / infinite scroll -->
+            <div class="item-wrapper">
+                <!-- wrapper - border - image - description -->
+                <!-- 
+                    *** on hover expand to obscure border
+                    *** on click show full image view
+                 -->
+                 <div class="image">
+                     <!-- border/image -->
+                     <img src="https://www.lakgallery.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7ovaqeih%2Fproduction%2F2bbeeb27056893c370a07054c005b82891123e53-3731x2636.jpg%3Fw%3D750&w=1920&q=100" alt="">
+                 </div>
+                 <div class="description">
+                     <span>
+                         <!-- title -->
+                         Spina B5
+                     </span>
+                     <span>
+                         <!-- artist credit -->
+                         by Portego
+                     </span>
+                     <span>
+                         <!-- price -->
+                         $5,000
+                     </span>
+                 </div>
+            </div>
+            <div class="item-wrapper">
+                <!-- wrapper - border - image - description -->
+                <!-- 
+                    *** on hover expand to obscure border
+                    *** on click show full image view
+                 -->
+                 <div class="image">
+                     <!-- border/image -->
+                     <img src="https://www.lakgallery.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7ovaqeih%2Fproduction%2F2bbeeb27056893c370a07054c005b82891123e53-3731x2636.jpg%3Fw%3D750&w=1920&q=100" alt="">
+                 </div>
+                 <div class="description">
+                     <span>
+                         <!-- title -->
+                         Spina B5
+                     </span>
+                     <span>
+                         <!-- artist credit -->
+                         by Portego
+                     </span>
+                     <span>
+                         <!-- price -->
+                         $5,000
+                     </span>
+                 </div>
+            </div>
+            <div class="item-wrapper">
+                <!-- wrapper - border - image - description -->
+                <!-- 
+                    *** on hover expand to obscure border
+                    *** on click show full image view
+                 -->
+                 <div class="image">
+                     <!-- border/image -->
+                     <img src="https://www.lakgallery.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7ovaqeih%2Fproduction%2F2bbeeb27056893c370a07054c005b82891123e53-3731x2636.jpg%3Fw%3D750&w=1920&q=100" alt="">
+                 </div>
+                 <div class="description">
+                     <span>
+                         <!-- title -->
+                         Spina B5
+                     </span>
+                     <span>
+                         <!-- artist credit -->
+                         by Portego
+                     </span>
+                     <span>
+                         <!-- price -->
+                         $5,000
+                     </span>
+                 </div>
+            </div>
+            <div class="item-wrapper">
+                <!-- wrapper - border - image - description -->
+                <!-- 
+                    *** on hover expand to obscure border
+                    *** on click show full image view
+                 -->
+                 <div class="image">
+                     <!-- border/image -->
+                     <img src="https://www.lakgallery.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7ovaqeih%2Fproduction%2F2bbeeb27056893c370a07054c005b82891123e53-3731x2636.jpg%3Fw%3D750&w=1920&q=100" alt="">
+                 </div>
+                 <div class="description">
+                     <span>
+                         <!-- title -->
+                         Spina B5
+                     </span>
+                     <span>
+                         <!-- artist credit -->
+                         by Portego
+                     </span>
+                     <span>
+                         <!-- price -->
+                         $5,000
+                     </span>
+                 </div>
+            </div>
+            <div class="item-wrapper">
+                <!-- wrapper - border - image - description -->
+                <!-- 
+                    *** on hover expand to obscure border
+                    *** on click show full image view
+                 -->
+                 <div class="image">
+                     <!-- border/image -->
+                     <img src="https://www.lakgallery.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7ovaqeih%2Fproduction%2F2bbeeb27056893c370a07054c005b82891123e53-3731x2636.jpg%3Fw%3D750&w=1920&q=100" alt="">
+                 </div>
+                 <div class="description">
+                     <span>
+                         <!-- title -->
+                         Spina B5
+                     </span>
+                     <span>
+                         <!-- artist credit -->
+                         by Portego
+                     </span>
+                     <span>
+                         <!-- price -->
+                         $5,000
+                     </span>
+                 </div>
+            </div>
+            <div class="item-wrapper">
+                <!-- wrapper - border - image - description -->
+                <!-- 
+                    *** on hover expand to obscure border
+                    *** on click show full image view
+                 -->
+                 <div class="image">
+                     <!-- border/image -->
+                     <img src="https://www.lakgallery.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7ovaqeih%2Fproduction%2F2bbeeb27056893c370a07054c005b82891123e53-3731x2636.jpg%3Fw%3D750&w=1920&q=100" alt="">
+                 </div>
+                 <div class="description">
+                     <span>
+                         <!-- title -->
+                         Spina B5
+                     </span>
+                     <span>
+                         <!-- artist credit -->
+                         by Portego
+                     </span>
+                     <span>
+                         <!-- price -->
+                         $5,000
+                     </span>
+                 </div>
+            </div>
+            <div class="item-wrapper">
+                <!-- wrapper - border - image - description -->
+                <!-- 
+                    *** on hover expand to obscure border
+                    *** on click show full image view
+                 -->
+                 <div class="image">
+                     <!-- border/image -->
+                     <img src="https://www.lakgallery.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7ovaqeih%2Fproduction%2F2bbeeb27056893c370a07054c005b82891123e53-3731x2636.jpg%3Fw%3D750&w=1920&q=100" alt="">
+                 </div>
+                 <div class="description">
+                     <span>
+                         <!-- title -->
+                         Spina B5
+                     </span>
+                     <span>
+                         <!-- artist credit -->
+                         by Portego
+                     </span>
+                     <span>
+                         <!-- price -->
+                         $5,000
+                     </span>
+                 </div>
+            </div>
+            <div class="item-wrapper">
+                <!-- wrapper - border - image - description -->
+                <!-- 
+                    *** on hover expand to obscure border
+                    *** on click show full image view
+                 -->
+                 <div class="image">
+                     <!-- border/image -->
+                     <img src="https://www.lakgallery.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F7ovaqeih%2Fproduction%2F2bbeeb27056893c370a07054c005b82891123e53-3731x2636.jpg%3Fw%3D750&w=1920&q=100" alt="">
+                 </div>
+                 <div class="description">
+                     <span>
+                         <!-- title -->
+                         Spina B5
+                     </span>
+                     <span>
+                         <!-- artist credit -->
+                         by Portego
+                     </span>
+                     <span>
+                         <!-- price -->
+                         $5,000
+                     </span>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <footer>    
+        <span>yo</span>
+    </footer>
+</body>
+
+<!-- 
+    <script>
+        // Sorting Algorithm
+
+        // Sorting Class
+
+        KeyFrame 
+                        (component,animation,timing) 
+                            {
+                                Anime Object
+                                (function,style,bezier) // bezier == linked ? animeLink : use bezier
+                                    {
+                                        animeLink(active,passive) {
+                                            // returns length,start,finish times of linked components to animate
+                                            start: activeTransition/start, passiveTransition/start
+                                            end: active/end, passive/end
+                                        }
+                                    }
+                                sortList (translate, slide, fade) {
+                                    if selected -> bezier = smoooth/linear
+                                    if deselected -> bezier = smooth/throttleDown
+                                    
+                                    close ? @end fadeIn(unselected)
+                                } 
+                                overlayOpacity (bezier) {
+                                    dim -> opacity,bezier
+                                    obscure -> opacity,bezier
+                                    reveal -> opacity,bezier
+                                }
+                            }
+                     Events
+                        (emitter(component),...args)
+                            {   
+                                Listener Object
+                                
+                                checkState: if previewReady -> ready = true
+                                getState: checkComponentList() -> setCurrentComponentList
+                                renderState: ready ? renderComponents : renderLoader
+                                updatePosition: setComponentLayout()
+                                checkSelected: ifClosed -> setState(all) : setState(selected)
+                                checkState: getState(state)
+                            }
+                    
+                    Animation (smooth translate - bezier)
+                    ifSelected change position to $topOfList
+
+                    ifDeselected change position to $originalPosition
+                        {
+                            checkSelected: ifClosed -> setState(all) : setState(selected) 
+                            getState()
+                            renderState() -> ready ? renderComponents : renderLoader
+                            updatePosition() -> setComponentLayout
+                        }
+                    onResize fade out -> calculatePosition -> checkState -> updatePostion -> fadeIn
+    </script> 
+-->
+</html>

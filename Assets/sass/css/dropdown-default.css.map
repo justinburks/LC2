@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../main/5-components/darkTheme/dropdowns/dropdown-default.scss"
+    ],
+    "names": [],
+    "file": "dropdown-default.css"
+}

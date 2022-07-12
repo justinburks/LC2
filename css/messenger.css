@@ -1,0 +1,211 @@
+body {
+  overflow-x: hidden;
+}
+
+.messenger-header {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(116, 114, 114, 0.11);
+}
+
+.tabs {
+  display: none;
+}
+
+.search-bar {
+  display: flex;
+  height: 35px;
+  min-width: 315px;
+  background: #ececec;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.028), 0px 0px 1px 1px rgba(0, 0, 0, 0.068);
+  box-sizing: border-box;
+  padding: .25em 0;
+}
+
+.search-bar .search-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 1px;
+  padding: inherit;
+  height: 35px;
+  width: 35px;
+  fill: rgba(0, 0, 0, 0.484);
+}
+
+.search-bar input {
+  flex-grow: 1;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+.search-bar input::placeholder {
+  color: rgba(0, 0, 0, 0.384);
+}
+
+.search-bar .filter {
+  padding: 0 0 0 1em;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.094);
+  height: 100%;
+  color: rgba(0, 0, 0, 0.584);
+  font-size: 14px;
+}
+
+.search-bar .filter .dropdown-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 .25em 0 0;
+  color: rgba(0, 0, 0, 0.484);
+  transform: scale(0.7);
+  height: 100%;
+  width: 35px;
+}
+
+.messenger-tools {
+  display: flex;
+  margin-right: 2em;
+  min-width: calc(20*4px);
+  flex-wrap: nowrap;
+}
+
+.messenger-tools > div {
+  margin: 0 .75em;
+}
+
+.notifications-dropdown {
+  user-select: none;
+  position: absolute;
+  right: 32px;
+  top: 68px;
+  width: 50ch;
+  background: inherit;
+  border-radius: 8px;
+  box-shadow: 0px 10px 50px -15px rgba(0, 0, 0, 0.156), 0px 3px 3px 1px rgba(0, 0, 0, 0.052), 0px 5px 5px -10px rgba(0, 0, 0, 0.052);
+}
+
+.notifications-dropdown ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.notifications-dropdown ul li {
+  box-sizing: border-box;
+  padding: 1px 1em;
+}
+
+.notifications-dropdown ul li .content {
+  box-sizing: inherit;
+  padding: 1em;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid rgba(180, 177, 177, 0.3);
+}
+
+.notifications-dropdown ul li:last-child .content {
+  border: 0;
+}
+
+.notifications-dropdown .header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  min-height: 64px;
+  width: 100%;
+  box-shadow: 0px 2px 2px -1px rgba(0, 0, 0, 0.137), 0px 2px 2px -1px rgba(0, 0, 0, 0.0837);
+}
+
+.notifications-dropdown .header .header-head {
+  padding: 1.5em .5em 1em 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notifications-dropdown .header .notification-tabs {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: .75em;
+}
+
+.notifications-dropdown .header .notification-tabs .settings {
+  position: absolute;
+  right: 8px;
+}
+
+.notifications-dropdown .header .notification-tabs .tab {
+  position: relative;
+}
+
+.notifications-dropdown .header .notification-tabs .tab::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: black;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: 250ms ease-in-out;
+}
+
+.notifications-dropdown .header .notification-tabs .tab:hover::after {
+  transform: scaleX(1);
+}
+
+.notifications-dropdown .header .notification-tabs .tab, .notifications-dropdown .header .notification-tabs .settings {
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.notifications-dropdown .header .notification-tabs .tab .new, .notifications-dropdown .header .notification-tabs .settings .new {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 12px;
+  padding: .82em .75em .75em .75em;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin: 0 0 0 .5em;
+  transform: scaleY(0.95);
+}
+
+.notifications-dropdown .header .dropdown-title {
+  font-size: 24px;
+  font-weight: 200;
+  align-self: flex-end;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+.notifications-dropdown .header .reset {
+  font-size: 12px;
+  text-decoration: underline;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/*# sourceMappingURL=messenger.css.map */

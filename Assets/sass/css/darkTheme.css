@@ -1,0 +1,133 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle closest-corner at center 125px, #222222, black 40%) no-repeat;
+}
+
+.darkTheme-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.darkTheme-nav .navbar-container {
+  width: 100%;
+}
+
+.darkTheme-nav .navbar-container nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 5%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.nav-logo {
+  position: absolute;
+  left: 32px;
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  border-radius: 8px;
+}
+
+.nav-logo img {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+}
+
+.searchBar {
+  height: 45px;
+  width: 300px;
+  position: absolute;
+  right: 200px;
+  background: rgba(255, 255, 255, 0.089);
+  border-radius: 16px;
+}
+
+.searchBar input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  color: white;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  border-radius: inherit;
+  padding: 0 2em;
+  caret-color: rgba(255, 255, 255, 0.189);
+}
+
+.toolbar {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: absolute;
+  right: 32px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.toolbar div {
+  margin: 0 8px;
+  height: 32px;
+  width: 32px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.089);
+}
+
+ul {
+  list-style: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+}
+
+ul li {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 1em;
+  margin: 0 16px;
+  border-radius: 8px;
+}
+
+ul li:hover {
+  background: rgba(255, 255, 255, 0.044);
+}
+
+ul li.button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: .25em 1.5em;
+  background: #4834f7e1;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+/*# sourceMappingURL=darkTheme.css.map */

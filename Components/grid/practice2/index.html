@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseline</title>
+    <style>
+        html,body {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            overflow: hidden;
+            background: whtie;
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            line-height: 1.1em;
+            margin-bottom: 22px;
+            width: max-content;
+            border: 1px solid red;
+    
+        }
+
+        p {
+            font-size: .875em;
+            line-height: 1.5714857142857em;
+            margin-bottom: 22px;
+            border: 1px solid red;
+            /* width: max-content; */
+        }
+
+        .canvas,.whiteboard {
+            position: absolute;
+            height: 840px;
+            width: 1248px;
+            background: white;
+            margin: calc((920px - 840px) / 2) calc((100% - 1248px) / 2); 
+            display: flex;
+            flex-direction: column;
+            opacity: .3;
+            z-index: 100;
+        }
+
+        .canvas {
+            pointer-events: none;
+        }
+
+        .whiteboard {
+            z-index: 50;
+            background: transparent;
+            opacity: 1;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+        }
+
+            .title-section {
+                grid-column: 1 / 5;
+                grid-row: 1 / 5;
+                background: #ccc;
+            }
+            .sub-title-section {
+                grid-column: 1 / 5;
+                grid-row: 5 / 9;
+            }
+            .font-section {
+                grid-column: 5 / 9;
+                grid-row: 1 / 5;
+            }
+            .color-section {
+                grid-column: 5 / 9;
+                grid-row: 5 / 9;
+                background: #ccc;
+            }
+
+            .sub-title-section {
+                display: grid;
+                grid-template-columns: repeat(1fr);
+            }
+
+        .textbox {
+            position: relative;
+            /* position: absolute; */
+                /* left: 20%; */
+                color: red;
+                /* width: max-content; */
+        }
+
+        .title {
+                box-sizing: padding-box;
+                font-size: 172px;
+                line-height: 1;
+                /* top: 60%; */
+                padding-bottom: 8px;
+                padding-top: 8px;
+                /* margin-top: 1px; */
+        }
+        .title::after {
+            content: "";
+            position: absolute;
+            top: calc(100% - 4px);
+            left: 0;
+            width: 100%;
+            height: 4px;
+            z-index: 1000;
+        }
+
+        .title-sm {
+                box-sizing: padding-box;
+                font-size: 96px;
+                line-height: 1em;
+                /* top: 43%; */
+        }
+
+        .sub-title {
+            box-sizing: padding-box;
+            /* position: absolute; */
+            /* top: 23.3%; */
+            /* left: 20%; */
+            color: red;
+            font-size: 72px;
+            background: #ccc;
+            line-height: 72px;
+            vertical-align: baseline;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            /* margin-top: 1px; */
+        }
+
+        .heading {
+            margin-left: 42%;
+            padding-top: 2px;
+            /* background-color: black; */
+            box-sizing: border-box;
+            font-size: 40px;
+            line-height: 48px;
+            font-weight: bolder;
+        }
+            .box {
+                background: white;
+                /* border: 1px solid rgba(248, 2, 2, 0.947); */
+                height: 16px;
+                width: 100%;
+                display: flex;
+            }
+            .innerBox {
+                position: relative;
+                border: 1px solid rgba(0, 0, 0, 0.781);
+                width: 16px;
+            }
+        
+        .test {
+            height: 420px;
+            width: 624px;
+            background: rebeccapurple;
+            justify-self: end;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="grid-wrapper">
+        <!-- 
+            highlight row/column feature
+
+
+            $mobileSmall: 320; // old phone
+            $mobile: 375; // newer phone
+            $mobileLarge: 768; // large phone / tablet
+
+            $tablet: 960;
+            
+            $laptopMedium: 1440; // 15"
+            $laptopLarge: 1728; // 18"
+            $laptop: 1248; //13" 
+
+            $desktopSmall: 1360;
+            $desktop: 1920; // average xl desktop
+            $desktopWide: 2560; // widescreen/4k
+            
+
+            $canvasWidth: $desktop; // [mobile[320, 375, 412], tablet[600, 768, 960], desktop[1248, 1360, 1440,1920]]
+            $canvasHeight: 720px; // [ mobile | s | md | lg ] = [632 | 720 | 840 | 1024]
+            
+            
+            $marginX: calc(($windowHeight - $canvasHeight / 2));
+            $marginY: calc(($windowWidth - $canvasWidth / 2));
+
+            $baseline: 8px; 8/.5 10/.625
+            $step: .5rem;
+            $margin: 1rem
+            $gap: $baseline;
+
+
+            $scale: ; [tinyType: 10/16, type[16/24], sub-heading[24/32], heading[40/48], sub-title[72/80], title-sm[96/96], title[176/176]
+
+            $lineHeight: ; []
+
+            margin: $marginX $marginY;
+
+            grid-columns: 6;
+            grid-rows: 7; 
+            
+
+            .row {
+                span: 100%;
+                border-defined;
+                display: grid;
+                grid-template-rows: repeat(auto-fill, $baseline);
+                grid-template-rows: repeat(6, 1fr);
+            }
+         -->
+    </div>
+    <div class="whiteboard">
+        <div class="title-section">
+            <div class="title textbox">Title</div>
+            <div class="title-sm textbox">Small Title</div>
+            <div class="sub-title textbox">Design Sub Title </div>
+        </div>
+        <div class="subtitle-section"></div>
+        <div class="font-section"></div>
+        <div class="color-section">
+            <div class="heading textbox">COLOR</div>
+        </div>
+    </div>
+    <div class="canvas"></div>
+
+    <script>
+
+        const wrappers = [...document.querySelectorAll('.wrapper')];
+        const columns = [...document.querySelectorAll('.box')];
+        const rows = [...document.querySelectorAll('.box')];
+        const canvas = document.querySelector('.canvas');
+
+        // pixel || baseline
+        function constructGrid(parentEl, points) {
+
+            let newGrid = {
+                height: parentEl.clientHeight,
+                width: parentEl.clientWidth,
+                numberOfRows: function() {
+                    return parentEl.clientHeight / points
+                },
+                numberOfCols: function() {
+                    return parentEl.clientWidth / points
+                },
+                render: renderGrid = function() {
+                    const rows = appendMultipleElements(newGrid.numberOfRows(), parentEl, ['div','box']);
+                    console.log(rows)
+                    appendMultipleElementsToMultipleElements(rows, newGrid.numberOfCols(), ['div','innerBox']); 
+                    return true; 
+                }   
+            }
+            console.log(newGrid)
+            return newGrid;
+        }
+        
+        function appendMultipleElements(numberofElements, parentEl, options = ['div','box']) {
+            // arr = []
+            console.log(numberofElements);
+            for (let i = 0; i <= numberofElements; i++) {
+                let newElement = createNewElement(`${options[0]}`,`${options[1]}`);
+                parentEl.appendChild(newElement);
+            }
+            // return parentEl;
+            return [...parentEl.children];
+            //  return arr;
+        }
+        
+        function createNewElement(type = 'div', cls = false, classlist = []) {
+            const element = document.createElement(`${type}`);
+            if (cls) {
+                element.classList.add(`${cls}`);
+                // or throw error
+            }
+            if (classlist.length > 0) {
+                element.classList.add(...classlist);
+                // or throw error
+            }
+            return element;
+        }
+
+        function appendMultipleElementsToMultipleElements (list, numberofElements, args) {
+             list.forEach(el => appendMultipleElements(numberofElements,el,args));
+         }
+
+        const epointGrid = constructGrid(canvas, 8);
+        epointGrid.render();
+
+    </script>
+</body>
+</html>

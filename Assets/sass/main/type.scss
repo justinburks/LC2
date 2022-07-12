@@ -1,0 +1,45 @@
+// import project colorscheme here
+    // txt-color--main
+    // txt-color--sub
+    // txt-color--accent
+
+
+// default typescale (major-third)
+$main-copy: 16px;
+$sm-copy: 14px;
+$header-sub: 20px;
+$header: 25px;
+$header-lg: 31px;
+$header-xl: 39px;
+$title: 49px;
+$title-lg: 62px;
+$title-xl: 76px;
+
+@mixin typeScale($family, $subFamily: $family, $scale) {
+    // @use $scale;
+    // import color;
+    html {
+        font-family: $family;
+        color: $txt-color--main;
+        font-size: 16px;
+    }
+
+    .body-copy {
+        font: {
+            family: $family;
+            size: 16px;
+            weight: 400;
+            color: inherit;
+        }
+    }
+
+    .small-copy {
+        font: {
+            family: $family;
+        }
+    }
+}
+
+.body-copy {
+
+}
