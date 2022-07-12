@@ -1,8 +1,10 @@
 // GET DATA
 // RETURN DATA/CLASS
 // EXPORT TO CONTROLLER
+let list = [];
+let model;
 
-export class SvgModel {
+class SvgModel {
     constructor(list) {
         this.elements = list
         let ref = this.elements;
@@ -132,213 +134,20 @@ export class SvgModel {
     }
 }
 
-// export const model = new SvgModel(icons,createIconObject);
-// console.log(createFragment(mainIndex,'dashboard'));
-// console.log(sortedByNameFragment(mainIndex,'dashboardByName'));
-// console.log(categories);
+fetch('data.json')
+        .then((res) => { return res.json()})
+        .then((data) => {
+            data.forEach(el => {
+                list.push(el)
+            })
+        return list;
+        })
+        .then(list => {model = new SvgModel(list); return model})
+        .then(model => {
+            // console.log(model)
+            model.build();
+            model.buildTabs();
+            return;
+        })
 
-
-    // CLASS REFACTOR //
-    
-/*
-
-    SVG Model Interface 
-
-        Instance Properties =>  {
-
-            mainIndex: {
-                indexes: {
-                    main: []
-                    byName: []
-                    byDate: []
-                    mostUsed: []
-                }
-                fragments: {
-
-                }
-                state: {
-                    wrapper: string
-                    elements: []
-                    elementCount: int
-                    stackTrace: [root => parent => parentSiblings[] => siblings[]]
-                    currentState: [visible,hidden]
-                }
-            }
-            
-            Categories: {
-                weather: {
-                    indexes: {
-                        main: []
-                        byName: []
-                        byDate: []
-                        mostUsed: []
-                    }
-                    fragments: {
-                        
-                    }
-                    state: {
-                        wrapper: string
-                        elements: []
-                        elementCount: int
-                        stackTrace: [root => parent => parentSiblings[] => siblings[]]
-                        currentState: [visible,hidden]
-                    }
-                }
-                arrows: {
-                    indexes: {
-                        main: []
-                        byName: []
-                        byDate: []
-                        mostUsed: []
-                    }
-                    fragments: {
-                        
-                    }
-                    state: {
-                        wrapper: string
-                        elements: []
-                        elementCount: int
-                        stackTrace: [root => parent => parentSiblings[] => siblings[]]
-                        currentState: [visible,hidden]
-                    }
-                }
-                software: {
-                    indexes: {
-                        main: []
-                        byName: []
-                        byDate: []
-                        mostUsed: []
-                    }
-                    fragments: {
-                        
-                    }
-                    state: {
-                        wrapper: string
-                        elements: []
-                        elementCount: int
-                        stackTrace: [root => parent => parentSiblings[] => siblings[]]
-                        currentState: [visible,hidden]
-                    }
-                }
-            
-            Collections: {
-                mostUsed: {
-                    indexes: {
-                        main: []
-                        byName: []
-                        byDate: []
-                        mostUsed: []
-                    }
-                    fragments: {
-                        
-                    }
-                    state: {
-                        wrapper: string
-                        elements: []
-                        elementCount: int
-                        stackTrace: [root => parent => parentSiblings[] => siblings[]]
-                        currentState: [visible,hidden]
-                    }
-                }
-                newProject: {
-                    indexes: {
-                        main: []
-                        byName: []
-                        byDate: []
-                        mostUsed: []
-                    }
-                    fragments: {
-                        
-                    }
-                    state: {
-                        wrapper: string
-                        elements: []
-                        elementCount: int
-                        stackTrace: [root => parent => parentSiblings[] => siblings[]]
-                        currentState: [visible,hidden]
-                    }
-                }
-                project2: {
-                    indexes: {
-                        main: []
-                        byName: []
-                        byDate: []
-                        mostUsed: []
-                    }
-                    fragments: {
-                        
-                    }
-                    state: {
-                        wrapper: string
-                        elements: []
-                        elementCount: int
-                        stackTrace: [root => parent => parentSiblings[] => siblings[]]
-                        next: wrapper.nextElementSibling
-                        prev: wrapper.previousElementSibling
-                        currentState: [visible,hidden]
-                    }
-                }
-        }
-*/
-
-/*
-        Instance Methods
-    
-    Sort Index => {
-        // accept object->index && method 
-                --> pass object->index to method
-                    --> return sorted copy to controller
-        byName => {}
-        byDate => {}
-        byMostUsed => {}
-    }
-
-    Read Index => {
-        append elements from array into wrapper
-        return fragment to controller when called
-            ?? or should you just return appropriate index and let the controller build fragments and elements
-    }
-
-    Update Index(s) => {
-        removeElement(s) => {
-            // remove all instances from entire document
-            // remove all instances from entire model
-        }
-        insertElement(s) => {
-            // push element to main index
-            // instertElementAt(corresponding index(s))
-        }
-        insertElementAt => {
-            // push to corresponding index(s)
-            // index.sort(
-                .splice(
-                    .insertBefore()
-                    )
-                )
-        }
-        removeElementFrom => {
-            document.remove(from)
-            index = index.filter(
-            )
-        }
-    }
-
-*/
-// const icons = document.querySelectorAll('.svg-dashboard .svg-wrapper');
-
-// let createIconObject = function(element) {
-//     let icon = {};
-//     icon.markup = element.innerHTML;
-//     icon.name = element.dataset.name.replaceAll('_', ' ').toLowerCase();
-//     icon.category = element.dataset.category.replaceAll('_', ' ');
-//     icon.createIcon = function() {
-//         let el = document.createElement('div');
-//         el.dataset.category = this.category;
-//         el.dataset.name = this.name;
-//         el.dataset.role = 'svgWrapper';
-//         el.innerHTML = icon.markup;
-//         return el;
-//     }
-
-//     return [icon.name,icon.category,icon]
-// }
+export { model };
