@@ -202,11 +202,15 @@ class Controls {
 
 
 }
+
 function q(str){
     return document.querySelector(str)
 }
 function qa(str){
     return document.querySelectorAll(str)
+}
+function test(){
+    
 }
 
     // DASHBOARD INTERFACE
