@@ -1,5 +1,5 @@
 
-import { model } from './model.js';
+import { model } from './js/model.js';
 // import { widget,menu,dashboard } from './controller.js';
 
 
