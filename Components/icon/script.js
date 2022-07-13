@@ -1,5 +1,4 @@
-
-import { model } from './js/model.js';
+import { Model } from './js/model.js';
 // import { widget,menu,dashboard } from './controller.js';
 
 
@@ -33,24 +32,24 @@ function changeDisplaySize(sz) {
 }
 
 document.querySelector('.tab-right').addEventListener('click', () => {
-    nextEl(model.clickedElement);
+    nextEl(Model.clickedElement);
 })
 document.querySelector('.tab-left').addEventListener('click', () => {
-    prevEl(model.clickedElement);
+    prevEl(Model.clickedElement);
 })
 
 function nextEl(){
-    console.log(model.clickedElement)
-    if (model.clickedElement === undefined) {
-        model.clickedElement = document.querySelector('.svg-dashboard').firstElementChild;
+    console.log(Model.clickedElement)
+    if (Model.clickedElement === undefined) {
+        Model.clickedElement = document.querySelector('.svg-dashboard').firstElementChild;
     }
-    if (model.clickedElement.nextElementSibling === null) {
-        model.clickedElement = model.clickedElement.parentElement.firstElementChild
+    if (Model.clickedElement.nextElementSibling === null) {
+        Model.clickedElement = Model.clickedElement.parentElement.firstElementChild
     }
-    let el = model.clickedElement.nextElementSibling;
+    let el = Model.clickedElement.nextElementSibling;
     // observer.lastElementClicked
     let ref = el.dataset.mainId;
-    let elref = model.elements[ref];
+    let elref = Model.elements[ref];
     const html = el.innerHTML;
     const displayName = elref[0].toString().replaceAll('_', ' ').toLowerCase();
     const displayCategory = elref[1].toString().replaceAll('_', ' ');
@@ -58,22 +57,22 @@ function nextEl(){
     document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
     document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
     document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
-    model.clickedElement = el;
+    Model.clickedElement = el;
     console.log(el)
 };
 
 function prevEl(){
-    // console.log(model.clickedElement)
-    if (model.clickedElement === undefined) {
-        model.clickedElement = document.querySelector('.svg-dashboard').lastElementChild;
+    // console.log(Model.clickedElement)
+    if (Model.clickedElement === undefined) {
+        Model.clickedElement = document.querySelector('.svg-dashboard').lastElementChild;
     }
-    if (model.clickedElement.nextElementSibling === null) {
-        model.clickedElement = model.clickedElement.parentElement.lastElementChild
+    if (Model.clickedElement.nextElementSibling === null) {
+        Model.clickedElement = Model.clickedElement.parentElement.lastElementChild
     }
-    let el = model.clickedElement.previousElementSibling;
+    let el = Model.clickedElement.previousElementSibling;
     // observer.lastElementClicked
     let ref = el.dataset.mainId;
-    let elref = model.elements[ref];
+    let elref = Model.elements[ref];
     const html = el.innerHTML;
     const displayName = elref[0].replaceAll('_', ' ').toLowerCase();
     const displayCategory = elref[1].replaceAll('_', ' ');
@@ -81,17 +80,17 @@ function prevEl(){
     document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
     document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
     document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
-    model.clickedElement = el;
+    Model.clickedElement = el;
 };
 
 // generator function to repeat
 document.querySelector('.svg-display span.name').addEventListener('click', () => {
     // replace span with input
-    let ref = model.clickedElement.dataset.mainId;
-    let elref = model.elements[ref];
+    let ref = Model.clickedElement.dataset.mainId;
+    let elref = Model.elements[ref];
     console.log(elref[0]);
     let defaultState = document.querySelector('.svg-display span.name').innerHTML;
-    let elementIndex = model.elements[ref];
+    let elementIndex = Model.elements[ref];
     document.querySelector('.svg-display .name').innerHTML = `<input type="text">`;
     document.querySelector('.svg-display input').addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
@@ -167,10 +166,10 @@ searchbar.addEventListener('keydown', () => {
     searchDashboard.innerHTML = '';
     const txt = searchbar.value;
     const reggie = new RegExp(txt);
-    const tmpArr = model.elements
+    const tmpArr = Model.elements
         .filter(el => el[0].match(reggie))
             .map(el => { 
-                let ele = model.createIcon(el[2])
+                let ele = Model.createIcon(el[2])
                 searchDashboard.append(ele)
             })
 
@@ -178,6 +177,8 @@ searchbar.addEventListener('keydown', () => {
             toggleDashboards();
         }
 })
+
+// add click outside modal instead of blur
 
 searchbar.addEventListener('blur', () => {
     toggleDashboards();
@@ -195,13 +196,14 @@ searchbar.addEventListener('focus', () => {
     searchDashboard.innerHTML = '';
     const txt = searchbar.value;
     const reggie = new RegExp(txt);
-    const tmpArr = model.elements
+    const tmpArr = Model.elements
     // implement as hashmap for performance
     .filter(el => el[0].match(reggie))
     .map(el => { 
-        let ele = model.createIcon(el[2])
-        searchDashboard.append(ele)
+        let ele = Model.createIcon(el[2]);
+        ele.addEventListener('click')
+        searchDashboard.append(ele);
     })
 })
 
-console.log(model)
+console.log(Model)

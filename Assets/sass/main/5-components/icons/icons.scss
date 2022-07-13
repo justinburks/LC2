@@ -38,8 +38,21 @@ body {
             background-color: transparent;
             border: 0;
             outline: 0;
+
         }
 
+        // .svg-search {
+        //     &::after {
+        //         content: "";
+        //         position: absolute;
+        //         top: -18px;
+        //         left: 125%;
+        //         background: black;
+        //         height: 108%;
+        //         width: 300%;
+        //         z-index: 100;
+        //     }
+        // }
         .close {
             opacity: 0;
             position: absolute;

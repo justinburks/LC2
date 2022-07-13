@@ -8,101 +8,62 @@
 // only interaction with model is updating the main index(s) when adding/editing/removing/moving/copying elements
 // or maybe export a class that extends the model
 // create iterators and generators to tab through the application
+// import {Model} from './model'
 
-function q(str){
-    return document.querySelector(str)
-}
-function qa(str){
-    return document.querySelectorAll(str)
-}
-    // PREVIEW INTERFACE
-const display = function(){
-    return {
+// controller.hello();
+
+class Controls {
+    constructor(referenceToModel,referenceToObserverObject) {
+        // MODEL
+        this.model = referenceToModel;
+        // STATE
+        this.state = referenceToObserverObject;
         // SELECTORS
-        wrapper: document.querySelector('.svg-interface'),
-        defaultState: document.querySelector('.svg-interface').outerHTML,
-        name: document.querySelector('.svg-interface .svg-description .name'),
-        category: document.querySelector('.svg-interface .svg-description .category'),
-            // ICON
-        iContainer: document.querySelector('.svg-interface .svg-display'), // REWRITE AS FUNCTION THAT RETURNS CURRENT ELEMENT
-        iWrapper: document.querySelector('.svg-display .svg-wrapper'),  // OR AN OBJECT/GENERATOR THAT RETURNS [PREV/NEXT/CURRENT]
-        icon: document.querySelector('.svg-display .svg-wrapper svg'),           
-            // COPY/SAVE
-        btnCopy: document.querySelector('.svg-interface .svg-map .btn-clipboard'),
-        btnSave: document.querySelector('.svg-interface .svg-map .btn-save'),
-            // ADD TO COLLECTION
-        a2c: document.querySelector('.svg-interface .svg-map .a2c'),
-            // NAVIGATION
-        btnClose: document.querySelector('.svg-interface .btn-close__menu'),
-        btnNext: null,
-        btnPrev: null,
-            // SIZES
-        btnSm: document.querySelector('.svg-interface .sizes .small-button'),
-        btnMd: document.querySelector('.svg-interface .sizes .medium-button'),
-        btnLg: document.querySelector('.svg-interface .sizes .large-button'),
-        btnSz: document.querySelector('.svg-interface .sizes .custom--size-button'),
-
-        // NAVIGATION FUNCTIONS
-        nextEl(nxt){
-
-        },
-        prevEl(prv){
-
-        },
-        closeInterface(state){
-
-        },
-        // EDIT FUNCTIONS
-        editName: function(inp){
-            // take user input
-                // click --> show input sillouette --> value = textcontent -->
-                // firstKeyDown --> value = ''
-            // rewrite name
-                // on enter --> save name
-            // asynchronously sort/insert/move element position
-
-            // WHERE X < N && X > N-1 
-            // INSERT BEFORE N.ELEMENT 
-                // MAY NEED TO REFACTOR DATASTRUCTURE FOR PERFOMANCE? or CREATE BINARY SEARCH ALGORITHM
-                // OR MAYBE PUSH THEN RE-SORT ON COMMAND? 
-            
-        },
-        editCategory: function(inp){
-            // take user input
-            // rewrite category [attribute]
-            // asynchronously sort/insert/move element to appropriate category
-        },
-        editSize: function(inp){
-
-        },
-        addToCollection: function(el){
-            // open category selection interface
-            // on select/unselect remove from collection(s) [index]
-            // rewrite/add collection [attribute]
+        this.display = {
+            wrapper: document.querySelector('.svg-interface'),
+            defaultState: function() {
+                let html = document.querySelector('.svg-interface').outerHTML;
+                return html;
+            },
+            name: document.querySelector('.svg-interface .svg-description .name'),
+            category: document.querySelector('.svg-interface .svg-description .category'),
+                // ICON
+            iContainer: document.querySelector('.svg-interface .svg-display'),
+            // creates a new execution context in case element changes
+            iWrapper: function() {
+                let el = document.querySelector('.svg-display .svg-wrapper')
+                return el;
+            },  // OR AN OBJECT/GENERATOR THAT RETURNS [PREV/NEXT/CURRENT]
+            icon: function() {
+                let el = document.querySelector('.svg-display .svg-wrapper svg');
+                return el;
+            },           
+                // COPY/SAVE
+            btnCopy: document.querySelector('.svg-interface .svg-map .btn-clipboard'),
+            btnSave: document.querySelector('.svg-interface .svg-map .btn-save'),
+                // ADD TO COLLECTION
+            a2c: document.querySelector('.svg-interface .svg-map .a2c'),
+                // NAVIGATION
+            btnClose: document.querySelector('.svg-interface .btn-close__menu'),
+            btnNext: null,
+            btnPrev: null,
+                // SIZES
+            btnSm: document.querySelector('.svg-interface .sizes .small-button'),
+            btnMd: document.querySelector('.svg-interface .sizes .medium-button'),
+            btnLg: document.querySelector('.svg-interface .sizes .large-button'),
+            btnSz: document.querySelector('.svg-interface .sizes .custom--size-button'),
         }
-    }
-}();
-
-
-
-    // SIDEBAR NAVIGATION
-const sidebar = function(){
-    return {
-        // SEARCH WRAPPER
-        searchBarWrapper: document.querySelector('.svg-search'),
-
-        // SEARCH INPUT
-        searchBar: document.querySelector('.svg-search .search-bar'),
-        // SEARCH OUTPUT
-        searchDashBoard: document.querySelector('.svg-dashboard__search'),
-        // CLEAR
-        emptySearchBar: function (){
-            document.querySelector('.svg-search .searchBar').value = '';
-            return null;
+        this.sidebar = {
+            searchBarWrapper: document.querySelector('.svg-search'),
+            // SEARCH INPUT
+            searchBar: document.querySelector('.svg-search .search-bar'),
+            // SEARCH OUTPUT
+            searchDashBoard: document.querySelector('.svg-dashboard__search'),
+            // CLEAR
         },
-
+        
         // MENU OBJECT
-        menu: {
+        this.menu = {
             // MAIN MENU
             mainMenu: null,
             // MAIN DASHBOARD MENU ITEM
@@ -140,44 +101,123 @@ const sidebar = function(){
                 }
             },
         },
-
-        // MENU FUNCTIONALITY
-        // STATIC METHODS?
-        nextTab: function(nxt){
-
-        },
-        prevTab: function(prv){
-
-        },
-        nextSection: function(nxt){
-
-        },
-        prevSection: function(prv){
-
-        },
+        this.wrapper = document.querySelector('.svg-dashboard');
     }
-}();
+    // PREVIEW INTERFACE METHODS
+    nextPreviewElement(nxt){
+
+    }
+    prevPreviewElement(prv){
+
+    }
+    closePreviewInterface(state){
+
+    }
+        // EDIT FUNCTIONS
+    editPreviewName(inp){
+        // take user input
+            // click --> show input sillouette --> value = textcontent -->
+            // firstKeyDown --> value = ''
+        // rewrite name
+            // on enter --> save name
+        // asynchronously sort/insert/move element position
+
+        // WHERE X < N && X > N-1 
+        // INSERT BEFORE N.ELEMENT 
+            // MAY NEED TO REFACTOR DATASTRUCTURE FOR PERFOMANCE? or CREATE BINARY SEARCH ALGORITHM
+            // OR MAYBE PUSH THEN RE-SORT ON COMMAND? 
+    }
+    editPreviewCategory(inp){
+        // take user input
+        // rewrite category [attribute]
+        // asynchronously sort/insert/move element to appropriate category
+    }
+    editPreviewElementSize(inp){
+
+    }
+    addPreviewElementToCollection(el){
+        // open category selection interface
+        // on select/unselect remove from collection(s) [index]
+        // rewrite/add collection [attribute]
+    }
+    addElementToPreview(html,displayName,displayCategory,props) {
+        this.display.iWrapper.innerHTML = html;
+        this.display.name.innerText = displayName;
+        this.display.category.innerText = displayCategory;
+        this.display.iWrapper.dataset.size="lg";
+        console.log('controller updating widget' + '..... Name: ' + displayName + ', Category: ' + displayCategory);
+        console.log(`props = ${props}`)
+        return props
+    }
+    // SIDEBAR METHODS
+    emptySearchBar(){
+        document.querySelector('.svg-search .searchBar').value = '';
+        return null;
+    }
+    buildSearchBarDashboard(){
+
+    }
+    showSearchBarDashBoard() {
+
+    }
+
+    // NAVIGATION METHODS
+    nextCategory(nxt){
+
+    }
+    prevCategory(prv){
+
+    }
+    nextCollection(){
+
+    }
+    prevCollection(){
+
+    }
+    // All --> Collections --> Categories
+    nextSection(nxt){
+
+    }
+    prevSection(prv){
+
+    }
+
+    // DASHBOARD METHODS
+    scrollToTopOfDashboard(){
+        return document.querySelector('.svg-dashboard').scrollTo(0,0);
+    }
+    scrollToBottomOfDashboard(){
+        let dashboardHeight = document.querySelector('.svg-dashboard').scrollHeight;
+        return document.querySelector('.svg-dashboard').scrollTo(0,dashboardHeight);
+    }
+    sortDashboardByName(arr,direction){
+
+    }
+    sortDashboardByDate(arr,format){
+
+    }
+    sortDashboardByMostUsed(arr,indexOfCount){
+
+    }
+
+
+}
+function q(str){
+    return document.querySelector(str)
+}
+function qa(str){
+    return document.querySelectorAll(str)
+}
 
     // DASHBOARD INTERFACE
-const dashboard = function(){
+const observer = function() {
     return {
-        // MAIN WRAPPER
-        wrapper: document.querySelector('.svg-dashboard'),
-        // SCROLL TO
-        top: function(){
-            return document.querySelector('.svg-dashboard').scrollTo(0,0);
-        },
-        bottom: function(){
-            return document.querySelector('.svg-dashboard').scrollTo(0,document.querySelector('.svg-dashboard').scrollHeight);
-        },
-        // SORT MENU
-        sortMenu: document.querySelector('.sort-menu'),
-        // SHOW/HIDE SCROLLBAR
-        // scrollBar: null,
-        // scrollGutter: null,
-        // thumb: null,
-        
-        // STATE
+        // get
+            // set
+                // return
+
+        // STATE [menu --> dashboard --> display]
+        lastElementClicked: model.clickedElement,
         currentTab: function(){
             console.log(document.querySelector('.svg-dashboard').dataset.tab)
         },
@@ -192,33 +232,14 @@ const dashboard = function(){
         btnNext: null,
         btnBack: null,
 
-        // SORT METHODS
-        byName: function(){
-
-        },
-        byDate: function(ref){
-
-        },
-        byMostUsed: function(){
-
-        },
-    }
-}();
-
-const observer = function() {
-    return {
-        // get
-            // set
-                // return
-
-        // STATE [menu --> dashboard --> display]
-        lastElementClicked: model.clickedElement,
     }
 }
 
-const controller = function() {
-    return {
-        // COORDINATE
-        // MAKE IT MAKE SENSE!
-    }
-}
+// const controller = function() {
+//     return {
+//         // COORDINATE
+//         // MAKE IT MAKE SENSE!
+//     }
+// }
+
+export {Controls}

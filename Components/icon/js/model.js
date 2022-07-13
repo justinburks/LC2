@@ -2,7 +2,7 @@
 // RETURN DATA/CLASS
 // EXPORT TO CONTROLLER
 let list = [];
-let model;
+let Model;
 
 class SvgModel {
     constructor(list) {
@@ -76,24 +76,48 @@ class SvgModel {
         // set state for controller
     }
 
+    sortArrayByName(arr,) {
+        let sortedByNameAsc = arr.sort((a,b) => {
+            a[0] - b[0];
+        })
+        let sortedByNameDesc = arr.sort((a,b) => {
+            b[0] - a[0];
+        })
+    }
+    sortArrayByCategory(arr) {
+        let sortedByCategory = arr.sort((a,b) => {
+            a[1] - b[0];
+        })
+    }
+    sortArryByDate(arr) {
+        let sortedByDate = arr.sort((a,b) => {
+            a[2].dateAdded - b[2].dateAdded;
+        })
+    }
+    sortArrayByMostUsed(arr) {
+        let sortedByFrequency = arr.sort((a,b) => {
+            a[2].copied - b[2].copied;
+        })
+    }
+     
     setProps(obj,index) {
         // SET PROPERTIES
         let elementReference = index;
         obj.element = undefined;
+        obj.copied = undefined;
         obj.mainIndex = this.elements.indexOf(elementReference);
         obj.categoryObjectReference = this.categories[obj.category];
         obj.categoryArray = obj.categoryObjectReference.elements;
         obj.categoryIndex = obj.categoryArray.indexOf(index);
         // CREATE A WRAPPER FRAGMENT
         return obj;
-        
     }
 
     createIcon(obj,index) {
         // index = [name,category,{obj}]
         // obj = {name,category,markup}
         // CREATE REFERENCES
-        // THIS CAN BE REPLACE WITH MODEL CLASS REFERENCE IN CONTROLLER
+        // THIS CAN BE REPLACE WITH Model CLASS REFERENCE IN CONTROLLER
         this.setProps(obj,index);
         // console.log(obj)
         // CREATE NEW ELEMENT
@@ -119,6 +143,7 @@ class SvgModel {
             // STATE VARIABLES;
                     // [PREVIOUS ELEMENT,CLICKED/CURRENT ELEMENT,NEXT ELEMENT]
                     // STATE PROPERTIES {ELEMENT, MAIN INDEX REFERENCE, CATEGORY, CATEGORY INDEX REFERENCE}       
+            
             this.clickedElement = newIcon;
             let reference = Number(this.clickedElement.dataset.mainId);
             let mainIndexReference = this.elements[reference];
@@ -138,7 +163,8 @@ class SvgModel {
             document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
             document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
             document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
-            console.log('updating widget' + '..... Name: ' + displayName + ', Category: ' + displayCategory);
+            console.log('Model updating widget' + '..... Name: ' + displayName + ', Category: ' + displayCategory);
+            // controller.addElementToPreview(html,displayName,displayCategory,props);
             // console.log(html)
             // console.log([...refs]);
             console.log(`Setting Controller State: { Element: ${newIcon}, Index: ${reference}, Category: ${categoryObjectReference}, Index: ${categoryIndex} }`);
@@ -198,7 +224,7 @@ class SvgModel {
     }
 }
 
-fetch('data.json')
+fetch('../data/data.json')
         .then((res) => { return res.json()})
         .then((data) => {
             data.forEach(el => {
@@ -206,11 +232,11 @@ fetch('data.json')
             })
         return list;
         })
-        .then(list => {model = new SvgModel(list); return model})
-        .then(model => {
-            // console.log(model)
-            model.load();
-            console.log('model ready');
+        .then(list => {Model = new SvgModel(list); return Model})
+        .then(Model => {
+            // console.log(Model)
+            Model.load();
+            console.log('Model ready');
         })
 
-export { model };
+export { Model };
