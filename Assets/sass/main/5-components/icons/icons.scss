@@ -161,6 +161,15 @@ body {
     // padding: calc(32px * 3);
 }
 
+[data-role="interfaceHeader"] {
+    position: absolute;
+    top: 10px;
+    left: 28%;
+    font-size: 38px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: fit-content;
+    color: rgba(68, 68, 68, 0.785);
+}
 .svg-dashboard.hide, .svg-dashboard__search.hide {
     display: none;
 }
@@ -179,7 +188,9 @@ body {
     margin: 8px;
     background: #fff;
     z-index: 2000000;
-
+    & svg {
+        stroke: black;
+    }
     &, & svg {
         transition: 250ms ease-in-out;
     }

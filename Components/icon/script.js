@@ -32,17 +32,15 @@ function changeDisplaySize(sz) {
         }
 }
 
-let clickedElement;
-
 document.querySelector('.tab-right').addEventListener('click', () => {
-    nextEl(clickedElement);
+    nextEl(model.clickedElement);
 })
 document.querySelector('.tab-left').addEventListener('click', () => {
-    prevEl(clickedElement);
+    prevEl(model.clickedElement);
 })
 
 function nextEl(){
-    // console.log(model.clickedElement)
+    console.log(model.clickedElement)
     if (model.clickedElement === undefined) {
         model.clickedElement = document.querySelector('.svg-dashboard').firstElementChild;
     }
@@ -51,7 +49,7 @@ function nextEl(){
     }
     let el = model.clickedElement.nextElementSibling;
     // observer.lastElementClicked
-    let ref = model.clickedElement.dataset.mainId;
+    let ref = el.dataset.mainId;
     let elref = model.elements[ref];
     const html = el.innerHTML;
     const displayName = elref[0].toString().replaceAll('_', ' ').toLowerCase();
@@ -74,7 +72,7 @@ function prevEl(){
     }
     let el = model.clickedElement.previousElementSibling;
     // observer.lastElementClicked
-    let ref = model.clickedElement.dataset.mainId;
+    let ref = el.dataset.mainId;
     let elref = model.elements[ref];
     const html = el.innerHTML;
     const displayName = elref[0].replaceAll('_', ' ').toLowerCase();
@@ -92,6 +90,7 @@ document.querySelector('.svg-display span.name').addEventListener('click', () =>
     let ref = model.clickedElement.dataset.mainId;
     let elref = model.elements[ref];
     console.log(elref[0]);
+    let defaultState = document.querySelector('.svg-display span.name').innerHTML;
     let elementIndex = model.elements[ref];
     document.querySelector('.svg-display .name').innerHTML = `<input type="text">`;
     document.querySelector('.svg-display input').addEventListener('keyup', (e) => {
@@ -111,13 +110,11 @@ document.querySelector('.svg-display span.name').addEventListener('click', () =>
             // X deleted Y on D date
         }
     })
+    document.querySelector('.svg-display input').addEventListener('blur', (e) => {
+        document.querySelector('.svg-display span.name').innerHTML = defaultState
+    })
     document.querySelector('.svg-display input').focus();
 })
-
-
-
-
-
 
                     // ---------> MENU FUNCTIONALITY <------------- //
 document.querySelectorAll('.svg-navigation > ul > li[data-role="menu"]')
@@ -159,13 +156,14 @@ document.querySelectorAll('.close')
 const searchDashboard = document.querySelector('.svg-dashboard__search');
 const defaultDashboard = document.querySelector('.svg-dashboard');
 const searchbar = document.querySelector('.search-bar');
+const header = document.querySelector('[data-role="interfaceHeader"]');
 function toggleDashboards() {
     defaultDashboard.classList.toggle('hide');
     searchDashboard.classList.toggle('hide');
     console.log('toggle successful');
 }
 
-searchbar.addEventListener('keyup', () => {
+searchbar.addEventListener('keydown', () => {
     searchDashboard.innerHTML = '';
     const txt = searchbar.value;
     const reggie = new RegExp(txt);
@@ -183,11 +181,16 @@ searchbar.addEventListener('keyup', () => {
 
 searchbar.addEventListener('blur', () => {
     toggleDashboards();
+    searchbar.value = '';
+    header.style.opacity = .8;
 })
 
 searchbar.addEventListener('focus', () => {
     if (searchDashboard.classList.contains('hide') && searchbar.value != '') {
         toggleDashboards();
+    }
+    if (header.style.opacity !== 0) {
+        header.style.opacity = 0;
     }
     searchDashboard.innerHTML = '';
     const txt = searchbar.value;

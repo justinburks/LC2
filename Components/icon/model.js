@@ -6,131 +6,195 @@ let model;
 
 class SvgModel {
     constructor(list) {
-        this.elements = list
-        let ref = this.elements;
-        let clickedElement;
-        // list.forEach(el => {
-        //        ref.push(elementConstructor(el))
-        // });
+        // CURRENT STATE
+        this.clickedElement;
+        // MAIN INDEX 
+        // MAY BE REFACTORED HERE TO CREATE ASSOCIATIVE ARRAY
+        this.elements = list;
+        // CATEGORY OBJECT REFERENCES
         this.categorySet = [];
-        let cat = this.categorySet;
-        ref.forEach(el => {
-            if (!cat.includes(el[1])) {
-                cat.push(el[1]);
+        this.categories = {};
+    }
+       // CREATES A SET OF CATEGORY NAMES
+    createCategorySet() {
+        this.elements.forEach(el => {
+            if (!this.categorySet.includes(el[1])) {
+                this.categorySet.push(el[1]);
             }
         });
-        this.categories = {};
-            cat.forEach(el => {
-                this.categories[el] = {};
-                let collection = [];
-                ref.forEach(index => {
-                    // collection = [];
-                    if(index[1] == el) {
-                        collection.push(index);
-                    }
-                });
-                this.categories[el].elements = collection;
-                })
-
+        return this.categorySet;
+    }
+    // CHECKS ALL ELEMENT CATEGORY NAMES AND CREATES AN ARRAY FOR EACH INSIDE OF CATEGORY OBJECT
+    createArrayForEachCategory() {
+        this.categorySet.forEach(el => {
+            // GIVE CATEGORY OBJECT A CORRESPONDING CATEGORY NAME
+            this.categories[el] = {};
+            let tmpArr = [];
+            this.elements.forEach(index => {
+                // tmpArr = [];
+                if(index[1] == el) {
+                    tmpArr.push(index);
+                }
+            });
+            this.categories[el].elements = tmpArr;
+            })
+            return this.categories;
+    }
+    // ACCEPTS ARRAY AND CREATES A FRAGMENT
+    createFragmentFromArray(arr) {
+        // indexFormat [name,category,{properties}]
+        let frag = document.createDocumentFragment();
+        // create icon for each element in array
+        arr.forEach(el => {
+            let elementArray = el;
+            let elementPropertiesObject = el[2];
+            let newIcon = this.createIcon(elementPropertiesObject, elementArray); 
+            frag.appendChild(newIcon)
+        })
+        return frag;
     }
 
-    // creatIndex() {
-    //     return [a, b, {}]
-    // }
+    appendFragmentToMainDashboard(arr, tab) {
+        let newFrag = this.createFragmentFromArray(arr);
+        let dashboard = document.querySelector('[data-role="dashboard"]');
+        dashboard.innerHTML = '';
+        dashboard.appendChild(newFrag);
+
+        return this.setDashboardState(tab);
+    }
+
+    setDashboardState(tab) {
+        let dashboard = document.querySelector('[data-role="dashboard"]');
+        dashboard.dataset.tab = `${tab}`;
+        return this.updateInterfaceHeaders(tab);
+    }
+
+    updateInterfaceHeaders(tab) {
+        let interfaceHeader = document.querySelector('[data-role="interfaceHeader"]');
+        // coerce tab parameter to string;
+        interfaceHeader.innerText = `${tab.toUpperCase()}`;
+        // set state for controller
+    }
+
+    setProps(obj,index) {
+        // SET PROPERTIES
+        let elementReference = index;
+        obj.element = undefined;
+        obj.mainIndex = this.elements.indexOf(elementReference);
+        obj.categoryObjectReference = this.categories[obj.category];
+        obj.categoryArray = obj.categoryObjectReference.elements;
+        obj.categoryIndex = obj.categoryArray.indexOf(index);
+        // CREATE A WRAPPER FRAGMENT
+        return obj;
+        
+    }
 
     createIcon(obj,index) {
-        let a = this.categories[obj.category];
-        let b = a.elements
-        let el = document.createElement('div');
-        el.dataset.mainId = this.elements.indexOf(index);
-        el.dataset.categoryId = b.indexOf(index);
-        el.dataset.category = obj.category;
-        el.dataset.name = obj.name;
-        el.dataset.role = 'svgWrapper';
-        el.dataset.size= "sm"
-        el.classList.add('svg-wrapper')
-        el.innerHTML = obj.markup;
+        // index = [name,category,{obj}]
+        // obj = {name,category,markup}
+        // CREATE REFERENCES
+        // THIS CAN BE REPLACE WITH MODEL CLASS REFERENCE IN CONTROLLER
+        this.setProps(obj,index);
+        // console.log(obj)
+        // CREATE NEW ELEMENT
+        let newIcon = document.createElement('div');
 
-    
-        el.addEventListener('click', () => {
-            this.clickedElement = el;
-            let ref = this.clickedElement.dataset.mainId;
-            let elref = this.elements[ref];
-            const html = el.innerHTML;
-            const displayName = elref[0].toString().replaceAll('_', ' ').toLowerCase();
-            const displayCategory = elref[1].toString().replaceAll('_', ' ');
-            let a = Number(el.dataset.mainId);
-            let b = Number(el.dataset.categoryId)
-            let c = this.categories[el.dataset.category]
-            console.log(a)
-            console.log(b)
-            console.log("main index reference:  " + this.elements[a]); // main index reference
-            console.log("prev element reference (category):  " + c.elements[b-1]);// prev element reference
-            console.log("this element reference (category):  " + c.elements[b]);// this element reference (in category)
-            console.log("next element reference (category):  " + c.elements[b + 1]);// next element reference
-            console.log(a,b,b+1)
-            // this.clicked.mainIndex
-            // add reference to the array it came from (obj)
-            // el.dataset.state=ref
+        // ADD DATA ATTRIBUTES FOR REFERENCE
+        newIcon.dataset.mainId = obj.mainIndex;
+
+        newIcon.dataset.categoryId = obj.categoryIndex;
+        newIcon.dataset.category = obj.category;
+        newIcon.dataset.name = obj.name;
+        newIcon.dataset.role = 'svgWrapper';
+        newIcon.dataset.size= "sm";
+        
+        // ADD CLASSES FOR DEFAULT STYLES
+        newIcon.classList.add('svg-wrapper');
+        newIcon.innerHTML = obj.markup;
+        obj.element = newIcon;
+        // ADD CLICK LISTENER
+        // HANDOFF TO CONTROLLER
+        newIcon.addEventListener('click', () => {
+            // CONTROLLER.UPDATEPREVIEW([...semantics]);
+            // STATE VARIABLES;
+                    // [PREVIOUS ELEMENT,CLICKED/CURRENT ELEMENT,NEXT ELEMENT]
+                    // STATE PROPERTIES {ELEMENT, MAIN INDEX REFERENCE, CATEGORY, CATEGORY INDEX REFERENCE}       
+            this.clickedElement = newIcon;
+            let reference = Number(this.clickedElement.dataset.mainId);
+            let mainIndexReference = this.elements[reference];
+            let categoryObjectReference = this.categories[newIcon.dataset.category];
+            let categoryArray = categoryObjectReference.elements;
+            let categoryIndex = categoryArray.indexOf(index);
+            // SET STATE
+
+            // GET REFERENCES TO MAIN INDEX ON CLICK
+            // let refs = props(newIcon,obj,index);
+            const html = newIcon.innerHTML;
+            const displayName = mainIndexReference[0].toString().replaceAll('_', ' ').toLowerCase();
+            const displayCategory = mainIndexReference[1].toString().replaceAll('_', ' ');
+            console.log('reading element data');
+            // UPDATE ICON PREVIEW WIDGET WITH REFERENCES
             document.querySelector('.svg-interface .svg-display .svg-wrapper').innerHTML = html;
             document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
             document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
             document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
+            console.log('updating widget' + '..... Name: ' + displayName + ', Category: ' + displayCategory);
+            // console.log(html)
+            // console.log([...refs]);
+            console.log(`Setting Controller State: { Element: ${newIcon}, Index: ${reference}, Category: ${categoryObjectReference}, Index: ${categoryIndex} }`);
+            // return CONTROLLER.SETSTATE([...refs]);
         })
-        el.addEventListener('dblclick', () => {
-            const element = el.outerHTML;
+        // COPY ELEMENT TO CLIPBOARD
+        newIcon.addEventListener('dblclick', () => {
+            const element = newIcon.innerHTML;
             window.navigator.clipboard.writeText(element);
+            CONTROLLER.SHOWCOPIEDANIMATION(newIcon)
             // show highlight green (fade-in-out) overlay
         })
-        return el;
-    }
-
-    build() {
-    let frag = document.createDocumentFragment()
-        this.elements.forEach(el => {
-            frag.appendChild(this.createIcon(el[2],el))
-        })
-    document.querySelector('.svg-dashboard').appendChild(frag);
+        return newIcon
     }
 
     buildTabs() {
         let all = document.querySelector('[data-id="all"]');
-        let dashboard = document.querySelector('.svg-dashboard');
-        let allFrag = document.createDocumentFragment();
+        let tabSection = document.querySelector('[data-role="subMenu"][data-id="categories"]');
+        let categorySection = document.createDocumentFragment();
+
         all.addEventListener('click', () => {
-            this.elements
-                .forEach(el => {
-                    allFrag.appendChild(this.createIcon(el[2],el));
-            })
-           dashboard.dataset.state="all"
-           dashboard.dataset.tab="all"
-           dashboard.innerHTML = ''
-           dashboard.appendChild(allFrag);
-        })
-        let tabSection = document.querySelector('[data-role="subMenu"][data-id="categories');
-        let catFrag = document.createDocumentFragment();
-        console.log(this.categorySet)
-        this.categorySet.forEach(a => {
-            let b = document.createElement('li');
-            b.dataset.category = a;
-            let txt = a.charAt(0).toUpperCase() + a.slice(1);
-            b.innerText = txt;
-            b.addEventListener('click', (e) => {
+           this.appendFragmentToMainDashboard(this.elements, "all");
+        });
+
+        this.categorySet.forEach(category => {
+            let listItem = document.createElement('li');
+            let txt = category.charAt(0).toUpperCase() + category.slice(1);
+
+            listItem.dataset.category = category;
+            listItem.innerText = txt;
+            listItem.addEventListener('click', (e) => {
                 e.stopPropagation();
-                dashboard.dataset.state=`${b.dataset.category}`;
-                dashboard.dataset.tab="categories"
-                let frag = document.createDocumentFragment();
-                this.categories[a].elements.forEach(el => {
-                    frag.appendChild(this.createIcon(el[2],el));
-                })
-                dashboard.innerHTML = '';
-                dashboard.appendChild(frag);
+                this.appendFragmentToMainDashboard(this.categories[category].elements, category.toString())
             })
-            catFrag.appendChild(b)
+            categorySection.appendChild(listItem)
         })
-        console.log(catFrag);
         tabSection.innerHTML = '';
-        tabSection.appendChild(catFrag)
+        tabSection.appendChild(categorySection);
+    }
+
+    load() {
+        // create array for each category
+        this.createCategorySet();
+        this.createArrayForEachCategory();
+            // create array for each collection (if)
+
+        // build subMenu list item for each category
+        this.buildTabs();    
+        // start main dashboard loader Function
+        // start preview loader function
+        // get State
+        
+        // build main dashboard
+        this.appendFragmentToMainDashboard(this.elements,"all")
+        // open preview interface
+        // set State
     }
 }
 
@@ -145,9 +209,8 @@ fetch('data.json')
         .then(list => {model = new SvgModel(list); return model})
         .then(model => {
             // console.log(model)
-            model.build();
-            model.buildTabs();
-            return;
+            model.load();
+            console.log('model ready');
         })
 
 export { model };
