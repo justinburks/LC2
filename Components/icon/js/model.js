@@ -1,8 +1,6 @@
 // GET DATA
 // RETURN DATA/CLASS
 // EXPORT TO CONTROLLER
-let list = [];
-let Model;
 
 class SvgModel {
     constructor(list) {
@@ -145,6 +143,7 @@ class SvgModel {
                     // STATE PROPERTIES {ELEMENT, MAIN INDEX REFERENCE, CATEGORY, CATEGORY INDEX REFERENCE}       
             
             this.clickedElement = newIcon;
+            console.log(this.clickedElement)
             let reference = Number(this.clickedElement.dataset.mainId);
             let mainIndexReference = this.elements[reference];
             let categoryObjectReference = this.categories[newIcon.dataset.category];
@@ -224,19 +223,4 @@ class SvgModel {
     }
 }
 
-fetch('../data/data.json')
-        .then((res) => { return res.json()})
-        .then((data) => {
-            data.forEach(el => {
-                list.push(el)
-            })
-        return list;
-        })
-        .then(list => {Model = new SvgModel(list); return Model})
-        .then(Model => {
-            // console.log(Model)
-            Model.load();
-            console.log('Model ready');
-        })
-
-export { Model };
+export { SvgModel };

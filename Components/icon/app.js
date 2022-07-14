@@ -1,2 +1,23 @@
-import * as utils from './utils';
-import {Model} from './js/model';
+import {SvgModel} from './js/model.js'
+import {Controls} from './js/controller.js'
+import {StateObserver} from './js/observer.js'
+
+let list = [];
+let Model;
+let Controller;
+const Observer = new StateObserver();
+
+(function loadData() {
+    // startAnimationFrame();
+    fetch('../data/data.json')
+        .then((res) => { return res.json()})
+        .then((data) => {
+            data.forEach(el => {
+                list.push(el)
+            })
+            Model = new SvgModel(list); 
+            Controller = new Controls(Model,Observer);
+            Model.load();
+            return Controller.sayHello();
+        })
+})();

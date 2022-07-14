@@ -103,6 +103,11 @@ class Controls {
         },
         this.wrapper = document.querySelector('.svg-dashboard');
     }
+    sayHello(){
+        console.log(`model ready, controller active`);
+        console.log(this.model);
+        console.log(this.state)
+    }
     // PREVIEW INTERFACE METHODS
     nextPreviewElement(nxt){
 

@@ -1,9 +1,31 @@
-import { Model } from './js/model.js';
-// import { widget,menu,dashboard } from './controller.js';
+import {SvgModel} from './js/model.js'
+import {Controls} from './js/controller.js'
+import {StateObserver} from './js/observer.js'
 
+let list = [];
+let Model;
+let Controller;
+const Observer = new StateObserver();
 
+loadData();
+function loadData() {
+    // startAnimationFrame();
+    fetch('../data/data.json')
+        .then((res) => { return res.json()})
+        .then((data) => {
+            data.forEach(el => {
+                list.push(el)
+            })
+            Model = new SvgModel(list); 
+            Controller = new Controls(Model,Observer);
+            Model.load();
+            init();
+            return Controller.sayHello();
+        })
+};
 
-                // -----------> WIDGET FUNCTIONALITY <------------ //
+function init() {
+    // -----------> WIDGET FUNCTIONALITY <------------ //
 document.querySelectorAll('.sizes button')
  .forEach(button => {
     button.addEventListener('click', () => {
@@ -31,6 +53,21 @@ function changeDisplaySize(sz) {
         }
 }
 
+        function updatePreview(el,model,observer) {
+            let ref = el.dataset.mainId;
+            let elref = model.elements[ref];
+            const html = el.innerHTML;
+            const displayName = elref[0].replaceAll('_', ' ').toLowerCase();
+            const displayCategory = elref[1].replaceAll('_', ' ');
+            document.querySelector('.svg-interface .svg-display .svg-wrapper').innerHTML = html;
+            document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
+            document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
+            document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
+            observer.setState(el);
+            return el;
+        }
+
+
 document.querySelector('.tab-right').addEventListener('click', () => {
     nextEl(Model.clickedElement);
 })
@@ -39,14 +76,11 @@ document.querySelector('.tab-left').addEventListener('click', () => {
 })
 
 function nextEl(){
-    console.log(Model.clickedElement)
-    if (Model.clickedElement === undefined) {
-        Model.clickedElement = document.querySelector('.svg-dashboard').firstElementChild;
+    if (Model.clickedElement === undefined || Model.clickedElement.nextElementSibling === null ) {
+        var el = document.querySelector('.svg-dashboard').firstElementChild
+    } else {
+        var el = Model.clickedElement.nextElementSibling;
     }
-    if (Model.clickedElement.nextElementSibling === null) {
-        Model.clickedElement = Model.clickedElement.parentElement.firstElementChild
-    }
-    let el = Model.clickedElement.nextElementSibling;
     // observer.lastElementClicked
     let ref = el.dataset.mainId;
     let elref = Model.elements[ref];
@@ -58,18 +92,14 @@ function nextEl(){
     document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
     document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
     Model.clickedElement = el;
-    console.log(el)
 };
 
 function prevEl(){
-    // console.log(Model.clickedElement)
-    if (Model.clickedElement === undefined) {
-        Model.clickedElement = document.querySelector('.svg-dashboard').lastElementChild;
+    if (Model.clickedElement === undefined || Model.clickedElement.previousElementSibling === null ) {
+        var el = document.querySelector('.svg-dashboard').lastElementChild
+    } else {
+        var el = Model.clickedElement.previousElementSibling;
     }
-    if (Model.clickedElement.nextElementSibling === null) {
-        Model.clickedElement = Model.clickedElement.parentElement.lastElementChild
-    }
-    let el = Model.clickedElement.previousElementSibling;
     // observer.lastElementClicked
     let ref = el.dataset.mainId;
     let elref = Model.elements[ref];
@@ -205,5 +235,5 @@ searchbar.addEventListener('focus', () => {
         searchDashboard.append(ele);
     })
 })
-
 console.log(Model)
+}
