@@ -8,7 +8,7 @@ let Controller;
 const Observer = new StateObserver();
 
 (function loadData() {
-    // startAnimationFrame();
+    // startAnimationFrame(loader);
     fetch('../data/data.json')
         .then((res) => { return res.json()})
         .then((data) => {
@@ -18,6 +18,19 @@ const Observer = new StateObserver();
             Model = new SvgModel(list); 
             Controller = new Controls(Model,Observer);
             Model.load();
+            init();
             return Controller.sayHello();
         })
 })();
+
+function startAnimationFrame() {
+
+}
+
+function stopAnimationFrame() {
+
+}
+
+function init() {
+    //stopAnimationFrame(loader)
+}

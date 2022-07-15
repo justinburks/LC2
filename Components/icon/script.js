@@ -73,6 +73,7 @@ const searchDashboard = document.querySelector('.svg-dashboard__search');
 const defaultDashboard = document.querySelector('.svg-dashboard');
 const searchbar = document.querySelector('.search-bar');
 const header = document.querySelector('[data-role="interfaceHeader"]');
+const clickoutsidemodal = document.querySelector('.svg-dashboard__search-overlay');
 function toggleDashboards() {
     defaultDashboard.classList.toggle('hide');
     searchDashboard.classList.toggle('hide');
@@ -81,13 +82,13 @@ function toggleDashboards() {
 
 searchbar.addEventListener('keydown', () => {
     searchDashboard.innerHTML = '';
-    const txt = input.value;
+    const txt = searchbar.value;
     const reggie = new RegExp(txt);
     // CAN BE ALTERED TO SEACH IN CERTAIN STATES
-    this.model.elements
+    Controller.model.elements
         .filter(el => el[0].match(reggie))
             .map(el => { 
-                let ele = Model.createIcon(el[2], el);
+                let ele = Controller.createIcon(el[2], el);
                 searchDashboard.append(ele)
             })
         ifClassExistCallback(searchDashboard,'hide',toggleDashboards);
@@ -95,11 +96,13 @@ searchbar.addEventListener('keydown', () => {
 
 // add click outside modal instead of blur
 
-searchbar.addEventListener('blur', () => {
+searchDashboard.addEventListener('focusout', () => {
     toggleDashboards();
     searchbar.value = '';
     header.style.opacity = .8;
+    searchbar.removeEventListener('mouseout', focusDashboard);
 })
+
 
 searchbar.addEventListener('focus', () => {
     if (searchDashboard.classList.contains('hide') && searchbar.value != '') {
@@ -108,17 +111,32 @@ searchbar.addEventListener('focus', () => {
     if (header.style.opacity !== 0) {
         header.style.opacity = 0;
     }
+    function focusDashboard() {
+        searchDashboard.focus();
+        // searchDashboard.style.background = '#000';
+        clickoutsidemodal.style.display = 'block';
+        clickoutsidemodal.addEventListener('mouseleave', () => {
+            toggleDashboards();
+            clickoutsidemodal.style.display = 'none';
+            // searchbar.value = '';
+            header.style.opacity = .8;
+            searchbar.removeEventListener('mouseleave', focusDashboard);
+            console.log('dashboard out of focus')
+        })
+        console.log('dashboard in focus')
+    }
     searchDashboard.innerHTML = '';
     const txt = searchbar.value;
     const reggie = new RegExp(txt);
-    const tmpArr = Model.elements
+    const tmpArr = Controller.model.elements
     // implement as hashmap for performance
     .filter(el => el[0].match(reggie))
     .map(el => { 
-        let ele = Model.createIcon(el[2]);
-        ele.addEventListener('click')
+        let ele = Controller.createIcon(el[2],el);
+        // ele.addEventListener('click')
         searchDashboard.append(ele);
     })
+    searchbar.addEventListener('mouseout', focusDashboard)
 })
 
 // FUNCTIONS

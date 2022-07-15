@@ -2,6 +2,16 @@
 // RETURN DATA/CLASS
 // EXPORT TO CONTROLLER
 
+// let arrays = [
+//     Model.elements,
+//     Model.categories["arrows"].elements,
+//     Model.categories["brands"].elements,
+//     Model.categories["ecommerce"].elements,
+// ]
+// arrays.forEach(el => {
+//     Model.sortArrayByName(el);
+// })
+
 class SvgModel {
     constructor(list) {
         // CURRENT STATE
