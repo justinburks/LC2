@@ -1,41 +1,41 @@
+
 class StateObserver {
     constructor() {
-        this.clickedElement = null;
-        this.wrapper = null;
-        this.tab = null;
-        this.next = null;
-        this.prev = null;
+    this.state = {
+            clickedElement: undefined,
+            wrapper: undefined,
+            tab: undefined,
+            next: undefined,
+            prev: undefined,
     }
-    setState(el) {
-        this.clickedElement = el;
-        this.wrapper = el.parentElement;
-        this.tab = el.dataset.category;
-        this.next = el.nextElementSibling === null ? el.parentElement.firstElementChild : el.nextElementSibling;
-        this.prev = el.previousElementSibling === null ? el.parentElement.lastElementChild : el.previousElementSibling;
-        return this.getState();
+    this.dashboardState = {}
+
+    this.setState = function(el) {
+        if (el === undefined) {
+           return Object.keys(this.state).forEach(key => this.state[key] = undefined);
+        }
+        this.state.clickedElement = el;
+        this.state.wrapper = el.parentElement;
+        this.state.tab = el.dataset.category;
+        this.state.next = el.nextElementSibling === null ? el.parentElement.firstElementChild : el.nextElementSibling;
+        this.state.prev = el.previousElementSibling === null ? el.parentElement.lastElementChild : el.previousElementSibling;
+        // return console.log(this.state)
     }
-    getState() {
-        let state = {
-            clickedElement: this.clickedElement,
-            wrapper: this.wrapper,
-            tab: this.tab,
-            next: this.next,
-            prev: this.prev,
-        };
-         return state;
+    this.getClickedElement = function() {
+        return this.state.clickedElement
+    } 
+    this.getWrapper = function() {
+        return this.state.wrapper;
     }
-    getWrapper() {
-        return this.wrapper;
+    this.getTab = function() {
+        return this.state.tab;
     }
-    getTab() {
-        return this.tab;
+   this.getNext = function() {
+        return this.state.next;
     }
-    getNext() {
-        return this.next;
-    }
-    getPrev() {
-        return this.prev;
+    this.getPrev = function() {
+        return this.state.prev;
     }
 };
-
+}
 export {StateObserver}

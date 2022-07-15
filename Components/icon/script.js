@@ -18,147 +18,36 @@ function loadData() {
             })
             Model = new SvgModel(list); 
             Controller = new Controls(Model,Observer);
-            Model.load();
+            Controller.load();
             init();
             return Controller.sayHello();
         })
 };
 
 function init() {
-    // -----------> WIDGET FUNCTIONALITY <------------ //
-document.querySelectorAll('.sizes button')
- .forEach(button => {
-    button.addEventListener('click', () => {
-        changeDisplaySize(button.dataset.size.toString());
-    });
-})
+
+const menuElements = [...document.querySelectorAll('.svg-navigation > ul > li[data-role="menu"')];
+const menuCloseButton = document.querySelector('.svg-navigation .close');
+
+const previewToggleButtonRight = document.querySelector('.tab-right');
+const previewToggleButtonLeft = document.querySelector('.tab-left');
+const sizeButtons = [...document.querySelectorAll('.sizes button')];
+
+const displayNameContainer = document.querySelector('.svg-display span.name');
+//     // -----------> WIDGET FUNCTIONALITY <------------ //
 
 // target svg-display svg-wrapper
-function changeDisplaySize(sz) {
-    const wrapper = document.querySelector('.svg-display .svg-wrapper');
-    const icon = document.querySelector('.svg.display .svg-wrapper svg');
-    // refactor
-    // modify stylesheet instead of inline style //
-        if (typeof sz === 'string') {
-        wrapper.dataset.size = `${sz}`;
-        return
-        }
+previewToggleButtonRight.addEventListener('click', () => Controller.nextPreviewElement())
+previewToggleButtonLeft.addEventListener('click', () => Controller.prevPreviewElement())
 
-        if (typeof sz === 'number') {
-        icon.height = `${sz}px`
-        icon.width = `${sz}px`
-        wrapper.height = `${sz + 40}px`
-        wrapper.width = `${sz + 40}px`
-        return
-        }
-}
+sizeButtons.forEach(btn => btn.addEventListener('click', () => Controller.changeDisplaySize(btn.dataset.size)))
 
-        function updatePreview(el,model,observer) {
-            let ref = el.dataset.mainId;
-            let elref = model.elements[ref];
-            const html = el.innerHTML;
-            const displayName = elref[0].replaceAll('_', ' ').toLowerCase();
-            const displayCategory = elref[1].replaceAll('_', ' ');
-            document.querySelector('.svg-interface .svg-display .svg-wrapper').innerHTML = html;
-            document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
-            document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
-            document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
-            observer.setState(el);
-            return el;
-        }
-
-
-document.querySelector('.tab-right').addEventListener('click', () => {
-    nextEl(Model.clickedElement);
-})
-document.querySelector('.tab-left').addEventListener('click', () => {
-    prevEl(Model.clickedElement);
-})
-
-function nextEl(){
-    if (Model.clickedElement === undefined || Model.clickedElement.nextElementSibling === null ) {
-        var el = document.querySelector('.svg-dashboard').firstElementChild
-    } else {
-        var el = Model.clickedElement.nextElementSibling;
-    }
-    // observer.lastElementClicked
-    let ref = el.dataset.mainId;
-    let elref = Model.elements[ref];
-    const html = el.innerHTML;
-    const displayName = elref[0].toString().replaceAll('_', ' ').toLowerCase();
-    const displayCategory = elref[1].toString().replaceAll('_', ' ');
-    document.querySelector('.svg-interface .svg-display .svg-wrapper').innerHTML = html;
-    document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
-    document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
-    document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
-    Model.clickedElement = el;
-};
-
-function prevEl(){
-    if (Model.clickedElement === undefined || Model.clickedElement.previousElementSibling === null ) {
-        var el = document.querySelector('.svg-dashboard').lastElementChild
-    } else {
-        var el = Model.clickedElement.previousElementSibling;
-    }
-    // observer.lastElementClicked
-    let ref = el.dataset.mainId;
-    let elref = Model.elements[ref];
-    const html = el.innerHTML;
-    const displayName = elref[0].replaceAll('_', ' ').toLowerCase();
-    const displayCategory = elref[1].replaceAll('_', ' ');
-    document.querySelector('.svg-interface .svg-display .svg-wrapper').innerHTML = html;
-    document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
-    document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
-    document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
-    Model.clickedElement = el;
-};
-
-// generator function to repeat
-document.querySelector('.svg-display span.name').addEventListener('click', () => {
-    // replace span with input
-    let ref = Model.clickedElement.dataset.mainId;
-    let elref = Model.elements[ref];
-    console.log(elref[0]);
-    let defaultState = document.querySelector('.svg-display span.name').innerHTML;
-    let elementIndex = Model.elements[ref];
-    document.querySelector('.svg-display .name').innerHTML = `<input type="text">`;
-    document.querySelector('.svg-display input').addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            let val = e.target.value;
-            console.log(val)
-            document.querySelector('.svg-display span.name').innerHTML = val;
-            elementIndex.splice(0,1,val)
-            // elementIndex[0] = val;
-            // doesn't update live?
-            console.log(elementIndex);
-            // write to log --> all changes in formated way.
-            // X changed Y name to Z on D date
-            // X moved Y to Z category on D date
-            // X added Y to Z collection on D date
-            // X added Y to Z Library on D date
-            // X deleted Y on D date
-        }
-    })
-    document.querySelector('.svg-display input').addEventListener('blur', (e) => {
-        document.querySelector('.svg-display span.name').innerHTML = defaultState
-    })
-    document.querySelector('.svg-display input').focus();
-})
+displayNameContainer.addEventListener('click', (e) => Controller.changeDisplayName(displayNameContainer));
 
                     // ---------> MENU FUNCTIONALITY <------------- //
-document.querySelectorAll('.svg-navigation > ul > li[data-role="menu"]')
- .forEach(menu => (
-    menu.addEventListener('click', () => {
-        menu.dataset.state="active";
-        document.querySelectorAll('.svg-navigation > ul > li[data-state="inactive"]')
-            .forEach(el => el.classList.add('hidden'));
-                let submenu = menu.querySelector('ul');
-                // RUN AS A KEYFRAME/RAF //
-                submenu.classList.remove('hidden');
-                submenu.dataset.state = 'show';
-                submenu.classList.add('visible');
-                menu.querySelector('.close').classList.toggle('show');
-    })))
+
+menuElements.forEach(menu => menu.addEventListener('click', () => Controller.toggleMenuElement(menu)))
+
 
 document.querySelectorAll('.close')
     .forEach(btn => 
@@ -174,9 +63,7 @@ document.querySelectorAll('.close')
             document.querySelectorAll('.svg-navigation > ul > li[data-state="inactive"]')
                 .forEach(el => {
                     el.classList.remove('hidden');
-                })
-
-    }));
+})}));
 
 
 
@@ -194,18 +81,16 @@ function toggleDashboards() {
 
 searchbar.addEventListener('keydown', () => {
     searchDashboard.innerHTML = '';
-    const txt = searchbar.value;
+    const txt = input.value;
     const reggie = new RegExp(txt);
-    const tmpArr = Model.elements
+    // CAN BE ALTERED TO SEACH IN CERTAIN STATES
+    this.model.elements
         .filter(el => el[0].match(reggie))
             .map(el => { 
-                let ele = Model.createIcon(el[2])
+                let ele = Model.createIcon(el[2], el);
                 searchDashboard.append(ele)
             })
-
-        if (searchDashboard.classList.contains('hide')) {
-            toggleDashboards();
-        }
+        ifClassExistCallback(searchDashboard,'hide',toggleDashboards);
 })
 
 // add click outside modal instead of blur
@@ -235,5 +120,53 @@ searchbar.addEventListener('focus', () => {
         searchDashboard.append(ele);
     })
 })
-console.log(Model)
+
+// FUNCTIONS
+
+// PREVIEW INTERFACE
+function toggleMenuElement(menuElement) {
+    menuElement.dataset.state="active";
+    document.querySelectorAll('.svg-navigation > ul > li[data-state="inactive"]')
+        .forEach(el => el.classList.add('hidden'));
+            let submenu = element.querySelector('ul');
+            // RUN AS A KEYFRAME/RAF //
+            submenu.classList.remove('hidden');
+            submenu.dataset.state = 'show';
+            submenu.classList.add('visible');
+            menuElement.querySelector('.close').classList.toggle('show');
 }
+
+function changeDisplayName(containerElement){
+    let referenceNumberToClickedElement = this.observer.state.clickedElement.dataset.mainId;
+    let databaseReference = this.model.elements[referenceNumberToClickedElement];
+    let defaultState = containerElement.innerHTML;
+
+    function ifEnterChangeValue(keyPressed,input,elementToChange) {
+        if(keyPressed === 'Enter') {
+            let value = input.value;
+            elementToChange.innerHTML = value;
+            databaseReference.splice(0,1,value);
+        }
+    }
+    containerElement.innerHTML = `<input class="name-input" data-role="nameChanger" type="text">`;
+    let displayNameInput = document.querySelector('[data-role="nameChanger');
+    displayNameInput.addEventListener('keyup', (e) => { ifEnterChangeValue(e.key,e.value,containerElement) });
+    displayNameInput.addEventListener('blur', () => { containerElement.innerHTML = defaultState});
+    displayNameInput.focus();
+}
+
+function ifClassExistCallback(elementToCheck,str,cb) {
+    if (elementToCheck.classList.contains(str)) {
+        return cb();
+    }
+    console.log('not here');
+}
+function ifNoClassCallback(elementToCheck,str,cb) {
+        if (!(elementToCheck.classList.contains(str))) {
+            return cb();
+        }
+        console.log(`class = ${str}`);
+    }
+}
+
+console.log(Model)

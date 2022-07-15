@@ -12,12 +12,14 @@
 
 // controller.hello();
 
+
+// build tab onDemand then click through existing
 class Controls {
     constructor(referenceToModel,referenceToObserverObject) {
         // MODEL
         this.model = referenceToModel;
         // STATE
-        this.state = referenceToObserverObject;
+        this.observer = referenceToObserverObject;
         // SELECTORS
         this.display = {
             wrapper: document.querySelector('.svg-interface'),
@@ -106,18 +108,81 @@ class Controls {
     sayHello(){
         console.log(`model ready, controller active`);
         console.log(this.model);
-        console.log(this.state)
+        console.log(this.observer)
     }
+    
     // PREVIEW INTERFACE METHODS
-    nextPreviewElement(nxt){
-
+    changeDisplaySize(sz) {
+        const wrapper = document.querySelector('.svg-display .svg-wrapper');
+        const icon = document.querySelector('.svg.display .svg-wrapper svg');
+        // refactor
+        // modify stylesheet instead of inline style //
+            if (typeof sz === 'string') {
+            wrapper.dataset.size = `${sz}`;
+            return
+            }
+    
+            if (typeof sz === 'number') {
+            icon.height = `${sz}px`
+            icon.width = `${sz}px`
+            wrapper.height = `${sz + 40}px`
+            wrapper.width = `${sz + 40}px`
+            return
+            }
     }
-    prevPreviewElement(prv){
-
+    changeDisplayName(containerElement){
+        let referenceNumberToClickedElement = this.observer.state.clickedElement.dataset.mainId;
+        let databaseReference = this.model.elements[referenceNumberToClickedElement];
+        let defaultState = containerElement.innerHTML;
+    
+        function ifEnterChangeValue(keyPressed,input,elementToChange) {
+            if(keyPressed === 'Enter') {
+                let value = input
+                elementToChange.innerHTML = value;
+                databaseReference.splice(0,1,value);
+            }
+        }
+        containerElement.innerHTML = `<input class="name-input" data-role="nameChanger" type="text">`;
+        let displayNameInput = document.querySelector('[data-role="nameChanger');
+        displayNameInput.addEventListener('keyup', (e) => { ifEnterChangeValue(e.key,e.target.value,containerElement) });
+        displayNameInput.addEventListener('blur', (e) => { containerElement.innerHTML = defaultState});
+        displayNameInput.focus();
+    }
+    nextPreviewElement(){
+        if (this.observer.state.clickedElement === undefined || this.observer.state.next === null ) {
+            var el = document.querySelector('.svg-dashboard').firstElementChild
+        } else {
+            var el = this.observer.state.next;
+        }
+        // observer.lastElementClicked
+        this.updatePreview(el);
+    }
+    prevPreviewElement(){
+        if (this.observer.state.clickedElement === undefined || this.observer.state.prev === null ) {
+            var el = document.querySelector('.svg-dashboard').lastElementChild
+        } else {
+            var el = this.observer.state.prev;
+        }
+        // observer.lastElementClicked
+        this.updatePreview(el);
+    }
+    updatePreview(el) {
+        let ref = el.dataset.mainId;
+        let elref = this.model.elements[ref];
+        const html = el.innerHTML;
+        const displayName = elref[0].replaceAll('_', ' ').toLowerCase();
+        const displayCategory = elref[1].replaceAll('_', ' ');
+        document.querySelector('.svg-interface .svg-display .svg-wrapper').innerHTML = html;
+        document.querySelector('.svg-interface .svg-description .name').innerText = displayName;
+        document.querySelector('.svg-interface .svg-description .category').innerText = displayCategory;
+        document.querySelector('.svg-display .svg-wrapper').dataset.size="lg";
+        this.observer.setState(el);
+        return el;
     }
     closePreviewInterface(state){
 
     }
+
         // EDIT FUNCTIONS
     editPreviewName(inp){
         // take user input
@@ -145,15 +210,6 @@ class Controls {
         // on select/unselect remove from collection(s) [index]
         // rewrite/add collection [attribute]
     }
-    addElementToPreview(html,displayName,displayCategory,props) {
-        this.display.iWrapper.innerHTML = html;
-        this.display.name.innerText = displayName;
-        this.display.category.innerText = displayCategory;
-        this.display.iWrapper.dataset.size="lg";
-        console.log('controller updating widget' + '..... Name: ' + displayName + ', Category: ' + displayCategory);
-        console.log(`props = ${props}`)
-        return props
-    }
     // SIDEBAR METHODS
     emptySearchBar(){
         document.querySelector('.svg-search .searchBar').value = '';
@@ -167,6 +223,17 @@ class Controls {
     }
 
     // NAVIGATION METHODS
+    toggleMenuElement(menuElement) {
+        menuElement.dataset.state="active";
+        document.querySelectorAll('.svg-navigation > ul > li[data-state="inactive"]')
+            .forEach(el => el.classList.add('hidden'));
+                let submenu = menuElement.querySelector('ul');
+                // RUN AS A KEYFRAME/RAF //
+                submenu.classList.remove('hidden');
+                submenu.dataset.state = 'show';
+                submenu.classList.add('visible');
+                menuElement.querySelector('.close').classList.toggle('show');
+    }
     nextCategory(nxt){
 
     }
@@ -204,8 +271,140 @@ class Controls {
     sortDashboardByMostUsed(arr,indexOfCount){
 
     }
+    appendFragmentToMainDashboard(arr, tab) {
+        let newFrag = this.createFragmentFromArray(arr);
+        let dashboard = document.querySelector('[data-role="dashboard"]');
+        dashboard.innerHTML = '';
+        dashboard.appendChild(newFrag);
 
+        return this.setDashboardState(tab);
+    }
 
+    // CREATIONAL METHODS
+    createIcon(obj,index) {
+        // index = [name,category,{obj}]
+        // obj = {name,category,markup}
+        // CREATE REFERENCES
+        // THIS CAN BE REPLACE WITH Model CLASS REFERENCE IN CONTROLLER
+        this.model.setProps(obj,index);
+        // console.log(obj)
+        // CREATE NEW ELEMENT
+        let newIcon = document.createElement('div');
+
+        // ADD DATA ATTRIBUTES FOR REFERENCE
+        newIcon.dataset.mainId = obj.mainIndex;
+
+        newIcon.dataset.categoryId = obj.categoryIndex;
+        newIcon.dataset.category = obj.category;
+        newIcon.dataset.name = obj.name;
+        newIcon.dataset.role = 'svgWrapper';
+        newIcon.dataset.size= "sm";
+        
+        // ADD CLASSES FOR DEFAULT STYLES
+        newIcon.classList.add('svg-wrapper');
+        newIcon.innerHTML = obj.markup;
+        obj.element = newIcon;
+        // ADD CLICK LISTENER
+        // HANDOFF TO CONTROLLER
+        newIcon.addEventListener('click', () => {
+            // CONTROLLER.UPDATEPREVIEW([...semantics]);
+            // STATE VARIABLES;
+                    // [PREVIOUS ELEMENT,CLICKED/CURRENT ELEMENT,NEXT ELEMENT]
+                    // STATE PROPERTIES {ELEMENT, MAIN INDEX REFERENCE, CATEGORY, CATEGORY INDEX REFERENCE}       
+            
+            this.updatePreview(newIcon);
+            let reference = Number(this.observer.getClickedElement().dataset.mainId);
+            let mainIndexReference = this.model.elements[reference];
+            let categoryObjectReference = this.model.categories[newIcon.dataset.category];
+            let categoryArray = categoryObjectReference.elements;
+            let categoryIndex = categoryArray.indexOf(index);
+            // SET STATE
+            
+            // GET REFERENCES TO MAIN INDEX ON CLICK
+            // let refs = props(newIcon,obj,index);
+            console.log('reading element data');
+            // controller.addElementToPreview(html,displayName,displayCategory,props);
+            // console.log(html)
+            // console.log([...refs]);
+            console.log(`Setting Controller State: { Element: ${newIcon}, Index: ${reference}, Category: ${categoryObjectReference}, Index: ${categoryIndex} }`);
+            // return CONTROLLER.SETSTATE([...refs]);
+        })
+        // COPY ELEMENT TO CLIPBOARD
+        newIcon.addEventListener('dblclick', () => {
+            const element = newIcon.innerHTML;
+            window.navigator.clipboard.writeText(element);
+            CONTROLLER.SHOWCOPIEDANIMATION(newIcon)
+            // show highlight green (fade-in-out) overlay
+        })
+        return newIcon
+    }
+    createFragmentFromArray(arr) {
+        // indexFormat [name,category,{properties}]
+        let frag = document.createDocumentFragment();
+        // create icon for each element in array
+        arr.forEach(el => {
+            let elementArray = el;
+            let elementPropertiesObject = el[2];
+            let newIcon = this.createIcon(elementPropertiesObject, elementArray); 
+            frag.appendChild(newIcon)
+        })
+        return frag;
+    }
+    setDashboardState(tab) {
+        let dashboard = document.querySelector('[data-role="dashboard"]');
+        dashboard.dataset.tab = `${tab}`;
+        return this.updateInterfaceHeaders(tab);
+    }
+    updateInterfaceHeaders(tab) {
+        let interfaceHeader = document.querySelector('[data-role="interfaceHeader"]');
+        let el = document.querySelector(`[data-tab="${tab}"]`).firstElementChild;
+        // coerce tab parameter to string;
+        interfaceHeader.innerText = `${tab.toUpperCase()}`;
+        // set state for controller
+        return this.observer.setState(undefined);
+    }
+    buildTabs() {
+        let all = document.querySelector('[data-id="all"]');
+        let tabSection = document.querySelector('[data-role="subMenu"][data-id="categories"]');
+        let categorySection = document.createDocumentFragment();
+
+        all.addEventListener('click', () => {
+           this.appendFragmentToMainDashboard(this.model.elements, "all");
+        });
+
+        this.model.categorySet.forEach(category => {
+            let listItem = document.createElement('li');
+            let txt = category.charAt(0).toUpperCase() + category.slice(1);
+
+            listItem.dataset.category = category;
+            listItem.innerText = txt;
+            listItem.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.appendFragmentToMainDashboard(this.model.categories[category].elements, category.toString())
+            })
+            categorySection.appendChild(listItem)
+        })
+        tabSection.innerHTML = '';
+        tabSection.appendChild(categorySection);
+    }
+
+    load() {
+        // create array for each category
+        this.model.createCategorySet();
+        this.model.createArrayForEachCategory();
+            // create array for each collection (if)
+
+        // build subMenu list item for each category
+        this.buildTabs();    
+        // start main dashboard loader Function
+        // start preview loader function
+        // get State
+        
+        // build main dashboard
+        this.appendFragmentToMainDashboard(this.model.elements,"all")
+        // open preview interface
+        // set State
+    }
 }
 
 function q(str){
@@ -214,41 +413,5 @@ function q(str){
 function qa(str){
     return document.querySelectorAll(str)
 }
-function test(){
-    
-}
-
-    // DASHBOARD INTERFACE
-const observer = function() {
-    return {
-        // get
-            // set
-                // return
-
-        // STATE [menu --> dashboard --> display]
-        lastElementClicked: model.clickedElement,
-        currentTab: function(){
-            console.log(document.querySelector('.svg-dashboard').dataset.tab)
-        },
-        currentState: function(){
-            console.log(document.querySelector('.svg-dashboard').dataset.state)
-        },
-        
-        currentTabName: null,
-        // iterators & generators
-        nextTab: null,
-        prevTab: null,
-        btnNext: null,
-        btnBack: null,
-
-    }
-}
-
-// const controller = function() {
-//     return {
-//         // COORDINATE
-//         // MAKE IT MAKE SENSE!
-//     }
-// }
 
 export {Controls}
