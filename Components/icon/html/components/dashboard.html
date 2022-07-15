@@ -50,14 +50,24 @@
         /* height: 24px;
         width: 24px; */
     }
-    .filter[data-state="active"]::after {
+    .filter .btn.toggle {
+        transition: all 150ms ease;
+    }
+    .filter .btn.toggle svg {
+        transition: all 200ms ease;
+    }
+    .filter:hover .btn.toggle svg {
+        opacity: 0;
+    } 
+    .filter:hover::after {
         position: absolute;
         content: "";
         top: 0;
         right: 0;
         height: 100%;
         width: 385px;
-        background-color: rgba(255, 255, 255, 0.468);
+        z-index: 1;
+        /* background-color: rgba(255, 255, 255, 0.468); */
     }
     .filter-set {
         display: flex;
@@ -84,10 +94,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: all 150ms ease-in-out
+        transition: all 150ms ease-in-out;
+        cursor: pointer;
+        z-index: 2;
     }
     .filter-set > .btn:hover {
-        background: rgba(255, 255, 255, 0.468);
+        background: rgba(255, 255, 255, 0.59);
     }
     .filter-set .btn svg {
         height: 24px;
@@ -111,11 +123,14 @@
     .icon-set {
         overflow: scroll;
         position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         bottom: 0;
         justify-self: center;
         height: 45px;
-        width: 80vw;
-        padding: 0 120px;
+        width: 20vw;
+        padding: 0 20px;
         box-sizing: border-box;
         background: whitesmoke;
         border-radius: 40px;
@@ -123,10 +138,12 @@
     .icon-set svg {
         height: 24px;
         width: 24px;
+        box-sizing: border-box;
+        margin: 12px;
     }
 
-    /* filter animation */
-    /* 
+    /* filter animation 1 */
+    /* SLIDE OUT
         FORWARD 
         on hover wait 50ms
             margin = 8px;
@@ -139,7 +156,16 @@
                         4th child --> fade in + transform(order + margin)
                             5th child --> fade in + transform(order + margin)
         REVERSE
+        wait 50ms
+        scale the width of the after modal by the same rate so that it allows the hover to be attatched to the buttons
             5th Child --> fadeOut transform(0)
+    */
+    /* filter animation 2 */
+    /* SLIDE UP BOUNCE 
+        FORWARD
+            1st child == first up
+        REVERSE
+            1st child == last down
     */
 </style>
 <body>

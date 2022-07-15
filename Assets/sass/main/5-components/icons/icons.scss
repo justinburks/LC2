@@ -186,16 +186,16 @@ body {
     height: fit-content;
     z-index: 100;
 }
-.svg-dashboard__search-overlay {
-    position: absolute;
-    top: 5%;
-    left: 20%;
-    z-index: 99;
-    background: rgba(0, 0, 0, 0.204);
-    display: none;
-    height: 60vh;
-    width: 60vw;
-}
+// .svg-dashboard__search-overlay {
+//     position: absolute;
+//     top: 5%;
+//     left: 20%;
+//     z-index: 99;
+//     background: rgba(0, 0, 0, 0.204);
+//     display: none;
+//     height: 60vh;
+//     width: 60vw;
+// }
 
 [data-role="interfaceHeader"] {
     position: absolute;
