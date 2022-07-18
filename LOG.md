@@ -23,6 +23,10 @@ I begin to see the importance of mental framworks, and ways to build and structu
 ## 7/17/22
 In learning about higher order functions like filter/map/reduce, higher - higher order functions like transducers/trampolines/curried functions and composers, its safe to say that my brain is fried. I initially created classes in what I believed to be a MVC pattern, these methods returned other methods and so on to do several tasks and called them all in succession with a single function, I now know that I was on the right track however what I was doing was in the spirit of functional programming but was not at all that. It was imperative, hard to pick back up and keep building on. It also gave me the feeling that if I wasn't careful i could've turned to spagetti at any point and I felt there was a way to compose/pipe and abstract all of these methods and eventually create a declarative interface. Well this 9 hour course. This 9 hour course is proving that but I need time to process all of this information. I still plan to write css modules so that when I do start hacking away at the javascript again, it will begin to look feel and behave like an application with real potential for production, and more importantly, an application tbuilt on foundational concepts that can be applied to different applications looking for a similar result. 
 
+## 7/17/22
+
+**CREATE DOCUMENTS FOR CATEGORY ELEMENTS AT COMPILE TIME... BEFORE THE FIRST PAINT, BECAUSE CATEGORIES WONT BE MODIFIED UNLESS NEW ELEMENTS ARE ADDED I CAN SAVE SPACE IN MEMORY BY ONLY HANGING ON TO THE MAIN ARRAY FOR REFERENCE. EVEN WITH CREATING A DOCUMENT ELEMENT FOR EACH SORTED VARIATIONS THE TIME TO PAINT THEM SHOULD STILL TAKE LESS THAN ONE SECOND INTIALLY... TO MY KNOWLEDGE. I CAN USE THE EXTRA RESOURCES TO SAVE COLLECTION ARRAYS TO LOCAL STORAGE DURING RUN TIME.
+
 **When I started this project, I was afraid of using objects and classes, learning about functional programming vs OOP, it felt dirty resorting to different Classes that rely on methods for manipulating the datastructure, getting/setting state, and manipulating the dom. I think a better route is to create abstracted utility functions that resolve alot of the work but in a generic, and reusable way. Independent functions that result in declarative operations derived from an immutable data structures seems like a safer, more maintainable route from a long term perspective.
 
 
@@ -32,5 +36,3 @@ In learning about higher order functions like filter/map/reduce, higher - higher
 **INSTEAD OF DOWNLOAD BUTTON, USE AN IMPORT BUTTON, THAT HAS AN OPTION TO CREATE A CSS MODULE, VIA NODEJS, THAT HAS THE SELECTED STYLES AND ANIMATIONS ATTATCHED TO IT, OR WRITE SPIT OUT A WEBCOMPONENT AS A FILE
 
 **SAVE COLLECTIONS TO LOCAL HOST
-
-**CREATE DOCUMENTS FOR CATEGORY ELEMENTS AT COMPILE TIME... BEFORE THE FIRST PAINT, BECAUSE CATEGORIES WONT BE MODIFIED UNLESS NEW ELEMENTS ARE ADDED I CAN SAVE SPACE IN MEMORY BY ONLY HANGING ON TO THE MAIN ARRAY FOR REFERENCE. EVEN WITH CREATING A DOCUMENT ELEMENT FOR EACH SORTED VARIATIONS THE TIME TO PAINT THEM SHOULD STILL TAKE LESS THAN ONE SECOND INTIALLY... TO MY KNOWLEDGE. I CAN USE THE EXTRA RESOURCES TO SAVE COLLECTION ARRAYS TO LOCAL STORAGE DURING RUN TIME.
