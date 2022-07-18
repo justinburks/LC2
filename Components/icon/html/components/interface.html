@@ -8,6 +8,16 @@
     <!-- <link rel="stylesheet" href="/css/icons.css"> -->
 </head>
 <style>
+
+    /* VARIABLES
+    --interace-height
+    --interface-width
+        width: 384px;
+        height: 656px;
+    --interface-border
+    --interface-background
+    --interface-color
+    */
     html,body {
         height: 100%;
         width: 100%;
@@ -26,7 +36,7 @@
     /* -------------------------------- */
 
     .svg-interface {
-        justify-self: flex-end;
+        justify-self: center;
         background: rgb(170, 168, 168);
         border: 1px solid rgba(0, 0, 0, 0.055);
         border-radius: 16px;
@@ -37,6 +47,7 @@
         display: grid;
         grid-template-columns: repeat(8,48px);
         grid-template-rows: repeat(8, 82px);
+        z-index: 3;
     }
 
     .interface-button {
@@ -314,8 +325,76 @@
         transition: all 300ms ease-in;
         opacity: .777;
     }
+    
+
+    /* ----------------------------------------- */
+    /* COLLECTION STYLES */
+    /* -------------------------------- */
+
+    .interface-wrapper {
+        position: relative;
+        width: 384px;
+        height: 656px;
+        display: flex;
+        /* overflow: hidden; */
+
+    }
+
+    .interface-wrapper > div {
+        background: rgb(170, 168, 168);
+        border: 1px solid rgba(0, 0, 0, 0.055);
+        border-radius: 16px;
+        margin: 0;
+        padding: 0;
+        width: 384px;
+        height: 656px;
+        transition: all 300ms ease;
+    }
+
+    .collection-interface {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 10;
+        opacity: 0;
+    }
+
+    .collection-interface svg {
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        cursor: pointer;
+    }
+    .animation-interface {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    .animation-interface span {
+        font-size: 18px;
+        border-bottom: 1px solid #333;
+        width: 50%;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
 </style>
 <body>
+    <div class="interface-wrapper">
+
+    <div class="animation-interface">
+        <span>close</span>
+    </div>
+
     <div class="svg-interface">
         <div class="interface-icon close" data-state="closed" data-role="menu">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -409,7 +488,19 @@
                     </svg>
             </div> -->
         </div>
+        <div class="collection-interface">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="32" width="32">
+                <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                <path d="M502.6 278.6l-128 128c-12.51 12.51-32.76 12.49-45.25 0c-12.5-12.5-12.5-32.75 0-45.25L402.8 288H32C14.31 288 0 273.7 0 255.1S14.31 224 32 224h370.8l-73.38-73.38c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l128 128C515.1 245.9 515.1 266.1 502.6 278.6z"></path>
+            </svg>          
+        </div>
+    </div>
         <script>
+            const animeInterface = document.querySelector('.animation-interface');
+            const collectionInterface = document.querySelector('.collection-interface');
+            const collectionsOpenButton = document.querySelector('.download');
+            const collectionsCloseButton = document.querySelector('.collection-interface svg') 
+
             function toggleFavorites() {
                 // push/pop from favorites array
                 // if state.tab == favorites append/remove element now.
@@ -454,8 +545,48 @@
             animeCopy = function() {
                 requestAnimationFrame(toggleCopied)
             }
-            document.querySelector('.copy').addEventListener('click', () => {animeCopy()})
-            document.querySelector('.favorite').addEventListener('click', () => {toggleFavorites()})
+            function transformX(el,dist,sfx='%') {
+                el.style.transform = `translateX(${dist+sfx})`;
+            };
+            function makeTransparent(el) {
+                el.style.opacity = '0';
+            }
+            function makeVisible(el, initial='1') {
+                el.style.opacity = initial
+            }
+            function toggleAnimationInterface() {
+                if (animeInterface.dataset.state === 'open') {
+                    transformX(animeInterface,0);
+                    return animeInterface.dataset.state = 'closed';
+                }
+                transformX(animeInterface,-50);
+                animeInterface.dataset.state = 'open';
+                console.log(animeInterface.dataset.state)
+            }
+            function closePlay() {
+                animeInterface.style.transform = 'translateX(0)';
+                animeInterface.dataset.state = 'closed'
+            }
+            function toggleCollectionsInterface() {
+                // let otherEls = [...document.querySelectorAll('.svg-interface > *')]
+                if (collectionInterface.dataset.state === 'open') {
+                    transformX(collectionInterface,0);
+                    makeTransparent(collectionInterface);
+                    // otherEls.forEach(el => makeVisible(el));
+                    return collectionInterface.dataset.state = 'closed';
+                }
+                transformX(collectionInterface,-100);
+                makeVisible(collectionInterface);
+                // otherEls.forEach(el => makeTransparent(el))
+                return collectionInterface.dataset.state = 'open';
+            }
+    
+            document.querySelector('.copy').addEventListener('click', () => animeCopy())
+            document.querySelector('.favorite').addEventListener('click', () => toggleFavorites())
+            document.querySelector('.play').addEventListener('click', () => toggleAnimationInterface())
+            document.querySelector('.animation-interface span').addEventListener('click',() => closePlay());
+            collectionsOpenButton.addEventListener('click', () => toggleCollectionsInterface());
+            collectionsCloseButton.addEventListener('click',() => toggleCollectionsInterface());
         </script>
 </body>
 </html>
