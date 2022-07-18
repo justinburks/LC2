@@ -25,7 +25,8 @@ In learning about higher order functions like filter/map/reduce, higher - higher
 
 ## 7/17/22
 
-**CREATE DOCUMENTS FOR CATEGORY ELEMENTS AT COMPILE TIME... BEFORE THE FIRST PAINT, BECAUSE CATEGORIES WONT BE MODIFIED UNLESS NEW ELEMENTS ARE ADDED I CAN SAVE SPACE IN MEMORY BY ONLY HANGING ON TO THE MAIN ARRAY FOR REFERENCE. EVEN WITH CREATING A DOCUMENT ELEMENT FOR EACH SORTED VARIATIONS THE TIME TO PAINT THEM SHOULD STILL TAKE LESS THAN ONE SECOND INTIALLY... TO MY KNOWLEDGE. I CAN USE THE EXTRA RESOURCES TO SAVE COLLECTION ARRAYS TO LOCAL STORAGE DURING RUN TIME.
+I think it's better to create the document elements during compile time. Although the first paint may take some miliseconds to load, I think this will limit the need to reference the main array several times during run time. I can build the elements, attatching necessary properties once... then reference the document rather than the database during run time. For building/saving collections I can use local storage for now.
+
 
 **When I started this project, I was afraid of using objects and classes, learning about functional programming vs OOP, it felt dirty resorting to different Classes that rely on methods for manipulating the datastructure, getting/setting state, and manipulating the dom. I think a better route is to create abstracted utility functions that resolve alot of the work but in a generic, and reusable way. Independent functions that result in declarative operations derived from an immutable data structures seems like a safer, more maintainable route from a long term perspective.
 
