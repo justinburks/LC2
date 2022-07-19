@@ -27,7 +27,7 @@ In learning about higher order functions like filter/map/reduce, higher - higher
 
 I think it's better to create the document elements during compile time. Although the first paint may take some miliseconds to load, I think this will limit the need to reference the main array several times during run time. I can build the elements, attatching necessary properties once... then reference the document rather than the database during run time. For building/saving collections I can use local storage for now.
 
-# 7/17/22
+## 7/17/22
 
 This is gonna suck, but I'm going to rewrite the entire application.... but this time with new utilities I've learned how to create. Hopefully I can build it faster and easier to update/maintain this time around. The goal is not the application... but being able to write an application that is simple, effective, and plays well with others and do it quickly.
 
