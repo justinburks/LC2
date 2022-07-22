@@ -51,6 +51,7 @@ USE COMPOSE & CURRY TO CREATE A FUNCTION THAT ADD-MANY/REMOVES-MANY
 
 {
   Function addOne() { prints 'added class: '...' to the element: '...' }
+  
   Function addMany() { prints '# classes added to el: '...', {[...classesAdded]}
 }
 REDUCER? OBSERVABLE? MANUAL CURRY? FOR? FOREACH?
