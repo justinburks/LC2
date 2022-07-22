@@ -72,3 +72,34 @@ A small library can be created as a result of:
 3) Importing to any project (SCRIPT/CSS)
 
 ---------------------------------------------
+
+--> EXAMPLE <--
+
+const add = (x,y) => x + y
+
+const curry = f =>
+  x => y => f(x, y)
+  
+ const modulo = curry((x,y) => y % x);
+ 
+ const isOdd = modulo(2) // (2,y) => 2 % y
+ 
+ const result = isOdd(3)
+ 
+ --> EXAMPLE 2 <---
+ 
+ const filter = curry((f, xs) => xs.filter(f))
+ -----------------------------------------------
+ 
+ --> DRY RUN <--
+ 
+ const addOne =  curry(element => element.classList.add(class));
+ // addOne equals a function that returns a function that takes an element and adds a given class to that element....
+ 
+ const closeOverSomeEl = addOne(document.querySelector('.someEl'))
+ // closeOver remembers the element we gave it as the first parameter for addOne.... for future reference?
+
+const addMany = f => arrayOfClasses => arrayOfClasses.filter(el => closeOverSomeEl(el))
+
+const addClassesToSomeElement = addMany(arr);
+_________________________________________________
