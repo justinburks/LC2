@@ -70,3 +70,5 @@ A small library can be created as a result of:
 1) Declaring the classes to add and remove ahead of time (via JS)
 2) Creating generic styles/transitions to be applied (via StyleSheet/Module)
 3) Importing to any project (SCRIPT/CSS)
+
+---------------------------------------------
