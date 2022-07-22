@@ -36,11 +36,18 @@ This is gonna suck, but I'm going to rewrite the entire application.... but this
 **I've even considered rewriting the program to fit the FP paradigm, ditching OOP altogether, but as I get deeper into the FP rabbit hole I am realizing that both paradigms exist in the programming world at large and I should continue with writing my program to primarily utilize object oreiented methods until I can fully grasp FP, learning OOP a bit more in the process.
 
 # MIND MAPS
+___________
 **MAKE A DOWNLOAD BUTTON THAT UPDATES AN EXTERNAL API... MAYBE SOMETHING LIKE A NPM PACKAGE. SO THAT I CAN IMPORT COLLECTIONS WITH A FEW LINES OF CODE
+
+------------------------------------------
 
 **INSTEAD OF DOWNLOAD BUTTON, USE AN IMPORT BUTTON, THAT HAS AN OPTION TO CREATE A CSS MODULE, VIA NODEJS, THAT HAS THE SELECTED STYLES AND ANIMATIONS ATTATCHED TO IT, OR WRITE SPIT OUT A WEBCOMPONENT AS A FILE
 
+------------------------------------------
+
 **SAVE COLLECTIONS TO LOCAL HOST
+
+------------------------------------------
 
 **CREATE A FUNCTION THAT ADDS/REMOVES ONE CLASS, 
 
