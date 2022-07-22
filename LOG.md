@@ -96,10 +96,12 @@ const curry = f =>
  const addOne =  curry(element => element.classList.add(class));
  // addOne equals a function that returns a function that takes an element and adds a given class to that element....
  
- const closeOverSomeEl = addOne(document.querySelector('.someEl'))
+ const closeOverSomeEl = f => el => addOne(el)
  // closeOver remembers the element we gave it as the first parameter for addOne.... for future reference?
 
 const addMany = f => arrayOfClasses => arrayOfClasses.filter(el => closeOverSomeEl(el))
 
-const addClassesToSomeElement = addMany(arr);
+const addClassesToSomeElement = f => arr => addMany(arr);
+
+// I think it'll work but I may need to use reduce instead of filter to change state at the end
 _________________________________________________
