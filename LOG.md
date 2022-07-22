@@ -43,3 +43,9 @@ This is gonna suck, but I'm going to rewrite the entire application.... but this
 **SAVE COLLECTIONS TO LOCAL HOST
 
 **CREATE A FUNCTION THAT ADDS/REMOVES ONE CLASS, USE COMPOSE & CURRY TO CREATE A FUNCTION THAT ADD-MANY/REMOVES-MANY 
+--> TEST <--
+{
+  Function addOne() { prints 'added class: '...' to the element: '...' }
+  Function addMany() { prints '# classes added to el: '...', {[...classesAdded]}
+}
+REDUCER? OBSERVABLE? MANUAL CURRY? FOR? FOREACH?
