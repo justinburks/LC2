@@ -89,6 +89,7 @@ const curry = f =>
  --> EXAMPLE 2 <---
  
  const filter = curry((f, xs) => xs.filter(f))
+ 
  -----------------------------------------------
  
  --> DRY RUN <--
