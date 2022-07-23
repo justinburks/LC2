@@ -108,3 +108,14 @@ const updateSomeEl = addManyToSomeEl(classes);
 
 // I think it'll work but I may need to use reduce instead of filter to change state at the end
 _________________________________________________
+
+**WHATS WRONG WITH SETTIMEOUT?...
+
+--> BLOG POST <--
+
+1) WHATS WRONG/RIGHT WITH SETTIMEOUT
+
+2) WHATS UP WITH ARROW FUNCTIONS/ ANONYMOUS FUNCTIONS
+
+_________________________________________________
+
