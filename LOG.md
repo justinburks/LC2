@@ -31,6 +31,10 @@ I think it's better to create the document elements during compile time. Althoug
 
 This is gonna suck, but I'm going to rewrite the entire application.... but this time with new utilities I've learned how to create. Hopefully I can build it faster and easier to update/maintain this time around. The goal is not the application... but being able to write an application that is simple, effective, and plays well with others and do it quickly.
 
+## 7/24/22
+
+Lost a few commits. probably should figure out how to commit to main branch instead of master...
+
 **When I started this project, I was afraid of using objects and classes, learning about functional programming vs OOP, it felt dirty resorting to different Classes that rely on methods for manipulating the datastructure, getting/setting state, and manipulating the dom. I think a better route is to create abstracted utility functions that resolve alot of the work but in a generic, and reusable way. Independent functions that result in declarative operations derived from an immutable data structures seems like a safer, more maintainable route from a long term perspective.
 
 **I've even considered rewriting the program to fit the FP paradigm, ditching OOP altogether, but as I get deeper into the FP rabbit hole I am realizing that both paradigms exist in the programming world at large and I should continue with writing my program to primarily utilize object oreiented methods until I can fully grasp FP, learning OOP a bit more in the process.
